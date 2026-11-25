@@ -94,7 +94,7 @@ html.hide-ph .ph-banner { display: none; }
   align-items: center; gap: 16px;
   height: calc(4 * var(--u));   /* logo and pill are 2 units tall, centered on a dot row */
 }
-.logo { justify-self: start; display: block; width: calc(2 * var(--u)); height: calc(2 * var(--u)); text-decoration: none; border-radius: 4px; transition: transform .2s ease-out; }
+.logo { justify-self: start; display: block; width: 40px; height: 40px; margin-left: 4px; /* centered where the 48px logo was */ text-decoration: none; border-radius: 4px; transition: transform .2s ease-out; }
 /* 张 seal (carved). On hover it turns into its blueprint: the red print fades to a
    gray outline of the character, and the frame and the two guides that define its
    main shapes (the split between 弓 and 长, and the center line) extend past the
