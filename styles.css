@@ -72,8 +72,12 @@ p { margin: 0; }
 .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
 
 /* Placeholder notice + highlight (delete when your content is in) */
-.ph-banner { background: var(--ph); color: var(--ph-fg); font-size: 13px; }
-.ph-banner .wrap { display: flex; gap: 0 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; padding-block: 12px; line-height: var(--u); } /* always a whole number of grid rows */
+/* Fixed toast at the bottom, so it never pushes the sticky header down (that made the
+   nav jump between pages) and never sits behind the glass pill. */
+.ph-banner { position: fixed; left: 16px; bottom: 16px; z-index: 50; max-width: calc(100% - 32px); background: var(--ph); color: var(--ph-fg); font-size: 13px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,.12); view-transition-name: ph-banner; }
+.ph-banner .wrap { width: auto; margin: 0; display: flex; gap: 4px 12px; align-items: center; flex-wrap: wrap; padding: 8px 8px 8px 16px; line-height: var(--u); }
+::view-transition-group(ph-banner), ::view-transition-old(ph-banner), ::view-transition-new(ph-banner) { animation: none; }
+::view-transition-old(ph-banner) { display: none; }
 .ph-banner button { font: inherit; font-weight: 600; line-height: 22px; background: transparent; color: inherit; border: 1px solid currentColor; border-radius: 999px; padding: 0 12px; cursor: pointer; }
 .ph { background: var(--ph); color: var(--ph-fg); border-radius: 4px; padding: 0 3px; }
 html.hide-ph .ph { background: none; color: inherit; padding: 0; }
@@ -138,15 +142,14 @@ html.hide-ph .ph-banner { display: none; }
 .nav-pill a[href$="about.html"] { view-transition-name: nav-about; }
 .nav-pill a[href$="play.html"] { view-transition-name: nav-play; }
 .clock { justify-self: end; font: 500 13px/1 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
-/* When liquid glass is running, the WebGL layer replaces the CSS glass. */
-.nav-pill.is-liquid { background: transparent; border: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 0; }
-.nav-pill .glass-container { position: relative; display: flex; align-items: center; gap: 4px; padding: 4px; isolation: isolate; border-radius: 999px; }
-/* The library draws its own dark shadow on the canvas; hide the canvas until it is ready, then crossfade from the CSS glass */
-.nav-pill .glass-container canvas { pointer-events: none; box-shadow: none !important; opacity: 0; transition: opacity .45s ease; }
-/* Page snapshot for the glass: show everything, and leave the nav out of it */
-.glass-snapshot .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-.glass-snapshot .nav-pill { visibility: hidden !important; }
-.nav-pill.is-liquid canvas { opacity: 1; box-shadow: 0 10px 30px rgba(20,24,40,.10) !important; }
+/* Live liquid glass (Chromium): the page behind the pill bends at the rim
+   through the SVG filter built in glass.js. Same size and shadow as the CSS
+   glass, so nothing moves or flashes when it switches on. */
+.nav-pill.is-liquid {
+  background: linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,.22));
+  -webkit-backdrop-filter: url(#nav-glass) saturate(170%) brightness(1.03);
+  backdrop-filter: url(#nav-glass) saturate(170%) brightness(1.03);
+}
 @media (max-width: 640px) {
   .site-header { grid-template-columns: auto 1fr; }
   .clock { display: none; }

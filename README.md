@@ -12,11 +12,11 @@ Personal product design portfolio. Plain HTML and CSS, no build step, hosted on 
 
 ## Editing
 
-- Placeholder copy is wrapped in `<span class="ph">…</span>` and highlighted yellow. Replace the text, then remove the `ph-banner` block from each page when you're done.
+- Placeholder copy is wrapped in `<span class="ph">…</span>` and highlighted yellow. Replace the text, then remove the `ph-banner` toast from each page when you're done.
 - Colors, fonts, radii and glass are tokens at the top of `styles.css`. The page background is a 24px dot grid.
 - Case study covers are CSS placeholders with moving color blobs. Replace a cover's inner markup with a looping `<video autoplay muted loop playsinline>` (for example a gradient exported from ShaderGradient's Figma plugin) or an image.
 - The hero object (`.hero-object`) is a placeholder sketchbook. Swap in your own 3D or drawn piece and keep it uncontained.
-- The nav pill gets real liquid-glass refraction on desktop via `glass.js` and `vendor/liquid-glass/` ([liquid-glass-js](https://github.com/dashersw/liquid-glass-js), MIT). Without WebGL, on phones, or with reduced motion it falls back to CSS frosted glass.
+- The nav pill gets live liquid-glass refraction in Chromium browsers (Chrome, Edge, Arc) via `glass.js`, an SVG displacement filter used as a `backdrop-filter`. It refracts whatever scrolls under it with no snapshot, so nothing swaps in after page load. Safari and Firefox get CSS frosted glass.
 
 ## Previewing locally
 
