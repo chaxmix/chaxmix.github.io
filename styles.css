@@ -29,7 +29,8 @@
   /* Shape */
   --radius-card: 30px;
   --radius-frame: 16px;
-  --max: 1160px;
+  --u: 24px;                /* grid unit: dot spacing, and every layout step */
+  --max: 1152px;            /* 48 units */
   --gutter: max(24px, env(safe-area-inset-left, 0px));
 
   /* Glass */
@@ -44,8 +45,14 @@ body {
   margin: 0;
   color: var(--fg);
   background-color: var(--bg);
+  /* The 24px dot grid is the layout grid. Dots sit at tile centers, and the
+     tile is centered on the page, so a dot always lands on the page's center
+     line. Because .wrap is centered and snapped to multiples of 48px, its left
+     and right edges land on dots at every screen width. Vertical spacing is in
+     24px steps (--u), so section tops sit on dot rows. */
   background-image: radial-gradient(var(--dot) 1.2px, transparent 1.4px);
-  background-size: 24px 24px;
+  background-size: var(--u) var(--u);
+  background-position: 50% calc(var(--u) / -2);
   font: 400 16px/1.6 var(--font);
   -webkit-font-smoothing: antialiased;
 }
@@ -55,19 +62,19 @@ a { color: inherit; }
 h1, h2, h3 { margin: 0; line-height: 1.12; letter-spacing: -0.02em; text-wrap: balance; font-weight: 600; }
 p { margin: 0; }
 
-.wrap {
-  max-width: var(--max);
+.wrap, .site-header {
+  /* Width is an even number of grid units so both edges land on dots */
+  width: min(var(--max), calc(100% - 2 * var(--u)));
+  width: min(var(--max), round(down, 100% - 2 * var(--u), calc(2 * var(--u))));
   margin-inline: auto;
-  padding-left: max(24px, env(safe-area-inset-left, 0px));
-  padding-right: max(24px, env(safe-area-inset-right, 0px));
 }
 .label { font: 500 12px/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
 
 /* Placeholder notice + highlight (delete when your content is in) */
 .ph-banner { background: var(--ph); color: var(--ph-fg); font-size: 13px; }
-.ph-banner .wrap { display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; padding-block: 6px; }
-.ph-banner button { font: inherit; font-weight: 600; background: transparent; color: inherit; border: 1px solid currentColor; border-radius: 999px; padding: 2px 12px; cursor: pointer; }
+.ph-banner .wrap { display: flex; gap: 0 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; padding-block: 12px; line-height: var(--u); } /* always a whole number of grid rows */
+.ph-banner button { font: inherit; font-weight: 600; line-height: 22px; background: transparent; color: inherit; border: 1px solid currentColor; border-radius: 999px; padding: 0 12px; cursor: pointer; }
 .ph { background: var(--ph); color: var(--ph-fg); border-radius: 4px; padding: 0 3px; }
 html.hide-ph .ph { background: none; color: inherit; padding: 0; }
 html.hide-ph .ph-banner { display: none; }
@@ -77,45 +84,45 @@ html.hide-ph .ph-banner { display: none; }
   position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
   display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center; gap: 16px;
-  padding: 18px max(32px, env(safe-area-inset-right, 0px)) 18px max(32px, env(safe-area-inset-left, 0px));
+  height: calc(4 * var(--u));   /* logo and pill are 2 units tall, centered on a dot row */
 }
 .logo {
-  justify-self: start; width: 40px; height: 40px; border-radius: 50%;
+  justify-self: start; width: calc(2 * var(--u)); height: calc(2 * var(--u)); border-radius: 50%;
   display: grid; place-items: center; background: var(--accent); text-decoration: none;
 }
-.logo svg { width: 28px; height: 28px; }
+.logo svg { width: 32px; height: 32px; }
 .nav-pill {
-  display: flex; align-items: center; gap: 4px; padding: 6px; border-radius: 999px;
+  display: flex; align-items: center; gap: 4px; height: calc(2 * var(--u)); padding: 3px; border-radius: 999px;
   background: var(--glass-bg); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
   -webkit-backdrop-filter: blur(18px) saturate(180%); backdrop-filter: blur(18px) saturate(180%);
   isolation: isolate;
 }
 .nav-pill a {
-  padding: 8px 18px; border-radius: 999px; font-size: 14px; font-weight: 500;
+  display: grid; place-items: center; height: 40px; padding: 0 18px; border-radius: 999px; font-size: 14px; font-weight: 500;
   text-decoration: none; color: var(--muted); transition: color .2s, background .2s;
 }
 .nav-pill a:hover { color: var(--fg); }
 .nav-pill a[aria-current="page"] { color: var(--accent-ink); background: rgba(255,233,226,.92); box-shadow: 0 1px 2px rgba(0,0,0,.06); }
 .clock { justify-self: end; font: 500 13px/1 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
 /* When liquid glass is running, the WebGL layer replaces the CSS glass. */
-.nav-pill.is-liquid { background: transparent; border-color: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 0; }
-.nav-pill .glass-container { position: relative; display: flex; align-items: center; gap: 4px; padding: 6px; isolation: isolate; border-radius: 999px; }
+.nav-pill.is-liquid { background: transparent; border: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 0; }
+.nav-pill .glass-container { position: relative; display: flex; align-items: center; gap: 4px; padding: 4px; isolation: isolate; border-radius: 999px; }
 .nav-pill .glass-container canvas { pointer-events: none; }
 .nav-pill.is-liquid canvas { box-shadow: 0 10px 30px rgba(20,24,40,.14) !important; }
 @media (max-width: 640px) {
   .site-header { grid-template-columns: auto 1fr; }
   .clock { display: none; }
   .nav-pill { justify-self: end; }
-  .nav-pill a { padding: 8px 12px; }
+  .nav-pill a { padding: 0 12px; }
 }
 
-main { padding-block: 32px 96px; }
+main { padding-block: 0 calc(4 * var(--u)); }
 
 /* ---------- Home hero ---------- */
-.hero { display: flex; justify-content: space-between; align-items: center; gap: 40px; flex-wrap: wrap; padding-block: 72px 56px; }
-.hero-text { display: grid; gap: 10px; flex: 1 1 360px; min-width: 0; }
-.hero-text h1 { font-size: 40px; letter-spacing: -1px; line-height: 1.1; font-weight: 400; }
-.hero-text p { font-size: 17px; line-height: 1.5; color: var(--soft); }
+.hero { display: flex; justify-content: space-between; align-items: center; gap: 40px; flex-wrap: wrap; padding-block: calc(3 * var(--u)) calc(2 * var(--u)); }
+.hero-text { display: grid; gap: 12px; /* 48 + 12 + 24 + 12 + 24 = 5 units */ flex: 1 1 360px; min-width: 0; }
+.hero-text h1 { font-size: 40px; letter-spacing: -1px; line-height: calc(2 * var(--u)); font-weight: 400; }
+.hero-text p { font-size: 17px; line-height: var(--u); color: var(--soft); }
 .hero-text strong { color: var(--fg); font-weight: 500; }
 .hero-object { position: relative; width: 300px; height: 280px; flex: none; }
 .hero-object .glow { position: absolute; border-radius: 50%; filter: blur(50px); opacity: .7; }
@@ -143,12 +150,12 @@ main { padding-block: 32px 96px; }
 /* ---------- Work grid ---------- */
 .section-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 24px; }
 .section-head h2 { font-size: 15px; letter-spacing: 0; }
-.work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 28px; }
+.work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--u) calc(2 * var(--u)); } /* column gap 2u keeps both columns on dots */
 @media (max-width: 760px) { .work-grid { grid-template-columns: 1fr; } }
 
-.card { display: grid; gap: 14px; text-decoration: none; }
+.card { display: grid; gap: 0; text-decoration: none; }
 .cover {
-  position: relative; height: 370px; max-width: 100%; border-radius: var(--radius-card); overflow: hidden;
+  position: relative; height: calc(15 * var(--u)); max-width: 100%; border-radius: var(--radius-card); overflow: hidden;
   display: grid; place-items: center; background: var(--c-bg, #e3e8ff);
   transition: transform .4s cubic-bezier(.2,.8,.2,1);
 }
@@ -158,9 +165,9 @@ main { padding-block: 32px 96px; }
 .cover .blob.two { right: -60px; bottom: -60px; width: 260px; height: 260px; background: var(--c-2, #c6f0ff); animation: blobB 11s ease-in-out infinite; }
 .cover > *:not(.blob):not(.badge) { position: relative; }
 .cover video, .cover img.cover-media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.card-meta { display: flex; justify-content: space-between; gap: 12px; }
-.card-meta h3 { font-size: 17px; letter-spacing: -0.01em; }
-.card-meta p { font-size: 15px; color: var(--muted); }
+.card-meta { display: flex; justify-content: space-between; gap: 12px; padding-block: 12px; } /* 24px lines + 24px padding: wraps stay on the grid */
+.card-meta h3 { font-size: 17px; line-height: var(--u); letter-spacing: -0.01em; }
+.card-meta p { font-size: 15px; line-height: var(--u); color: var(--muted); }
 .card-meta .num { font: 500 12px/1.6 var(--mono); color: var(--muted); }
 .badge {
   position: absolute; top: 16px; right: 16px; z-index: 2;
@@ -200,7 +207,7 @@ main { padding-block: 32px 96px; }
 .chart-card .pill { width: 28px; height: 16px; border-radius: 8px; background: var(--ok); }
 
 /* ---------- Shared page pieces (case study, about, contact, play) ---------- */
-.page-head { display: grid; gap: 14px; padding-block: 40px 32px; }
+.page-head { display: grid; gap: 16px; padding-block: calc(2 * var(--u)) var(--u); }
 .page-head h1 { font-size: clamp(32px, 5vw, 48px); letter-spacing: -0.03em; }
 .page-head .lede { font-size: 18px; color: var(--muted); max-width: 60ch; line-height: 1.5; }
 .stack-lg { display: grid; gap: clamp(56px, 8vw, 96px); }
