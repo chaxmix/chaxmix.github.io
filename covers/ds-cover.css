@@ -1,0 +1,57 @@
+/* Design system cover: a product screen lifts apart into its layers. Tokens sit
+   at the bottom, components above them, the product on top. Light beams rise
+   from each token to the component it styles, and from each component to where
+   it is used in the product, then everything settles back into one screen. */
+.cover > canvas.shader-bg:not(.blob):not(.badge) { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.dsx { perspective: 1400px; }
+.dsx .stack { position: relative; width: 300px; height: 190px; transform: rotateX(56deg) rotateZ(-38deg) scale(.8); transform-style: preserve-3d; margin-top: 10px; }
+.dsx .layer { position: absolute; inset: 0; border-radius: 18px; transform-style: preserve-3d; }
+.dsx .layer > * { position: absolute; }
+.dsx .name { left: 14px; bottom: 10px; font: 500 9px/1 var(--mono, ui-monospace, monospace); letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.65); }
+
+/* Tokens */
+.dsx .l-tok { background: rgba(14,16,30,.55); box-shadow: 0 0 0 1px rgba(255,255,255,.22) inset; animation: dsxTok 8s cubic-bezier(.6,0,.25,1) infinite; }
+.dsx .sw { top: 24px; width: 24px; height: 24px; border-radius: 7px; background: var(--s); box-shadow: 0 0 0 1px rgba(255,255,255,.25) inset; animation: dsxPulse 8s ease infinite; }
+.dsx .aa { left: 24px; top: 66px; width: 46px; height: 32px; border-radius: 8px; display: grid; place-items: center; color: #fff; font: 500 15px/1 inherit; box-shadow: 0 0 0 1px rgba(255,255,255,.35) inset; animation: dsxPulse 8s ease infinite; animation-delay: .15s; }
+.dsx .sp { left: 90px; top: 74px; display: flex; align-items: flex-end; gap: 4px; }
+.dsx .sp i { width: 6px; border-radius: 2px; background: rgba(255,255,255,.55); }
+.dsx .rad { left: 24px; top: 120px; display: flex; gap: 6px; }
+.dsx .rad i { width: 22px; height: 22px; border: 1.5px solid rgba(255,255,255,.6); }
+
+/* Components */
+.dsx .l-cmp { background: rgba(255,255,255,.14); box-shadow: 0 0 0 1px rgba(255,255,255,.3) inset; animation: dsxCmp 8s cubic-bezier(.6,0,.25,1) infinite; }
+.dsx .btn { left: 24px; top: 24px; width: 92px; height: 28px; border-radius: 99px; background: #f2542d; }
+.dsx .tgl { left: 130px; top: 27px; width: 40px; height: 22px; border-radius: 99px; background: #8ea2ff; }
+.dsx .tgl::after { content: ""; position: absolute; right: 2px; top: 2px; width: 18px; height: 18px; border-radius: 50%; background: #fff; }
+.dsx .inp { left: 24px; top: 68px; width: 160px; height: 30px; border-radius: 8px; background: rgba(255,255,255,.9); }
+.dsx .chk { left: 200px; top: 72px; width: 22px; height: 22px; border-radius: 6px; background: #1d1d1f; box-shadow: 0 0 0 1px rgba(255,255,255,.4); }
+.dsx .avs { left: 24px; top: 118px; display: flex; }
+.dsx .avs i { width: 26px; height: 26px; border-radius: 50%; margin-left: -8px; border: 2px solid rgba(255,255,255,.9); background: var(--a); }
+.dsx .avs i:first-child { margin-left: 0; }
+
+/* Product */
+.dsx .l-prd { background: #fff; box-shadow: 0 30px 60px rgba(0,0,0,.35); animation: dsxPrd 8s cubic-bezier(.6,0,.25,1) infinite; }
+.dsx .l-prd .btn, .dsx .l-prd .tgl, .dsx .l-prd .inp, .dsx .l-prd .chk { animation: dsxLit 8s ease infinite; }
+.dsx .l-prd .inp { background: #f1f2f6; }
+.dsx .l-prd .tgl { background: #f2542d; }
+.dsx .l-prd .ttl { left: 190px; top: 118px; width: 86px; height: 52px; border-radius: 10px; background: linear-gradient(135deg, #ffe1d8, #c9d2ff); }
+.dsx .l-prd .ln { left: 70px; height: 7px; border-radius: 4px; background: #e6e8f0; }
+.dsx .l-prd .name { color: #9aa0b2; }
+
+/* Beams: thin lines standing up out of a layer, as tall as the gap to the next layer */
+.dsx .beam { width: 2px; height: 112px; margin-left: -1px; border-radius: 2px; transform-origin: 50% 0; transform: rotateX(121deg) scaleY(0);
+  background: linear-gradient(rgba(255,255,255,.95), rgba(255,140,110,.0)); box-shadow: 0 0 8px rgba(255,190,170,.9); }
+.dsx .l-tok .beam { animation: dsxBeamA 8s cubic-bezier(.3,.7,.3,1) infinite; }
+.dsx .l-cmp .beam { animation: dsxBeamB 8s cubic-bezier(.3,.7,.3,1) infinite; }
+
+@keyframes dsxTok  { 0%,10%,90%,100% { transform: none } 28%,74% { transform: translate3d(0, 60px, -100px) } }
+@keyframes dsxCmp  { 0%,100% { transform: translateZ(1px) } }
+@keyframes dsxPrd  { 0%,10%,90%,100% { transform: translateZ(2px) } 28%,74% { transform: translate3d(0, -60px, 100px) } }
+@keyframes dsxBeamA { 0%,30% { transform: rotateX(121deg) scaleY(0); opacity: 1 } 40%,68% { transform: rotateX(121deg) scaleY(1); opacity: 1 } 76%,100% { transform: rotateX(121deg) scaleY(1); opacity: 0 } }
+@keyframes dsxBeamB { 0%,42% { transform: rotateX(121deg) scaleY(0); opacity: 1 } 52%,68% { transform: rotateX(121deg) scaleY(1); opacity: 1 } 76%,100% { transform: rotateX(121deg) scaleY(1); opacity: 0 } }
+@keyframes dsxPulse { 0%,34% { filter: none } 38% { filter: brightness(1.6) drop-shadow(0 0 6px #fff) } 46%,100% { filter: none } }
+@keyframes dsxLit  { 0%,50% { box-shadow: none } 54% { box-shadow: 0 0 0 3px rgba(242,84,45,.35) } 64%,100% { box-shadow: none } }
+@media (prefers-reduced-motion: reduce) {
+  .dsx .layer, .dsx .beam, .dsx .sw, .dsx .aa, .dsx .l-prd * { animation: none !important; }
+  .dsx .l-tok { transform: translate3d(0, 60px, -100px); } .dsx .l-prd { transform: translate3d(0, -60px, 100px); } .dsx .beam { transform: rotateX(121deg); }
+}
