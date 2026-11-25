@@ -1,0 +1,4 @@
+# Private drafts, images and the password for locked case studies.
+# Never commit these: the repo is public.
+private/
+.DS_Store

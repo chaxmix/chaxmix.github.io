@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Your Name · Product Designer</title>
+  <meta name="description" content="Portfolio of [Your Name], product designer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- PLACEHOLDER BANNER: delete this whole block once your content is in. -->
+<div class="ph-banner">
+  <div class="wrap">
+    <span>Highlighted text is placeholder copy. Replace it with your own.</span>
+    <button type="button" data-toggle-ph>Hide highlights</button>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="ph">Your Name</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html#work" aria-current="page">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO / INTRO -->
+  <section class="hero" aria-labelledby="intro">
+    <p class="label"><span class="status-dot" aria-hidden="true"></span><span class="ph">Open to senior product design roles</span></p>
+    <h1 id="intro"><span class="ph">I design calm, useful software for <em>complex workflows</em>.</span></h1>
+    <p class="lede"><span class="ph">Product designer with 6 years across B2B SaaS and fintech. I turn messy problems into clear interfaces, then test them until they hold up.</span></p>
+    <div class="meta">
+      <span class="label">Currently · <span class="ph">Lead Designer at Company</span></span>
+      <span class="label">Based in · <span class="ph">City, Country</span></span>
+    </div>
+    <div class="btn-row">
+      <a class="btn primary" href="#work">See selected work</a>
+      <a class="btn" href="contact.html">Get in touch</a>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK GRID
+       Each card links to a case study. Duplicate work/case-study.html for each
+       project and update the href. Swap the gradient thumb for an <img>. -->
+  <section id="work" aria-labelledby="work-title">
+    <div class="section-head">
+      <h2 id="work-title">Selected work</h2>
+      <span class="label">2021 – 2025</span>
+    </div>
+    <div class="work-grid">
+      <a class="card" href="work/case-study.html">
+        <div class="thumb" style="background: var(--thumb-1)"><span>Cover image 4:3</span></div>
+        <div class="card-body">
+          <span class="label"><span class="ph">Fintech · Web app</span></span>
+          <h3><span class="ph">Redesigning onboarding for a payments dashboard</span></h3>
+          <p><span class="ph">Cut time-to-first-payment from 3 days to 40 minutes.</span></p>
+          <div class="tags"><span class="tag">Research</span><span class="tag">UX</span><span class="tag">Design system</span></div>
+        </div>
+      </a>
+      <!-- Password-protected card: data-case matches the name in private/locks.json.
+           tools/lock.mjs keeps data-locked in sync, which shows or hides the lock badge. -->
+      <a class="card" href="work/nda-case-study.html" data-case="nda-case-study" data-locked="true">
+        <div class="thumb" style="background: var(--thumb-2)"><span>Cover image 4:3</span></div>
+        <div class="card-body">
+          <span class="label"><span class="ph">Retail · Internal tools</span></span>
+          <h3><span class="ph">Confidential project: internal tools for a large retailer</span></h3>
+          <p><span class="ph">Keep the teaser vague. The details live behind the password.</span></p>
+          <div class="tags"><span class="tag">Enterprise</span><span class="tag">UX</span></div>
+        </div>
+      </a>
+      <a class="card" href="work/case-study.html">
+        <div class="thumb" style="background: var(--thumb-3)"><span>Cover image 4:3</span></div>
+        <div class="card-body">
+          <span class="label"><span class="ph">B2B SaaS · Design system</span></span>
+          <h3><span class="ph">Building a design system for 4 product teams</span></h3>
+          <p><span class="ph">60+ components, adopted across every product in a year.</span></p>
+          <div class="tags"><span class="tag">Systems</span><span class="tag">Figma</span><span class="tag">Accessibility</span></div>
+        </div>
+      </a>
+      <a class="card" href="work/case-study.html">
+        <div class="thumb" style="background: var(--thumb-4)"><span>Cover image 4:3</span></div>
+        <div class="card-body">
+          <span class="label"><span class="ph">Side project · Concept</span></span>
+          <h3><span class="ph">Rethinking shared grocery lists</span></h3>
+          <p><span class="ph">A weekend exploration in collaborative mobile UI.</span></p>
+          <div class="tags"><span class="tag">Concept</span><span class="tag">Interaction</span></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- SHORT ABOUT TEASER -->
+  <section class="split" aria-labelledby="approach">
+    <h2 id="approach">How I work</h2>
+    <div class="stack">
+      <p><span class="ph">I start with the people using the product and the numbers the business cares about, and look for the place they overlap. I prototype early, share rough work often, and stay close to engineering through launch.</span></p>
+      <a class="btn" href="about.html" style="justify-self:start">More about me</a>
+    </div>
+  </section>
+
+  <section class="cta-band" aria-labelledby="cta">
+    <h2 id="cta"><span class="ph">Have a product that needs design help?</span></h2>
+    <p><span class="ph">I’m available for full-time roles and select freelance projects.</span></p>
+    <div class="btn-row"><a class="btn primary" href="contact.html">Contact me</a></div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span data-year>2026</span> <span class="ph">Your Name</span></span>
+    <span><a href="https://www.linkedin.com/">LinkedIn</a> · <a href="https://dribbble.com/">Dribbble</a> · <a href="https://read.cv/">Read.cv</a></span>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>
