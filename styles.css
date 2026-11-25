@@ -95,7 +95,8 @@ html.hide-ph .ph-banner { display: none; }
 .clock { justify-self: end; font: 500 13px/1 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
 /* When liquid glass is running, the WebGL layer replaces the CSS glass. */
 .nav-pill.is-liquid { background: transparent; border-color: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 0; }
-.nav-pill.is-liquid .glass-container { gap: 4px; padding: 6px; }
+.nav-pill .glass-container { position: relative; display: flex; align-items: center; gap: 4px; padding: 6px; isolation: isolate; border-radius: 999px; }
+.nav-pill .glass-container canvas { pointer-events: none; }
 .nav-pill.is-liquid canvas { box-shadow: 0 10px 30px rgba(20,24,40,.14) !important; }
 @media (max-width: 640px) {
   .site-header { grid-template-columns: auto 1fr; }
