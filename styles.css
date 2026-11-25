@@ -171,7 +171,7 @@ html.hide-ph .ph-banner { display: none; }
 }
 html.is-scrolled .nav-fill { opacity: 1; }
 
-/* Compact nav (prototype, html[data-navcompact]): after scrolling, labels
+/* Compact nav (html[data-navcompact], set by site.js): after scrolling, labels
    collapse into icons and the pill shrinks. Each tab animates from its measured
    width (--wide, set in site.js) to a 40px circle on an overshooting curve, so
    the pill overshoots and settles: the bounce. */

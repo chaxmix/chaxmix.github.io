@@ -12,16 +12,10 @@
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
 
-// Compact nav (prototype): once you scroll, the tab labels collapse into icons
-// and the pill shrinks to fit, with a little bounce. Preview with ?compact=1
-// (remembered for the visit, ?compact=0 turns it off).
+// Compact nav: once you scroll, the tab labels collapse into icons and the
+// pill shrinks to fit, with a little bounce. Hovering the pill opens it again.
 (function () {
   var root = document.documentElement;
-  var m = /[?&]compact=(\d)/.exec(location.search);
-  try {
-    if (m) sessionStorage.setItem('navCompact', m[1]);
-    if (sessionStorage.getItem('navCompact') !== '1') return;
-  } catch (e) { if (!m || m[1] !== '1') return; }
   var pill = document.querySelector('.nav-pill');
   if (!pill) return;
   var ICONS = {
