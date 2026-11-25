@@ -186,9 +186,17 @@ html[data-navcompact] .nav-icon {
   transition: opacity .15s, transform .5s cubic-bezier(.3, 1.6, .45, 1);
 }
 html[data-navcompact] .nav-label { white-space: nowrap; transition: opacity .2s .1s, transform .4s cubic-bezier(.3, 1.4, .45, 1); }
-html[data-navcompact].nav-compact .nav-pill a { width: 40px; }
-html[data-navcompact].nav-compact .nav-icon { opacity: 1; transform: none; transition-delay: .1s; }
-html[data-navcompact].nav-compact .nav-label { opacity: 0; transform: scale(.7); transition: opacity .12s, transform .3s; }
+/* Collapsed while scrolled, unless the pill is hovered or a tab has keyboard
+   focus: then it springs back open to the full labels. */
+html[data-navcompact].nav-compact .nav-pill:not(:hover):not(:has(a:focus-visible)) a { width: 40px; }
+html[data-navcompact].nav-compact .nav-pill:not(:hover):not(:has(a:focus-visible)) .nav-icon { opacity: 1; transform: none; transition-delay: .1s; }
+html[data-navcompact].nav-compact .nav-pill:not(:hover):not(:has(a:focus-visible)) .nav-label { opacity: 0; transform: scale(.7); transition: opacity .12s, transform .3s; }
+@media (hover: none) {
+  /* Touch screens have no hover, and a tap would leave it stuck open. */
+  html[data-navcompact].nav-compact .nav-pill:hover:not(:has(a:focus-visible)) a { width: 40px; }
+  html[data-navcompact].nav-compact .nav-pill:hover:not(:has(a:focus-visible)) .nav-icon { opacity: 1; transform: none; }
+  html[data-navcompact].nav-compact .nav-pill:hover:not(:has(a:focus-visible)) .nav-label { opacity: 0; }
+}
 @media (prefers-reduced-motion: reduce) {
   html[data-navcompact] .nav-pill a, html[data-navcompact] .nav-icon, html[data-navcompact] .nav-label { transition-duration: .01s; transition-delay: 0s; }
 }
