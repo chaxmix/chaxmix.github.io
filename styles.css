@@ -333,7 +333,11 @@ blockquote { margin: 0; padding-left: 20px; border-left: 2px solid var(--accent)
 @view-transition { navigation: auto; }
 .site-header { view-transition-name: site-header; }
 ::view-transition-group(nav-bubble) { animation-duration: .5s; animation-timing-function: cubic-bezier(.3,.8,.25,1); }
-::view-transition-group(site-header), ::view-transition-old(site-header), ::view-transition-new(site-header) { animation: none; }
+::view-transition-group(site-header), ::view-transition-new(site-header) { animation: none; }
+/* Show only the new header during the switch. Stacking the old and new
+   snapshots doubled the nav's shadow for a moment. */
+::view-transition-old(site-header) { display: none; }
+::view-transition-old(nav-work), ::view-transition-old(nav-about), ::view-transition-old(nav-play) { animation-duration: .25s; }
 ::view-transition-old(root) { animation: vt-out .2s ease both; }
 ::view-transition-new(root) { animation: vt-in .3s ease both; }
 @keyframes vt-out { to { opacity: 0; } }
