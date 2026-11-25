@@ -23,8 +23,8 @@
 
   window.addEventListener('load', function () {
     load('https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js')
-      .then(function () { return load(base + 'vendor/liquid-glass/container.js'); })
-      .then(function () { return load(base + 'vendor/liquid-glass/button.js'); })
+      .then(function () { return load(base + 'vendor/liquid-glass/container.js?v=202611250224'); })
+      .then(function () { return load(base + 'vendor/liquid-glass/button.js?v=202611250224'); })
       .then(function () {
         var glass = new Container({ type: 'pill', tintOpacity: 0.12 });
         var links = Array.prototype.slice.call(pill.children);
