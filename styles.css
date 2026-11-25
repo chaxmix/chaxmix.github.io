@@ -136,7 +136,7 @@ main { padding-block: 32px 96px; }
 /* Inline link with an underline that draws in on hover (hero "@RealInsight") */
 .link-hover { position: relative; display: inline-block; white-space: nowrap; color: var(--fg); text-decoration: none; background-image: linear-gradient(var(--accent), var(--accent)); background-size: 0% 1.5px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size .3s cubic-bezier(.4,0,.2,1); }
 /* Vermilion copy of the text, revealed left to right in step with the underline */
-.link-hover::after { content: attr(data-text); position: absolute; inset: 0; color: var(--accent-ink); clip-path: inset(0 100% 0 0); transition: clip-path .3s cubic-bezier(.4,0,.2,1); pointer-events: none; }
+.link-hover::after { content: attr(data-text); content: attr(data-text) / ""; position: absolute; inset: 0; color: var(--accent-ink); clip-path: inset(0 100% 0 0); transition: clip-path .3s cubic-bezier(.4,0,.2,1); pointer-events: none; }
 .link-hover:hover, .link-hover:focus-visible { background-size: 100% 1.5px; }
 .link-hover:hover::after, .link-hover:focus-visible::after { clip-path: inset(0 0 0 0); }
 
