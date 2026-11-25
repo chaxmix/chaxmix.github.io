@@ -98,13 +98,13 @@ html.hide-ph .ph-banner { display: none; }
 .seal-build { opacity: 0; transition: opacity .3s ease; }
 .seal-ghost { fill: none; stroke: #a1a4b0; stroke-width: 8.5; stroke-linecap: round; stroke-linejoin: round; }
 /* Each stroke of 张 traces in order while the frame extends */
-.seal-ghost path { stroke-dasharray: 1 1.01; stroke-dashoffset: 1; transition: stroke-dashoffset .35s cubic-bezier(.4,0,.2,1); }
+.seal-ghost path { stroke-dasharray: 1 1.01; stroke-dashoffset: 1; transition: stroke-dashoffset .2s cubic-bezier(.4,0,.2,1); }
 .logo:hover .seal-ghost path, .logo:focus-visible .seal-ghost path { stroke-dashoffset: 0; }
-.logo:hover .seal-ghost path:nth-child(1), .logo:focus-visible .seal-ghost path:nth-child(1) { transition-duration: .6s; transition-delay: .1s; }
-.logo:hover .seal-ghost path:nth-child(2), .logo:focus-visible .seal-ghost path:nth-child(2) { transition-delay: .55s; }
-.logo:hover .seal-ghost path:nth-child(3), .logo:focus-visible .seal-ghost path:nth-child(3) { transition-delay: .7s; }
-.logo:hover .seal-ghost path:nth-child(4), .logo:focus-visible .seal-ghost path:nth-child(4) { transition-delay: .85s; }
-.logo:hover .seal-ghost path:nth-child(5), .logo:focus-visible .seal-ghost path:nth-child(5) { transition-delay: 1s; }
+.logo:hover .seal-ghost path:nth-child(1), .logo:focus-visible .seal-ghost path:nth-child(1) { transition-duration: .32s; transition-delay: .05s; }
+.logo:hover .seal-ghost path:nth-child(2), .logo:focus-visible .seal-ghost path:nth-child(2) { transition-delay: .3s; }
+.logo:hover .seal-ghost path:nth-child(3), .logo:focus-visible .seal-ghost path:nth-child(3) { transition-delay: .38s; }
+.logo:hover .seal-ghost path:nth-child(4), .logo:focus-visible .seal-ghost path:nth-child(4) { transition-delay: .46s; }
+.logo:hover .seal-ghost path:nth-child(5), .logo:focus-visible .seal-ghost path:nth-child(5) { transition-delay: .54s; }
 .seal-edge, .seal-guide { stroke: #a1a4b0; stroke-width: 1.6; transform-box: fill-box; transform-origin: center; transition: transform .45s cubic-bezier(.2,.8,.2,1); }
 .seal-edge { transform: scale(.82); }
 .seal-guide { stroke-opacity: .6; stroke-dasharray: 3 3; transform: scale(.82); }
