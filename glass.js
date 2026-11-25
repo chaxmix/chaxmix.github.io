@@ -56,7 +56,7 @@
     mapEl.setAttribute('href', buildMap(w, h));
   }
   update();
-  pill.classList.add('is-liquid');
+  pill.classList.add('live-glass');
   window.addEventListener('resize', update);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(update);
 })();

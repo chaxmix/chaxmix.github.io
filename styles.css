@@ -144,8 +144,9 @@ html.hide-ph .ph-banner { display: none; }
 .clock { justify-self: end; font: 500 13px/1 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
 /* Live liquid glass (Chromium): the page behind the pill bends at the rim
    through the SVG filter built in glass.js. Same size and shadow as the CSS
-   glass, so nothing moves or flashes when it switches on. */
-.nav-pill.is-liquid {
+   glass, so nothing moves or flashes when it switches on. (Class name differs
+   from the old WebGL version so a stale cached stylesheet cannot hide the pill.) */
+.nav-pill.live-glass {
   background: linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,.22));
   -webkit-backdrop-filter: url(#nav-glass) saturate(170%) brightness(1.03);
   backdrop-filter: url(#nav-glass) saturate(170%) brightness(1.03);
