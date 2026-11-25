@@ -30,13 +30,14 @@
   var S = [
     // tokens
     ['tkc', 'dm-tk dm-tk-c dm-btn', '', { x: 338, y: 180, w: 56, h: 56, r: 14, s: 0 }, [[0.25, .9, { o: 1, s: 1 }, 'sp'], [2.1, 1, { w: 188, h: 40, r: 12 }, 'sp'], [3.0, .16, { s: .92 }, 'io'], [3.16, .7, { s: 1 }, 'sp']]],
-    ['lc', 'dm-lbl', '<b>color.primary</b>#F2542D', { x: 338, y: 236, w: 120, h: 26 }, [[0.6, .6, { o: 1, y: 228 }, 'sf'], [1.9, .25, { o: 0 }, 'io']]],
+    ['lc', 'dm-lbl', '<b>Brand Blue/500</b>#1F8ACA', { x: 338, y: 236, w: 150, h: 26 }, [[0.6, .6, { o: 1, y: 228 }, 'sf'], [1.25, .3, { o: 0, y: 220 }, 'io']]],
+    ['lc2', 'dm-lbl', '<b>background/brand/bold</b>semantic token', { x: 338, y: 238, w: 170, h: 26 }, [[1.35, .6, { o: 1, y: 228 }, 'sf'], [1.9, .25, { o: 0 }, 'io']]],
     ['tka', 'dm-tk dm-tk-a', 'Aa', { x: 232, y: 150, w: 56, h: 56, s: 0 }, [[0.85, .9, { o: 1, s: 1 }, 'sp'], [2.0, .55, { x: 338, y: 180, s: .3, o: 0 }, 'io']]],
-    ['la', 'dm-lbl', '<b>type.label</b>13 / semibold', { x: 232, y: 200, w: 110, h: 26 }, [[1.05, .6, { o: 1, y: 194 }, 'sf'], [1.9, .25, { o: 0 }, 'io']]],
+    ['la', 'dm-lbl', '<b>text/inverse</b>#F9F9F9', { x: 232, y: 200, w: 110, h: 26 }, [[1.05, .6, { o: 1, y: 194 }, 'sf'], [1.9, .25, { o: 0 }, 'io']]],
     ['tkr', 'dm-tk dm-tk-r', '', { x: 444, y: 150, w: 50, h: 50, s: 0 }, [[1.15, .9, { o: 1, s: 1 }, 'sp'], [2.05, .55, { x: 420, y: 166, s: .3, o: 0 }, 'io']]],
-    ['lr', 'dm-lbl', '<b>radius.md</b>12px', { x: 444, y: 200, w: 100, h: 26 }, [[1.3, .6, { o: 1, y: 194 }, 'sf'], [1.9, .25, { o: 0 }, 'io']]],
+    ['lr', 'dm-lbl', '<b>radius</b>12px', { x: 444, y: 200, w: 100, h: 26 }, [[1.3, .6, { o: 1, y: 194 }, 'sf'], [1.9, .25, { o: 0 }, 'io']]],
     ['tks', 'dm-tk dm-tk-s', '<i style="height:6px"></i><i style="height:12px"></i><i style="height:18px"></i><i style="height:26px"></i>', { x: 338, y: 96, w: 56, h: 50, s: 0 }, [[1.4, .9, { o: 1, s: 1 }, 'sp'], [2.05, .55, { y: 170, s: .3, o: 0 }, 'io']]],
-    ['ls', 'dm-lbl', '<b>space.4</b>16px', { x: 338, y: 58, w: 100, h: 26 }, [[1.55, .6, { o: 1, y: 54 }, 'sf'], [1.9, .25, { o: 0 }, 'io']]],
+    ['ls', 'dm-lbl', '<b>space</b>16px', { x: 338, y: 58, w: 100, h: 26 }, [[1.55, .6, { o: 1, y: 54 }, 'sf'], [1.9, .25, { o: 0 }, 'io']]],
     ['btl', 'o-lbl', '<span style="color:#fff;font-weight:600;font-size:13px;white-space:nowrap;display:grid;place-items:center;height:100%">Get started</span>', { x: 338, y: 180, z: 1, w: 120, h: 40, s: .6 }, [[2.45, .6, { o: 1, s: 1 }, 'sp'], [3.0, .16, { s: .92 }, 'io'], [3.16, .7, { s: 1 }, 'sp']]],
     // component: form card
     ['fc', 'dm-card', '', { x: 338, y: 82, z: -1, w: 236, h: 300, s: .8 }, [[3.4, 1, { o: 1, s: 1 }, 'sp']]],
@@ -96,6 +97,8 @@
       return { el: el, init: init, keys: d[4].slice().sort(function (a, b) { return a[0] - b[0]; }), path: el.querySelector('path[pathLength]'), lw: 0, lh: 0, lr: -1 };
     });
     function render(T) {
+      var dark = T > 6.5 && T < 7.7;               // light -> dark mode flip on the finished page
+      if (host.classList.contains('is-dark') !== dark) host.classList.toggle('is-dark', dark);
       var c = sample(CAM0, CAM, T);
       cam.style.transform = 'scale(' + c.z + ') rotateX(' + c.rx + 'deg) rotateY(' + c.ry + 'deg) rotateZ(' + c.rz + 'deg) translate3d(' + (-c.cx) + 'px,' + (-c.cy) + 'px,0)';
       for (var i = 0; i < objs.length; i++) {
@@ -110,7 +113,7 @@
         if (o.path && v.p !== undefined) o.path.style.strokeDashoffset = 1 - v.p;
       }
     }
-    if (reduce) { render(7.2); return; }
+    if (reduce) { render(6.2); return; }
     var visible = false, raf = 0, clock = 0, last = 0;
     function frame(now) {
       if (last) clock = (clock + Math.min(.05, (now - last) / 1000)) % LOOP;
