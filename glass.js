@@ -26,7 +26,7 @@
   function refresh(glass) {
     var r = glass.gl_refs, gl = r && r.gl;
     if (!gl) return;
-    window.html2canvas(document.body, { scale: 1, useCORS: true, allowTaint: true, backgroundColor: null,
+    window.html2canvas(document.body, { scale: 1, useCORS: true, allowTaint: true,
       ignoreElements: function (el) { return el.classList && el.classList.contains('glass-container'); } })
       .then(function (snap) {
         gl.bindTexture(gl.TEXTURE_2D, r.texture);
@@ -55,6 +55,13 @@
         var h2c = window.html2canvas;
         window.html2canvas = function (el, opts) {
           opts = opts || {};
+          // Always capture the whole page from the top, even when the page is
+          // already scrolled (back/forward, restored scroll). Otherwise the top of
+          // the snapshot comes out empty and the pill renders black there.
+          opts.scrollX = -window.scrollX;
+          opts.scrollY = -window.scrollY;
+          opts.windowWidth = document.documentElement.clientWidth;
+          opts.backgroundColor = getComputedStyle(document.body).backgroundColor || '#fbfbfd';
           opts.onclone = function (doc) { doc.documentElement.classList.add('glass-snapshot'); };
           return h2c(el, opts);
         };
