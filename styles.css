@@ -86,29 +86,32 @@ html.hide-ph .ph-banner { display: none; }
   align-items: center; gap: 16px;
   height: calc(4 * var(--u));   /* logo and pill are 2 units tall, centered on a dot row */
 }
-.logo { justify-self: start; display: block; width: calc(2 * var(--u)); height: calc(2 * var(--u)); text-decoration: none; border-radius: 4px; }
-/* 张 seal (carved). On hover the print lifts away and its construction draws in:
-   the grid it was built on, then each stroke traced in order. */
-.seal { display: block; width: 100%; height: 100%; overflow: visible; }
+.logo { justify-self: start; position: relative; z-index: 2; display: block; width: calc(2 * var(--u)); height: calc(2 * var(--u)); text-decoration: none; border-radius: 4px; }
+/* 张 seal (carved). On hover the seal grows out of the nav into a panel,
+   the print lifts away, the two main shapes of its grid draw in, and the
+   character traces itself stroke by stroke. */
+.seal { display: block; width: 100%; height: 100%; overflow: visible; transform-origin: 0 0; transition: transform .45s cubic-bezier(.2,.8,.2,1) .15s, filter .45s ease .15s; }
 .seal-stone { fill: var(--accent); }
 .seal-glyph { fill: none; stroke: #fff; stroke-width: 8.5; stroke-linecap: round; stroke-linejoin: round; }
-.seal-print { transition: opacity .3s ease .1s; }
+.seal-print { transition: opacity .3s ease .25s; }
 .seal-build { opacity: 0; transition: opacity .2s ease .35s; }
-.seal-build path, .seal-build rect { fill: none; stroke-dasharray: 1 1.01; stroke-dashoffset: 1; transition: stroke-dashoffset .45s cubic-bezier(.4,0,.2,1); }
-.seal-grid rect, .seal-grid path { stroke: var(--accent); stroke-width: 1.8; stroke-opacity: .7; }
+.seal-card { fill: #fff; stroke: var(--line); stroke-width: .6; }
+.seal-build path, .seal-grid rect { fill: none; stroke-dasharray: 1 1.01; stroke-dashoffset: 1; transition: stroke-dashoffset .45s cubic-bezier(.4,0,.2,1); }
+.seal-grid rect, .seal-grid path { stroke: var(--accent); stroke-width: 1; stroke-opacity: .55; }
 .seal-trace path { stroke: var(--accent); stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; transition-duration: .5s; }
-.logo:hover .seal-print, .logo:focus-visible .seal-print { opacity: 0; transition-delay: 0s; }
-.logo:hover .seal-build, .logo:focus-visible .seal-build { opacity: 1; transition-delay: 0s; }
-.logo:hover .seal-build path, .logo:hover .seal-build rect,
-.logo:focus-visible .seal-build path, .logo:focus-visible .seal-build rect { stroke-dashoffset: 0; }
-.logo:hover .seal-grid > *:nth-child(n+2), .logo:focus-visible .seal-grid > *:nth-child(n+2) { transition-delay: .06s; }
-.logo:hover .seal-trace path:nth-child(1), .logo:focus-visible .seal-trace path:nth-child(1) { transition-delay: .18s; transition-duration: .7s; }
-.logo:hover .seal-trace path:nth-child(2), .logo:focus-visible .seal-trace path:nth-child(2) { transition-delay: .42s; }
-.logo:hover .seal-trace path:nth-child(3), .logo:focus-visible .seal-trace path:nth-child(3) { transition-delay: .54s; }
-.logo:hover .seal-trace path:nth-child(4), .logo:focus-visible .seal-trace path:nth-child(4) { transition-delay: .66s; }
-.logo:hover .seal-trace path:nth-child(5), .logo:focus-visible .seal-trace path:nth-child(5) { transition-delay: .78s; }
+.logo:hover .seal, .logo:focus-visible .seal { transform: translate(17px, 17px) scale(3.5); filter: drop-shadow(0 12px 28px rgba(20,24,40,.14)); transition-delay: 0s; }
+.logo:hover .seal-print, .logo:focus-visible .seal-print { opacity: 0; transition-delay: .3s; }
+.logo:hover .seal-build, .logo:focus-visible .seal-build { opacity: 1; transition-delay: .3s; }
+.logo:hover .seal-build path, .logo:hover .seal-grid rect,
+.logo:focus-visible .seal-build path, .logo:focus-visible .seal-grid rect { stroke-dashoffset: 0; transition-delay: .35s; }
+.logo:hover .seal-trace path:nth-child(1), .logo:focus-visible .seal-trace path:nth-child(1) { transition-delay: .6s; transition-duration: .7s; }
+.logo:hover .seal-trace path:nth-child(2), .logo:focus-visible .seal-trace path:nth-child(2) { transition-delay: .85s; }
+.logo:hover .seal-trace path:nth-child(3), .logo:focus-visible .seal-trace path:nth-child(3) { transition-delay: .97s; }
+.logo:hover .seal-trace path:nth-child(4), .logo:focus-visible .seal-trace path:nth-child(4) { transition-delay: 1.09s; }
+.logo:hover .seal-trace path:nth-child(5), .logo:focus-visible .seal-trace path:nth-child(5) { transition-delay: 1.21s; }
+@media (hover: none) { .logo:hover .seal { transform: none; } }
 @media (prefers-reduced-motion: reduce) {
-  .seal-print, .seal-build, .seal-build path, .seal-build rect { transition: opacity .2s ease !important; }
+  .seal, .seal-print, .seal-build, .seal-build path, .seal-build rect { transition: opacity .2s ease !important; }
 }
 .nav-pill {
   display: flex; align-items: center; gap: 4px; height: calc(2 * var(--u)); padding: 3px; border-radius: 999px;
