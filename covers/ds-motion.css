@@ -1,0 +1,52 @@
+/* Design system cover, camera version. ds-motion.js moves a camera through a
+   3D scene: tokens up close, the camera pulls back as they form a component,
+   the page assembles around it, then it resolves into the logo. */
+.dsm { perspective: 900px; overflow: hidden; }
+.cover > canvas.shader-bg:not(.blob):not(.badge) { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.cover.dsm > .cam:not(.blob):not(.badge) { position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform-style: preserve-3d; will-change: transform; }
+.dsm .o { position: absolute; left: 0; top: 0; transform-style: preserve-3d; opacity: 0; will-change: transform, opacity; }
+
+/* Tokens */
+.dsm .dm-tk { border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+.dsm .dm-tk-c { background: #f2542d; }
+.dsm .dm-tk-a { background: #fff; display: grid; place-items: center; font-size: 26px; font-weight: 500; line-height: 1; color: #1d1d1f; }
+.dsm .dm-tk-r { border: 2.5px solid rgba(255,255,255,.9); border-radius: 4px 22px 4px 4px; box-shadow: none; }
+.dsm .dm-tk-s { display: flex; align-items: flex-end; justify-content: center; gap: 4px; padding-bottom: 14px; box-shadow: none; }
+.dsm .dm-tk-s i { width: 6px; border-radius: 2px; background: rgba(255,255,255,.85); }
+.dsm .dm-lbl { font: 500 9px/1.35 var(--mono, ui-monospace, monospace); color: rgba(255,255,255,.85); white-space: nowrap; text-align: center; }
+.dsm .dm-lbl b { display: block; color: #fff; font-weight: 600; }
+
+/* Components */
+.dsm .dm-btn { border-radius: 12px; background: #f2542d; display: grid; place-items: center; overflow: hidden; box-shadow: 0 6px 16px rgba(242,84,45,.35); }
+.dsm .dm-btn span { color: #fff; font-size: 13px; font-weight: 600; line-height: 1; white-space: nowrap; }
+.dsm .dm-inp { border-radius: 10px; background: #f3f4f8; box-shadow: 0 0 0 1px #e3e5ec inset; display: flex; align-items: center; padding: 0 12px; font-size: 11px; color: #9aa0b2; }
+.dsm .dm-tgl { border-radius: 99px; background: #f2542d; }
+.dsm .dm-tgl::after { content: ""; position: absolute; right: 3px; top: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; }
+.dsm .dm-chk { border-radius: 6px; background: #1d1d1f; display: grid; place-items: center; }
+.dsm .dm-bar { border-radius: 5px; background: #e6e8f0; }
+.dsm .dm-bar.dm-dk { background: #1d1d1f; }
+
+/* Page */
+.dsm .dm-card { border-radius: 18px; background: #fff; box-shadow: 0 20px 50px rgba(10,12,30,.25); }
+.dsm .dm-frame { border-radius: 26px; background: #f7f8fb; box-shadow: 0 40px 90px rgba(0,0,0,.4); }
+.dsm .dm-side { border-radius: 26px 0 0 26px; background: #fff; box-shadow: 1px 0 0 #eceef4; padding: 28px 24px; display: grid; align-content: start; gap: 18px; }
+.dsm .dm-side i { display: block; height: 12px; border-radius: 6px; background: #eceef4; }
+.dsm .dm-side i:first-child { width: 36px; height: 36px; border-radius: 10px; background: #f2542d; margin-bottom: 14px; }
+.dsm .dm-side i.dm-on { background: #ffe1d8; }
+.dsm .dm-top { display: flex; align-items: center; justify-content: space-between; padding: 0 8px; }
+.dsm .dm-top .dm-t { width: 200px; height: 16px; border-radius: 8px; background: #1d1d1f; }
+.dsm .dm-top .dm-r { display: flex; gap: 10px; align-items: center; }
+.dsm .dm-top .dm-r i { width: 160px; height: 34px; border-radius: 99px; background: #fff; box-shadow: 0 0 0 1px #e6e8f0 inset; }
+.dsm .dm-top .dm-r b { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #ffb199, #8ea2ff); }
+.dsm .dm-stat { padding: 22px; display: grid; align-content: space-between; }
+.dsm .dm-stat i { display: block; width: 50%; height: 10px; border-radius: 5px; background: #e6e8f0; }
+.dsm .dm-stat b { display: block; width: 70%; height: 26px; border-radius: 8px; background: #1d1d1f; }
+.dsm .dm-stat em { display: block; width: 34%; height: 10px; border-radius: 5px; background: #2fb37a; }
+.dsm .dm-chart { padding: 24px; }
+.dsm .dm-chart svg { width: 100%; height: 100%; overflow: visible; }
+.dsm .dm-chart path { fill: none; stroke: #f2542d; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Logo (placeholder until the real RealInsight logo comes in from Figma) */
+.dsm .dm-mark { border-radius: 22px; background: linear-gradient(140deg, #f2542d, #9b6bff); display: grid; place-items: center; box-shadow: 0 20px 50px rgba(242,84,45,.45); }
+.dsm .dm-mark svg { width: 46px; height: 46px; }
+.dsm .dm-word { font-size: 40px; font-weight: 600; line-height: 44px; letter-spacing: -.02em; color: #fff; white-space: nowrap; }

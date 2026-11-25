@@ -1,54 +1,27 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex"><title>Design system cover</title>
-<link rel="stylesheet" href="styles.css?v=pc2">
-<link rel="stylesheet" href="covers/ds-cover.css?v=pc3">
+<link rel="stylesheet" href="styles.css?v=pc7">
+<link rel="stylesheet" href="covers/ds-motion.css?v=pc7">
 <style>
   body { padding: 24px; }
   .pc { display: grid; grid-template-columns: minmax(0, 552px) minmax(0, 1fr); gap: 32px; align-items: start; max-width: 1500px; margin: 0 auto; }
   .pc figcaption { padding: 12px 4px 0; font-size: 14px; color: var(--muted); }
   figure { margin: 0; }
   .big .cover { height: 600px; }
-  .big .dsx .stack { transform: rotateX(56deg) rotateZ(-38deg) scale(1.3); margin-top: 60px; }
+  .big .cover > .cam:not(.blob):not(.badge) { scale: 1.66; }
   @media (max-width: 1000px) { .pc { grid-template-columns: 1fr; } }
 </style></head>
 <body>
 <div class="pc">
   <figure>
     <a class="card" href="#" onclick="return false">
-      <div class="cover dsx dark" id="cover-a"></div>
-      <div class="card-meta"><div><h3>Building RealInsight's design system</h3><p>Card size, as it would sit on the home page. Hover it.</p></div></div>
+      <div class="cover dsm dark" data-ds-motion><canvas class="shader-bg" data-colors="#090b16,#222a78,#6a4cff,#f2542d" aria-hidden="true"></canvas></div>
+      <div class="card-meta"><div><h3>Building RealInsight's design system</h3><p>Card size, as it would sit on the home page. Hover to stir the gradient.</p></div></div>
     </a>
   </figure>
-  <figure class="big"><a class="card" href="#" onclick="return false"><div class="cover dsx dark" id="cover-b"></div></a><figcaption>Large, so you can see the detail.</figcaption></figure>
+  <figure class="big"><a class="card" href="#" onclick="return false"><div class="cover dsm dark" data-ds-motion><canvas class="shader-bg" data-colors="#090b16,#222a78,#6a4cff,#f2542d" aria-hidden="true"></canvas></div></a><figcaption>Large, so you can see the detail.</figcaption></figure>
 </div>
-<template id="dsx">
-  <canvas class="shader-bg" data-colors="#0b0d18,#2b3590,#f2542d,#9b6bff" aria-hidden="true"></canvas>
-  <div class="stack" aria-hidden="true">
-    <div class="layer l-tok">
-      <i class="sw" style="left:24px;--s:#f2542d"></i><i class="sw" style="left:56px;--s:#ff9a7a"></i><i class="sw" style="left:88px;--s:#ffe1d8"></i><i class="sw" style="left:120px;--s:#2b3590"></i><i class="sw" style="left:152px;--s:#8ea2ff"></i><i class="sw" style="left:184px;--s:#ffffff"></i>
-      <span class="aa">Aa</span>
-      <span class="sp"><i style="height:4px"></i><i style="height:8px"></i><i style="height:12px"></i><i style="height:16px"></i><i style="height:24px"></i></span>
-      <span class="rad"><i style="border-radius:2px"></i><i style="border-radius:6px"></i><i style="border-radius:11px"></i></span>
-      <i class="beam" style="left:36px;top:36px"></i><i class="beam" style="left:47px;top:82px;animation-delay:.12s"></i><i class="beam" style="left:164px;top:36px;animation-delay:.24s"></i><i class="beam" style="left:35px;top:131px;animation-delay:.36s"></i>
-      <span class="name">Tokens</span>
-    </div>
-    <div class="layer l-cmp">
-      <span class="btn"></span><span class="tgl"></span><span class="inp"></span><span class="chk"></span>
-      <span class="avs"><i style="--a:#f2542d"></i><i style="--a:#8ea2ff"></i><i style="--a:#ffd166"></i></span>
-      <i class="beam" style="left:70px;top:38px"></i><i class="beam" style="left:150px;top:38px;animation-delay:.12s"></i><i class="beam" style="left:104px;top:83px;animation-delay:.24s"></i><i class="beam" style="left:211px;top:83px;animation-delay:.36s"></i>
-      <span class="name">Components</span>
-    </div>
-    <div class="layer l-prd">
-      <span class="btn"></span><span class="tgl"></span><span class="inp"></span><span class="chk"></span>
-      <span class="ln" style="left:24px;top:120px;width:120px;background:#1d1d1f;height:9px"></span><span class="ln" style="left:24px;top:138px;width:140px"></span><span class="ln" style="left:24px;top:152px;width:100px"></span>
-      <span class="ttl"></span>
-    </div>
-  </div>
-</template>
-<script>
-  var tpl = document.getElementById('dsx');
-  ['cover-a', 'cover-b'].forEach(function (id) { document.getElementById(id).appendChild(tpl.content.cloneNode(true)); });
-</script>
-<script src="covers/shader-bg.js?v=pc3"></script>
+<script src="covers/shader-bg.js?v=pc7"></script>
+<script src="covers/ds-motion.js?v=pc7"></script>
 </body></html>
