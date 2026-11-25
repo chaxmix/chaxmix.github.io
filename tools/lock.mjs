@@ -70,14 +70,15 @@ function lockPage(payload, title) {
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex">
   <title>${title}</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap">
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-<header class="site-header"><div class="wrap">
-  <a class="logo" href="../index.html">Portfolio</a>
-  <nav class="nav" aria-label="Main"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></nav>
-</div></header>
+<header class="site-header">
+  <a class="logo" href="../index.html" aria-label="Tiffany Chang, home"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M9 13 C 15 10, 24 10, 30 12 M19 11 C 18 19, 18 26, 20 31 M24 22 C 28 18, 33 22, 31 27 C 29 32, 24 31, 23 27" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg></a>
+  <nav class="nav-pill" aria-label="Main"><a href="../index.html#work" aria-current="page">Work</a><a href="../about.html">About</a><a href="../play.html">Play</a></nav>
+  <time class="clock" data-clock aria-label="Your local time"></time>
+</header>
 <main class="wrap">
   <section class="lock-panel" aria-labelledby="lock-title">
     <span class="label">Protected case study</span>
@@ -101,6 +102,7 @@ async function unlock(pw) {
   return new TextDecoder().decode(plain);
 }
 function show(html) { document.open(); document.write(html); document.close(); }
+(function () { var c = document.querySelector('[data-clock]'); if (c) c.textContent = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }); })();
 (async () => {
   let saved = null;
   try { saved = sessionStorage.getItem(KEY); } catch (e) {}

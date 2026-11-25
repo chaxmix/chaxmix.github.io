@@ -3,73 +3,68 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>About · Your Name</title>
+  <title>About · Tiffany Chang</title>
+  <meta name="description" content="Portfolio of Tiffany Chang, product designer.">
+  <script>document.documentElement.classList.add('js')</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div class="ph-banner">
-  <div class="wrap">
-    <span>Highlighted text is placeholder copy. Replace it with your own.</span>
-    <button type="button" data-toggle-ph>Hide highlights</button>
-  </div>
-</div>
+<!-- PLACEHOLDER BANNER: delete this block once your content is in. -->
+<div class="ph-banner"><div class="wrap"><span>Highlighted text is placeholder copy. Replace it with your own.</span><button type="button" data-toggle-ph>Hide highlights</button></div></div>
 
 <header class="site-header">
-  <div class="wrap">
-    <a class="logo" href="index.html"><span class="ph">Your Name</span></a>
-    <nav class="nav" aria-label="Main">
-      <a href="index.html#work">Work</a>
-      <a href="about.html" aria-current="page">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
+  <a class="logo" href="index.html" aria-label="Tiffany Chang, home"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M9 13 C 15 10, 24 10, 30 12 M19 11 C 18 19, 18 26, 20 31 M24 22 C 28 18, 33 22, 31 27 C 29 32, 24 31, 23 27" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg></a>
+  <nav class="nav-pill" aria-label="Main" data-liquid-nav="">
+    <a href="index.html#work">Work</a>
+    <a href="about.html" aria-current="page">About</a>
+    <a href="play.html">Play</a>
+  </nav>
+  <time class="clock" data-clock aria-label="Your local time"></time>
 </header>
 
-<main class="wrap">
-
-  <section class="split" aria-labelledby="about-title">
-    <div class="portrait"><span>Portrait 4:5</span></div>
+<main class="wrap stack-lg">
+  <section class="split" aria-labelledby="about-title" style="padding-top: 40px">
+    <div class="portrait">[portrait or self-portrait drawing]</div>
     <div class="stack">
       <span class="label">About</span>
-      <h1 id="about-title"><span class="ph">Hi, I’m Your Name.</span></h1>
-      <p style="font-size:var(--step-1);color:var(--muted);line-height:1.5"><span class="ph">I’m a product designer who likes the unglamorous parts of software: settings pages, error states, the third step of onboarding.</span></p>
-      <p><span class="ph">Two or three short paragraphs about your background, what you care about in design, and what you’re looking for next. Keep it personal and specific.</span></p>
-      <p><span class="ph">Outside work I … (one human detail people remember).</span></p>
-      <div class="btn-row"><a class="btn primary" href="#">Download résumé (PDF)</a><a class="btn" href="contact.html">Contact</a></div>
+      <h1 id="about-title" style="font-size: clamp(32px, 5vw, 44px); letter-spacing: -0.03em"><span class="ph">Hi, I’m Tiffany.</span></h1>
+      <p style="font-size: 18px; color: var(--muted); line-height: 1.5"><span class="ph">A product designer who cares about the unglamorous parts of software: settings pages, error states, the third step of onboarding.</span></p>
+      <p><span class="ph">Two or three short paragraphs about your background, what you care about in design, and what you’re looking for next.</span></p>
+      <div class="btn-row"><a class="btn primary" href="#"><span class="ph">Résumé (PDF)</span></a><a class="btn" href="contact.html">Contact</a></div>
     </div>
   </section>
 
   <section aria-labelledby="exp">
     <div class="section-head"><h2 id="exp">Experience</h2></div>
     <div class="list-rows">
-      <div><strong><span class="ph">Lead Product Designer</span></strong><span class="ph">Company A</span><span class="when"><span class="ph">2023 – now</span></span></div>
-      <div><strong><span class="ph">Senior Product Designer</span></strong><span class="ph">Company B</span><span class="when"><span class="ph">2021 – 2023</span></span></div>
-      <div><strong><span class="ph">Product Designer</span></strong><span class="ph">Company C</span><span class="when"><span class="ph">2019 – 2021</span></span></div>
+      <div><strong><span class="ph">Product Designer</span></strong><span class="ph">Company A</span><span class="when"><span class="ph">2023 – now</span></span></div>
+      <div><strong><span class="ph">Product Designer</span></strong><span class="ph">Company B</span><span class="when"><span class="ph">2021 – 2023</span></span></div>
+      <div><strong><span class="ph">Design Intern</span></strong><span class="ph">Company C</span><span class="when"><span class="ph">2020</span></span></div>
     </div>
   </section>
 
   <section aria-labelledby="skills">
     <div class="section-head"><h2 id="skills">What I do</h2></div>
     <div class="skills">
-      <div><h3>Research</h3><ul><li><span class="ph">User interviews</span></li><li><span class="ph">Usability testing</span></li><li><span class="ph">Analytics &amp; funnels</span></li></ul></div>
+      <div><h3>Research</h3><ul><li><span class="ph">User interviews</span></li><li><span class="ph">Usability testing</span></li><li><span class="ph">Analytics</span></li></ul></div>
       <div><h3>Design</h3><ul><li><span class="ph">Interaction &amp; UX</span></li><li><span class="ph">Visual &amp; UI</span></li><li><span class="ph">Prototyping</span></li></ul></div>
-      <div><h3>Systems</h3><ul><li><span class="ph">Design systems</span></li><li><span class="ph">Accessibility (WCAG 2.2)</span></li><li><span class="ph">Design–eng handoff</span></li></ul></div>
+      <div><h3>Systems</h3><ul><li><span class="ph">Design systems</span></li><li><span class="ph">Accessibility</span></li><li><span class="ph">Design–eng handoff</span></li></ul></div>
     </div>
   </section>
-
 </main>
 
 <footer class="site-footer">
   <div class="wrap">
-    <span>© <span data-year>2026</span> <span class="ph">Your Name</span></span>
-    <span><a href="https://www.linkedin.com/">LinkedIn</a> · <a href="https://dribbble.com/">Dribbble</a> · <a href="https://read.cv/">Read.cv</a></span>
+    <span>© <span data-year>2026</span> Tiffany Chang</span>
+    <span><a href="contact.html">Contact</a> · <a href="https://www.linkedin.com/">LinkedIn</a> · <a href="#"><span class="ph">Résumé</span></a></span>
   </div>
 </footer>
 
 <script src="site.js"></script>
+<script src="glass.js"></script>
 </body>
 </html>

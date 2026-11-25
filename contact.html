@@ -3,71 +3,59 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Contact · Your Name</title>
+  <title>Contact · Tiffany Chang</title>
+  <meta name="description" content="Portfolio of Tiffany Chang, product designer.">
+  <script>document.documentElement.classList.add('js')</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div class="ph-banner">
-  <div class="wrap">
-    <span>Highlighted text is placeholder copy. Replace it with your own.</span>
-    <button type="button" data-toggle-ph>Hide highlights</button>
-  </div>
-</div>
+<!-- PLACEHOLDER BANNER: delete this block once your content is in. -->
+<div class="ph-banner"><div class="wrap"><span>Highlighted text is placeholder copy. Replace it with your own.</span><button type="button" data-toggle-ph>Hide highlights</button></div></div>
 
 <header class="site-header">
-  <div class="wrap">
-    <a class="logo" href="index.html"><span class="ph">Your Name</span></a>
-    <nav class="nav" aria-label="Main">
-      <a href="index.html#work">Work</a>
-      <a href="about.html">About</a>
-      <a href="contact.html" aria-current="page">Contact</a>
-    </nav>
-  </div>
+  <a class="logo" href="index.html" aria-label="Tiffany Chang, home"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M9 13 C 15 10, 24 10, 30 12 M19 11 C 18 19, 18 26, 20 31 M24 22 C 28 18, 33 22, 31 27 C 29 32, 24 31, 23 27" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg></a>
+  <nav class="nav-pill" aria-label="Main" data-liquid-nav="">
+    <a href="index.html#work">Work</a>
+    <a href="about.html">About</a>
+    <a href="play.html">Play</a>
+  </nav>
+  <time class="clock" data-clock aria-label="Your local time"></time>
 </header>
 
 <main class="wrap">
-
-  <section class="hero" aria-labelledby="contact-title">
+  <section class="page-head" aria-labelledby="contact-title">
     <span class="label">Contact</span>
     <h1 id="contact-title"><span class="ph">Let’s make something useful.</span></h1>
-    <p class="lede"><span class="ph">The fastest way to reach me is email. I usually reply within two working days.</span></p>
+    <p class="lede"><span class="ph">Email is the fastest way to reach me. I usually reply within two working days.</span></p>
   </section>
-
   <section class="split" aria-label="Ways to reach me">
     <div class="channels">
       <div><span class="label">Email</span><span class="ph">hello@yourname.com</span></div>
       <div><span class="label">LinkedIn</span><a href="https://www.linkedin.com/"><span class="ph">linkedin.com/in/yourname</span></a></div>
-      <div><span class="label">Dribbble</span><a href="https://dribbble.com/"><span class="ph">dribbble.com/yourname</span></a></div>
     </div>
-
-    <!-- This form isn't connected to anything yet. Hook it up to a form
-         service (e.g. Formspree, Netlify Forms) when you deploy. -->
+    <!-- Not connected yet. Hook it up to a form service (e.g. Formspree) when ready. -->
     <form class="form" data-contact-form>
       <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required></div>
       <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-      <div class="field">
-        <label for="topic">What’s this about?</label>
-        <select id="topic" name="topic"><option>Full-time role</option><option>Freelance project</option><option>Just saying hi</option></select>
-      </div>
       <div class="field"><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
       <div class="btn-row"><button class="btn primary" type="submit">Send message</button></div>
       <p class="form-note" data-form-status aria-live="polite"></p>
     </form>
   </section>
-
 </main>
 
 <footer class="site-footer">
   <div class="wrap">
-    <span>© <span data-year>2026</span> <span class="ph">Your Name</span></span>
-    <span><a href="https://www.linkedin.com/">LinkedIn</a> · <a href="https://dribbble.com/">Dribbble</a> · <a href="https://read.cv/">Read.cv</a></span>
+    <span>© <span data-year>2026</span> Tiffany Chang</span>
+    <span><a href="contact.html">Contact</a> · <a href="https://www.linkedin.com/">LinkedIn</a> · <a href="#"><span class="ph">Résumé</span></a></span>
   </div>
 </footer>
 
 <script src="site.js"></script>
+<script src="glass.js"></script>
 </body>
 </html>

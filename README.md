@@ -4,16 +4,19 @@ Personal product design portfolio. Plain HTML and CSS, no build step, hosted on 
 
 ## Pages
 
-- `index.html` — intro and selected work grid
+- `index.html` — minimal hero and selected work grid
 - `work/case-study.html` — case study template (duplicate it for each project)
 - `about.html` — bio, experience, skills
-- `contact.html` — contact details and form (not connected yet)
+- `play.html` — drawings, side projects and other work outside of work
+- `contact.html` — contact details and form (not connected yet), linked from the footer
 
 ## Editing
 
 - Placeholder copy is wrapped in `<span class="ph">…</span>` and highlighted yellow. Replace the text, then remove the `ph-banner` block from each page when you're done.
-- Colors and fonts are tokens at the top of `styles.css`.
-- Swap the gradient thumbnails for real images: replace `<div class="thumb" …>` with `<img class="thumb" src="images/your-image.jpg" alt="…">`.
+- Colors, fonts, radii and glass are tokens at the top of `styles.css`. The page background is a 24px dot grid.
+- Case study covers are CSS placeholders with moving color blobs. Replace a cover's inner markup with a looping `<video autoplay muted loop playsinline>` (for example a gradient exported from ShaderGradient's Figma plugin) or an image.
+- The hero object (`.hero-object`) is a placeholder sketchbook. Swap in your own 3D or drawn piece and keep it uncontained.
+- The nav pill gets real liquid-glass refraction on desktop via `glass.js` and `vendor/liquid-glass/` ([liquid-glass-js](https://github.com/dashersw/liquid-glass-js), MIT). Without WebGL, on phones, or with reduced motion it falls back to CSS frosted glass.
 
 ## Previewing locally
 
