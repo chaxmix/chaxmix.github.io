@@ -31,11 +31,16 @@
         links.forEach(function (a) { glass.element.appendChild(a); });
         pill.appendChild(glass.element);
         glass.updateSizeFromDOM();
-        // Swap off the CSS glass once the WebGL snapshot is ready.
+        // Swap off the CSS glass once the page snapshot is ready. If the snapshot
+        // fails (html2canvas can't read some modern CSS), put the links back and
+        // keep the CSS glass so nothing looks broken.
         var tries = 0;
         (function wait() {
           if (Container.pageSnapshot && glass.webglInitialized === true) { pill.classList.add('is-liquid'); return; }
-          if (++tries < 100) setTimeout(wait, 100);
+          if (++tries < 80) { setTimeout(wait, 100); return; }
+          links.forEach(function (a) { pill.appendChild(a); });
+          if (glass.element.parentNode) glass.element.parentNode.removeChild(glass.element);
+          pill.classList.remove('is-liquid');
         })();
       })
       .catch(function () { /* keep the CSS glass */ });
