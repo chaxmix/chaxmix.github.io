@@ -4,7 +4,7 @@
    it is used in the product, then everything settles back into one screen. */
 .cover > canvas.shader-bg:not(.blob):not(.badge) { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .dsx { perspective: 1400px; }
-.dsx .stack { position: relative; width: 300px; height: 190px; transform: rotateX(56deg) rotateZ(-38deg) scale(.8); transform-style: preserve-3d; margin-top: 10px; }
+.dsx .stack { position: relative; width: 300px; height: 190px; transform: rotateX(56deg) rotateZ(-38deg) scale(.8); transform-style: preserve-3d; margin-top: 44px; }
 .dsx .layer { position: absolute; inset: 0; border-radius: 18px; transform-style: preserve-3d; }
 .dsx .layer > * { position: absolute; }
 .dsx .name { left: 14px; bottom: 10px; font: 500 9px/1 var(--mono, ui-monospace, monospace); letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.65); }
