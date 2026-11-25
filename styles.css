@@ -128,7 +128,7 @@ html.hide-ph .ph-banner { display: none; }
   text-decoration: none; color: var(--muted); transition: color .2s, background .2s;
 }
 .nav-pill a:hover { color: var(--fg); }
-.nav-pill a[aria-current="page"] { color: var(--accent-ink); background: rgba(255,233,226,.92); box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+.nav-pill a[aria-current="page"] { color: var(--fg); background: rgba(255,255,255,.92); box-shadow: 0 1px 2px rgba(0,0,0,.06); }
 .clock { justify-self: end; font: 500 13px/1 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
 /* When liquid glass is running, the WebGL layer replaces the CSS glass. */
 .nav-pill.is-liquid { background: transparent; border: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 0; }
