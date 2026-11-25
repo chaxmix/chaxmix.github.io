@@ -12,6 +12,44 @@
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
 
+// Compact nav (prototype): once you scroll, the tab labels collapse into icons
+// and the pill shrinks to fit, with a little bounce. Preview with ?compact=1
+// (remembered for the visit, ?compact=0 turns it off).
+(function () {
+  var root = document.documentElement;
+  var m = /[?&]compact=(\d)/.exec(location.search);
+  try {
+    if (m) sessionStorage.setItem('navCompact', m[1]);
+    if (sessionStorage.getItem('navCompact') !== '1') return;
+  } catch (e) { if (!m || m[1] !== '1') return; }
+  var pill = document.querySelector('.nav-pill');
+  if (!pill) return;
+  var ICONS = {
+    'index.html': '<rect x="4" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.8"/>',
+    'about.html': '<circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c1.2-3.7 3.9-5.6 7-5.6s5.8 1.9 7 5.6"/>',
+    'play.html': '<path d="M11 3.5c.6 4.4 2.2 6 6.5 6.6-4.3.6-5.9 2.2-6.5 6.6-.6-4.4-2.2-6-6.5-6.6 4.3-.6 5.9-2.2 6.5-6.6z"/><path d="M18 15.5c.25 1.7.9 2.35 2.5 2.6-1.6.25-2.25.9-2.5 2.6-.25-1.7-.9-2.35-2.5-2.6 1.6-.25 2.25-.9 2.5-2.6z"/>'
+  };
+  pill.querySelectorAll('a').forEach(function (a) {
+    var key = (a.getAttribute('href') || '').split('/').pop();
+    var label = a.textContent.trim();
+    a.innerHTML = '<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[key] || '') + '</svg><span class="nav-label">' + label + '</span>';
+    a.setAttribute('title', label);
+  });
+  // Remember each tab's full width so CSS can animate between it and the icon.
+  function measure() {
+    pill.querySelectorAll('a').forEach(function (a) {
+      var label = a.querySelector('.nav-label');
+      a.style.setProperty('--wide', Math.ceil(label.scrollWidth + 36) + 'px');
+    });
+  }
+  measure();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+  root.setAttribute('data-navcompact', '');
+  function onScroll() { root.classList.toggle('nav-compact', window.scrollY > 48); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
 // 0. Nav bubble: one white pill behind the current tab. It is its own element
 //    (view-transition-name: nav-bubble), so when you move between pages,
 //    browsers with cross-document view transitions slide it from the old tab
@@ -38,6 +76,8 @@
   window.placeNavBubble = place;
   window.addEventListener('resize', place);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+  // Follow the pill while it changes size (the compact nav animates its width).
+  if ('ResizeObserver' in window) new ResizeObserver(place).observe(pill);
 })();
 
 // 1. Placeholder highlight toggle. Placeholder copy is wrapped in

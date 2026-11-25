@@ -171,6 +171,28 @@ html.hide-ph .ph-banner { display: none; }
 }
 html.is-scrolled .nav-fill { opacity: 1; }
 
+/* Compact nav (prototype, html[data-navcompact]): after scrolling, labels
+   collapse into icons and the pill shrinks. Each tab animates from its measured
+   width (--wide, set in site.js) to a 40px circle on an overshooting curve, so
+   the pill overshoots and settles: the bounce. */
+.nav-icon { display: none; }
+html[data-navcompact] .nav-pill a {
+  display: grid; place-items: center; overflow: hidden; padding: 0; width: var(--wide, auto);
+  transition: color .2s, width .7s cubic-bezier(.3, 1.6, .45, 1);
+}
+html[data-navcompact] .nav-pill a > * { grid-area: 1 / 1; }
+html[data-navcompact] .nav-icon {
+  display: block; width: 18px; height: 18px; opacity: 0; transform: scale(.4) rotate(-25deg);
+  transition: opacity .15s, transform .5s cubic-bezier(.3, 1.6, .45, 1);
+}
+html[data-navcompact] .nav-label { white-space: nowrap; transition: opacity .2s .1s, transform .4s cubic-bezier(.3, 1.4, .45, 1); }
+html[data-navcompact].nav-compact .nav-pill a { width: 40px; }
+html[data-navcompact].nav-compact .nav-icon { opacity: 1; transform: none; transition-delay: .1s; }
+html[data-navcompact].nav-compact .nav-label { opacity: 0; transform: scale(.7); transition: opacity .12s, transform .3s; }
+@media (prefers-reduced-motion: reduce) {
+  html[data-navcompact] .nav-pill a, html[data-navcompact] .nav-icon, html[data-navcompact] .nav-label { transition-duration: .01s; transition-delay: 0s; }
+}
+
 /* Time and weather widget: plain text on the grid (no capsule). Weather is the
    visitor's, from their time zone's city (weather.js). */
 .nav-widget {
