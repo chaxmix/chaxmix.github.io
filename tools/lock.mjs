@@ -71,7 +71,7 @@ function lockPage(payload, title) {
   <meta name="robots" content="noindex">
   <title>${title}</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap">
-  <link rel="stylesheet" href="../styles.css?v=202611251855">
+  <link rel="stylesheet" href="../styles.css?v=202611251900">
 </head>
 <body>
 <header class="site-header">

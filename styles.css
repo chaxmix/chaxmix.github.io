@@ -134,8 +134,8 @@ main { padding-block: 32px 96px; }
 @media (max-width: 640px) { .hero-object { width: 100%; height: 220px; } }
 
 /* Inline link with an underline that draws in on hover (hero "@RealInsight") */
-.link-hover { color: var(--fg); text-decoration: none; background-image: linear-gradient(var(--accent), var(--accent)); background-size: 0% 1.5px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size .25s ease; }
-.link-hover:hover, .link-hover:focus-visible { background-size: 100% 1.5px; }
+.link-hover { color: var(--fg); text-decoration: none; background-image: linear-gradient(var(--accent), var(--accent)); background-size: 0% 1.5px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size .25s ease, color .2s ease; }
+.link-hover:hover, .link-hover:focus-visible { background-size: 100% 1.5px; color: var(--accent-ink); }
 
 /* ---------- Work grid ---------- */
 .section-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 24px; }
