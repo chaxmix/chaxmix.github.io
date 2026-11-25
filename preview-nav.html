@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Nav background options</title>
+<style>
+  body { margin: 0; font: 500 14px/1.4 system-ui, sans-serif; background: #eef0f4; color: #1d1d1f; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 16px; height: calc(100vh - 32px); box-sizing: border-box; }
+  figure { margin: 0; display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+  iframe { flex: 1; width: 100%; border: 0; border-radius: 12px; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+  figcaption { padding-left: 4px; }
+</style></head>
+<body><div class="row">
+  <figure><figcaption>1 · Progressive blur</figcaption><iframe src="index.html?navbg=1" data-scroll></iframe></figure>
+  <figure><figcaption>2 · Frosted bar with soft fade</figcaption><iframe src="index.html?navbg=2" data-scroll></iframe></figure>
+</div>
+<script>
+  // Start both scrolled so the nav sits over a cover. Scroll either one to compare.
+  document.querySelectorAll('iframe[data-scroll]').forEach(function (f) {
+    f.addEventListener('load', function () { try { f.contentWindow.scrollTo(0, 290); } catch (e) {} });
+  });
+</script>
+</body></html>

@@ -1,5 +1,19 @@
 // Small helpers for the portfolio. No libraries needed.
 
+// Nav background: fades in once the page scrolls, so the nav stays readable
+// over covers. ?navbg=1 or ?navbg=2 previews a style (temporary, for choosing).
+(function () {
+  var root = document.documentElement;
+  var m = /[?&]navbg=(\w+)/.exec(location.search);
+  if (m) root.setAttribute('data-navbg', m[1]);
+  var fill = document.createElement('div');
+  fill.className = 'nav-fill'; fill.setAttribute('aria-hidden', 'true');
+  document.body.insertBefore(fill, document.body.firstChild);
+  function onScroll() { root.classList.toggle('is-scrolled', window.scrollY > 4); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
 // 0. Nav bubble: one white pill behind the current tab. It is its own element
 //    (view-transition-name: nav-bubble), so when you move between pages,
 //    browsers with cross-document view transitions slide it from the old tab
