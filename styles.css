@@ -40,7 +40,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; } /* keep the layout from shifting on pages too short to scroll (Play) */
 body {
   margin: 0;
   color: var(--fg);
