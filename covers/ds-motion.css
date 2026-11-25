@@ -34,37 +34,57 @@
 .dsm .dm-lbl { font: 500 9px/1.35 var(--mono, ui-monospace, monospace); color: rgba(255,255,255,.85); white-space: nowrap; text-align: center; }
 .dsm .dm-lbl b { display: block; color: #fff; font-weight: 600; }
 
-/* Components */
-.dsm .dm-btn { border-radius: 12px; background: var(--rt-brand); display: grid; place-items: center; overflow: hidden; box-shadow: 0 6px 16px var(--rt-brand-glow); }
-.dsm .dm-btn span { color: var(--rt-inverse); font-size: 13px; font-weight: 600; line-height: 1; white-space: nowrap; }
-.dsm .dm-inp { border-radius: 10px; background: var(--rt-default); box-shadow: 0 0 0 1px var(--rt-border) inset; display: flex; align-items: center; padding: 0 12px; font-size: 11px; color: var(--rt-text-mutest); }
+/* Components (sizes and radii from the RealInsight Figma file) */
+.dsm .o { font-family: "DM Sans", var(--sans, system-ui), sans-serif; }
+.dsm .dm-btn { border-radius: 10px; background: var(--rt-brand); box-shadow: 0 6px 16px var(--rt-brand-glow); }
+.dsm .dm-btl { display: grid; place-items: center; color: var(--rt-inverse); font-size: 14px; font-weight: 500; white-space: nowrap; }
+.dsm .dm-ttl { font-size: 13px; font-weight: 600; color: var(--rt-text-mutest); letter-spacing: .02em; text-transform: uppercase; display: flex; align-items: center; white-space: nowrap; }
+.dsm .dm-ttl.dm-big { font-size: 22px; letter-spacing: -.01em; text-transform: none; color: var(--rt-text); }
+.dsm .dm-inp { border-radius: 10px; background: var(--rt-default); box-shadow: 0 0 0 1px var(--rt-border) inset; display: flex; align-items: center; padding: 0 12px; font-size: 12px; color: var(--rt-text-mutest); white-space: nowrap; overflow: hidden; }
+.dsm .dm-inp::before { content: ""; width: 10px; height: 10px; margin-right: 8px; border: 1.6px solid currentColor; border-radius: 50%; flex: none; }
+.dsm .dm-chip { border-radius: 8px; background: var(--rt-neutral-subtle); box-shadow: 0 0 0 1px var(--rt-border) inset; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px; font-weight: 500; color: var(--rt-text); white-space: nowrap; }
+.dsm .dm-chip i { font-style: normal; color: var(--rt-text-mutest); }
 .dsm .dm-tgl { border-radius: 99px; background: var(--rt-brand); }
-.dsm .dm-tgl::after { content: ""; position: absolute; right: 3px; top: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; }
-.dsm .dm-chk { border-radius: 6px; background: var(--rt-brand); display: grid; place-items: center; }
-.dsm .dm-bar { border-radius: 5px; background: var(--rt-neutral-subtle); }
-.dsm .dm-bar.dm-dk { background: var(--rt-text); }
+.dsm .dm-tgl::after { content: ""; position: absolute; right: 2px; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+.dsm .dm-tlbl, .dsm .dm-txt { display: flex; align-items: center; font-size: 12px; font-weight: 500; color: var(--rt-text-muted); white-space: nowrap; }
+.dsm .dm-txt { justify-content: center; font-size: 14px; }
+.dsm .dm-ghost { border-radius: 10px; box-shadow: 0 0 0 1px var(--rt-border) inset; background: var(--rt-default); display: grid; place-items: center; font-size: 12px; font-weight: 500; color: var(--rt-text); }
+.dsm .dm-chk, .dsm .dm-cb { border-radius: 5px; background: var(--rt-brand); display: grid; place-items: center; color: var(--rt-inverse); }
+.dsm .dm-cb { display: block; width: 16px; height: 16px; background: none; box-shadow: 0 0 0 1.5px var(--rt-border) inset; }
+.dsm .dm-cb.dm-hold { visibility: hidden; }
+/* Badges: subtle variant, pill */
+.dsm .dm-bdg { display: inline-flex; align-items: center; justify-content: center; height: 22px; padding: 0 10px; border-radius: 99px; font-size: 11px; font-weight: 500; white-space: nowrap; }
+.dsm .dm-rev { color: var(--rt-brand); background: var(--rt-brand-subtle); }
+.dsm .dm-out { color: var(--rt-warn); background: var(--rt-warn-subtle); }
+.dsm .dm-late { color: var(--rt-danger); background: var(--rt-danger-subtle); }
+.dsm .dm-pd { color: var(--rt-success); background: var(--rt-success-subtle); }
+.dsm { --rt-warn: #7E4C11; --rt-warn-subtle: rgba(214,126,20,.16); --rt-danger: #951818; --rt-danger-subtle: rgba(188,26,26,.12); --rt-success-subtle: rgba(37,109,43,.12); }
+.dsm.is-dark { --rt-warn: #E99B3D; --rt-warn-subtle: rgba(233,155,61,.14); --rt-danger: #E44444; --rt-danger-subtle: rgba(228,68,68,.14); --rt-success-subtle: rgba(85,201,95,.14); }
 
-/* Page */
-.dsm .dm-card { border-radius: 18px; background: var(--rt-raised); box-shadow: 0 20px 50px rgba(10,12,30,.25); }
-.dsm .dm-frame { border-radius: 26px; background: var(--rt-sunken); box-shadow: 0 40px 90px rgba(0,0,0,.4); }
-.dsm .dm-side { border-radius: 26px 0 0 26px; background: var(--rt-default); box-shadow: 1px 0 0 var(--rt-border); padding: 28px 24px; display: grid; align-content: start; gap: 18px; }
-.dsm .dm-side i { display: block; height: 12px; border-radius: 6px; background: var(--rt-neutral-subtle); }
-.dsm .dm-side i:first-child { width: 36px; height: 36px; border-radius: 10px; background: var(--rt-brand); margin-bottom: 14px; }
-.dsm .dm-side i.dm-on { background: var(--rt-brand-subtle); }
-.dsm .dm-top { display: flex; align-items: center; justify-content: space-between; padding: 0 8px; }
-.dsm .dm-top .dm-t { width: 200px; height: 16px; border-radius: 8px; background: var(--rt-text); }
-.dsm .dm-top .dm-r { display: flex; gap: 10px; align-items: center; }
-.dsm .dm-top .dm-r i { width: 160px; height: 34px; border-radius: 99px; background: var(--rt-default); box-shadow: 0 0 0 1px var(--rt-border) inset; }
-.dsm .dm-top .dm-r b { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #77BBE4, #3450CB); }
-.dsm .dm-stat { padding: 22px; display: grid; align-content: space-between; }
-.dsm .dm-stat i { display: block; width: 50%; height: 10px; border-radius: 5px; background: var(--rt-neutral-subtle); }
-.dsm .dm-stat b { display: block; width: 70%; height: 26px; border-radius: 8px; background: var(--rt-text); }
-.dsm .dm-stat em { display: block; width: 34%; height: 10px; border-radius: 5px; background: var(--rt-success); }
-.dsm .dm-chart { padding: 24px; }
-.dsm .dm-chart svg { width: 100%; height: 100%; overflow: visible; }
-.dsm .dm-chart path { fill: none; stroke: var(--rt-brand); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+/* Page: the Invoicing screen */
+.dsm .dm-card { border-radius: 16px; background: var(--rt-raised); box-shadow: 0 20px 50px rgba(10,12,30,.25), 0 0 0 1px var(--rt-border); }
+.dsm .dm-frame { border-radius: 24px; background: var(--rt-sunken); box-shadow: 0 40px 90px rgba(0,0,0,.4); }
+.dsm .dm-top { display: flex; align-items: center; justify-content: space-between; padding: 0 16px; border-radius: 24px 24px 0 0; background: var(--rt-default); box-shadow: 0 1px 0 var(--rt-border); }
+.dsm .dm-logo { width: 28px; height: 28px; border-radius: 7px; background: #44A5DE; display: grid; place-items: center; }
+.dsm .dm-logo svg { width: 100%; height: 100%; }
+.dsm .dm-search { width: 300px; height: 28px; border-radius: 8px; background: var(--rt-sunken); box-shadow: 0 0 0 1px var(--rt-border) inset; display: flex; align-items: center; padding: 0 12px; font-size: 12px; color: var(--rt-text-mutest); }
+.dsm .dm-av { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #77BBE4, #3450CB); }
+.dsm .dm-side { border-radius: 0 0 0 24px; background: var(--rt-default); box-shadow: 1px 0 0 var(--rt-border); padding: 20px 12px; display: grid; align-content: start; gap: 4px; }
+.dsm .dm-side b { display: flex; align-items: center; gap: 10px; height: 30px; padding: 0 10px; border-radius: 8px; font-size: 13px; font-weight: 500; color: var(--rt-text-muted); white-space: nowrap; }
+.dsm .dm-side b svg { width: 16px; height: 16px; flex: none; }
+.dsm .dm-side b.dm-sub { padding-left: 36px; font-weight: 400; }
+.dsm .dm-side b.dm-on { background: var(--rt-brand-subtle); color: var(--rt-text); font-weight: 500; }
+.dsm .dm-tabs { display: flex; gap: 2px; padding: 2px; border-radius: 10px; background: var(--rt-neutral-subtle); }
+.dsm .dm-tabs b { flex: auto; display: flex; align-items: center; justify-content: center; gap: 6px; border-radius: 8px; font-size: 12px; font-weight: 500; color: var(--rt-text-muted); white-space: nowrap; }
+.dsm .dm-tabs b i { font-style: normal; font-size: 11px; color: var(--rt-text-mutest); }
+.dsm .dm-tabs b.dm-on { background: var(--rt-raised); color: var(--rt-text); box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+.dsm .dm-tbl { padding: 0 16px; overflow: hidden; }
+.dsm .dm-tr { display: grid; grid-template-columns: 36px 76px 170px 80px 120px 96px 112px; align-items: center; height: 40px; font-size: 12px; color: var(--rt-text); white-space: nowrap; box-shadow: 0 1px 0 var(--rt-border); }
+.dsm .dm-tr:last-child { box-shadow: none; }
+.dsm .dm-tr span:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+.dsm .dm-th { height: 36px; font-size: 11px; font-weight: 500; color: var(--rt-text-mutest); }
 
-/* Logo (placeholder until the real RealInsight logo comes in from Figma) */
-.dsm .dm-mark { border-radius: 22px; background: linear-gradient(140deg, #44A5DE, #18567B); display: grid; place-items: center; box-shadow: 0 20px 50px rgba(31,138,202,.45); }
-.dsm .dm-mark svg { width: 46px; height: 46px; }
-.dsm .dm-word { font-size: 40px; font-weight: 600; line-height: 44px; letter-spacing: -.02em; color: #fff; white-space: nowrap; }
+/* Logo: RealInsight's R mark (from the Figma Logos page) */
+.dsm .dm-mark { border-radius: 20px; background: #44A5DE; display: grid; place-items: center; box-shadow: 0 20px 50px rgba(68,165,222,.45); }
+.dsm .dm-mark svg { width: 100%; height: 100%; }
+.dsm .dm-word { font-family: "DM Sans", var(--sans, system-ui), sans-serif; font-size: 40px; font-weight: 600; line-height: 44px; letter-spacing: -.02em; color: #fff; white-space: nowrap; }
