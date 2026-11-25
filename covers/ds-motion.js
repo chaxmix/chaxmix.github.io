@@ -50,15 +50,20 @@
     ['ls', 'dm-lbl', '<b>space/lg</b>16px', { x: BX, y: BY - 122, w: 100, h: 26 }, [[1.55, .6, { o: 1, y: BY - 126 }, 'sf'], [1.9, .25, { o: 0 }, 'io']]],
     // 2. button label
     ['btl', 'dm-btl', 'Create invoice', { x: BX, y: BY, z: 2, w: 96, h: 16, s: .6 }, [[2.45, .6, { o: 1, s: 1 }, 'sp'], [6.2, .16, { s: .93 }, 'io'], [6.36, .6, { s: 1 }, 'sp']]],
-    // 3. redlines, Figma style: selection outline, tinted padding, three labels
-    ['sel', 'dm-sel', '', { x: BX, y: BY, z: 3, w: 128, h: 32, s: 1.12 }, [[3.0, .5, { o: 1, s: 1 }, 'sf'], FADE(4.3)]],
-    ['pl', 'dm-pad dm-l', '', { x: BX - 56, y: BY, z: 3, w: 16, h: 32 }, [[3.25, .35, { o: 1 }, 'out'], FADE(4.3)]],
-    ['pr', 'dm-pad dm-r', '', { x: BX + 56, y: BY, z: 3, w: 16, h: 32 }, [[3.3, .35, { o: 1 }, 'out'], FADE(4.3)]],
-    ['pt', 'dm-pad', '', { x: BX, y: BY - 12, z: 3, w: 96, h: 8 }, [[3.35, .35, { o: 1 }, 'out'], FADE(4.3)]],
-    ['pb', 'dm-pad', '', { x: BX, y: BY + 12, z: 3, w: 96, h: 8 }, [[3.4, .35, { o: 1 }, 'out'], FADE(4.3)]],
-    ['m1', 'dm-m', '16', { x: BX - 56, y: BY + 30, z: 4, w: 18, h: 13, s: 0 }, [[3.55, .55, { o: 1, s: 1 }, 'sp'], FADE(4.3)]],
-    ['m2', 'dm-m', '8', { x: BX, y: BY - 30, z: 4, w: 14, h: 13, s: 0 }, [[3.62, .55, { o: 1, s: 1 }, 'sp'], FADE(4.3)]],
-    ['m3', 'dm-m', '32', { x: BX + 86, y: BY, z: 4, w: 18, h: 13, s: 0 }, [[3.69, .55, { o: 1, s: 1 }, 'sp'], FADE(4.3)]],
+    // 3. redlines: just the padding, like a spec sheet. Solid vermilion lines on the button's
+    // edges and padding edges, running a little past it, labelled 16 (sides) and 8 (top, bottom).
+    ['h1', 'dm-gl', '', { x: BX - 4, y: BY - 16, z: 3, w: 0, h: 1 }, [[3.05, .45, { o: 1, w: 184 }, 'out'], FADE(4.3)]],
+    ['h2', 'dm-gl', '', { x: BX - 4, y: BY - 8, z: 3, w: 0, h: 1 }, [[3.1, .45, { o: 1, w: 184 }, 'out'], FADE(4.3)]],
+    ['h3', 'dm-gl', '', { x: BX - 4, y: BY + 8, z: 3, w: 0, h: 1 }, [[3.15, .45, { o: 1, w: 184 }, 'out'], FADE(4.3)]],
+    ['h4', 'dm-gl', '', { x: BX - 4, y: BY + 16, z: 3, w: 0, h: 1 }, [[3.2, .45, { o: 1, w: 184 }, 'out'], FADE(4.3)]],
+    ['v1', 'dm-gl', '', { x: BX - 64, y: BY - 4, z: 3, w: 1, h: 0 }, [[3.25, .45, { o: 1, h: 72 }, 'out'], FADE(4.3)]],
+    ['v2', 'dm-gl', '', { x: BX - 48, y: BY - 4, z: 3, w: 1, h: 0 }, [[3.3, .45, { o: 1, h: 72 }, 'out'], FADE(4.3)]],
+    ['v3', 'dm-gl', '', { x: BX + 48, y: BY - 4, z: 3, w: 1, h: 0 }, [[3.35, .45, { o: 1, h: 72 }, 'out'], FADE(4.3)]],
+    ['v4', 'dm-gl', '', { x: BX + 64, y: BY - 4, z: 3, w: 1, h: 0 }, [[3.4, .45, { o: 1, h: 72 }, 'out'], FADE(4.3)]],
+    ['m1', 'dm-num16', '16', { x: BX - 56, y: BY - 50, z: 4, w: 24, h: 14 }, [[3.55, .4, { o: 1, y: BY - 52 }, 'out'], FADE(4.3)]],
+    ['m2', 'dm-num16', '16', { x: BX + 56, y: BY - 50, z: 4, w: 24, h: 14 }, [[3.6, .4, { o: 1, y: BY - 52 }, 'out'], FADE(4.3)]],
+    ['m3', 'dm-num16', '8', { x: BX - 108, y: BY - 12, z: 4, w: 14, h: 14 }, [[3.65, .4, { o: 1, x: BX - 110 }, 'out'], FADE(4.3)]],
+    ['m4', 'dm-num16', '8', { x: BX - 108, y: BY + 12, z: 4, w: 14, h: 14 }, [[3.7, .4, { o: 1, x: BX - 110 }, 'out'], FADE(4.3)]],
     // 4. a generic card assembles around the button
     ['card', 'dm-card', '', { x: cx, y: cy, z: -2, w: CARD.w, h: CARD.h, s: .85 }, [[4.6, 1, { o: 1, s: 1 }, 'sp']]],
     ['ttl', 'dm-h3', 'New invoice', at(row(200, -262), { z: 90, h: 28, s: .6 }), [DROP(4.8)]],
@@ -87,7 +92,7 @@
   var CAM = [
     [0.7, 1.5, { z: 1.5, cy: BY - 38, rx: 16, ry: -18 }, 'sf'],
     [2.0, 1.1, { z: 2.4, cy: BY - 2, rx: 6, ry: 14 }, 'sf'],
-    [2.95, 1.0, { z: 2.4, cx: BX + 8, cy: BY, rx: 0, ry: 0, rz: 0 }, 'sf'],   // flat, head-on for the redlines
+    [2.95, 1.0, { z: 2.4, cx: BX - 12, cy: BY - 12, rx: 0, ry: 0, rz: 0 }, 'sf'],   // flat, head-on for the redlines
     [4.45, 1.7, { z: .92, cx: cx, cy: cy, rx: 26, ry: -18, rz: -6 }, 'sf'],
     [6.5, 1.4, { z: .98, rx: 10, ry: 10, rz: 2 }, 'sf'],
     [8.0, 1, { z: 1, cx: 0, cy: 0, rx: 0, ry: 0, rz: 0 }, 'io']

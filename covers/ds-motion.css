@@ -92,12 +92,9 @@
 .dsm .dm-pager b { width: 28px; height: 28px; border-radius: 8px; box-shadow: 0 0 0 1px var(--rt-border) inset; display: grid; place-items: center; font-size: 12px; font-weight: 500; color: var(--rt-text); }
 .dsm .dm-pager b.dm-on { background: var(--rt-neutral-subtle); }
 
-/* Redlines over the button, Figma style, in Tiffany's vermilion */
-.dsm .dm-sel { box-shadow: 0 0 0 1px var(--rt-redline); border-radius: 10px; }
-.dsm .dm-pad { background: repeating-linear-gradient(135deg, rgba(242,84,45,.75) 0 1px, transparent 1px 5px); }
-.dsm .dm-pad.dm-l { border-radius: 10px 0 0 10px; }
-.dsm .dm-pad.dm-r { border-radius: 0 10px 10px 0; }
-.dsm .dm-m { display: grid; place-items: center; border-radius: 3px; background: var(--rt-redline); color: #fff; font: 600 8px/1 var(--mono, ui-monospace, monospace); white-space: nowrap; }
+/* Redlines: padding only, solid lines in Tiffany's vermilion */
+.dsm .dm-gl { background: var(--rt-redline); }
+.dsm .dm-num16 { display: grid; place-items: center; color: var(--rt-redline); font: 700 12px/1 "DM Sans", sans-serif; white-space: nowrap; }
 
 /* Generic card bits */
 .dsm .dm-tgl { border-radius: 99px; background: var(--rt-brand); }
