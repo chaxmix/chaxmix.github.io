@@ -85,6 +85,10 @@ html.hide-ph .ph-banner { display: none; }
 
 /* ---------- Nav: logo left, glass pill centered, clock right ---------- */
 .site-header {
+  /* Full width, edge to edge (no max). Still an even number of grid units so
+     the logo and time land on dots, a 1 to 2 unit margin from the screen edge. */
+  width: calc(100% - 2 * var(--u));
+  width: round(down, 100% - 2 * var(--u), calc(2 * var(--u)));
   position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
   display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center; gap: 16px;
@@ -147,42 +151,20 @@ html.hide-ph .ph-banner { display: none; }
    glass, so nothing moves or flashes when it switches on. (Class name differs
    from the old WebGL version so a stale cached stylesheet cannot hide the pill.) */
 .live-glass { background: linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,.22)); }
-.nw-card.live-glass { background: linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.42)); }
 
 /* Time and weather widget: plain text on the grid (no capsule). Weather is the
-   visitor's, from their time zone's city (weather.js). Hover or focus opens a
-   small glass card with the details. */
+   visitor's, from their time zone's city (weather.js). */
 .nav-widget {
   justify-self: end; position: relative;
   display: flex; align-items: center; gap: 12px;
   height: calc(2 * var(--u)); border-radius: 999px;   /* no capsule: just text, so the nav stays balanced */
   font-size: 14px; font-weight: 500; line-height: 1; color: var(--fg); font-variant-numeric: tabular-nums;
-  cursor: default; outline: none;
+  cursor: default;
 }
-.nav-widget:focus-visible { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
 .nw-weather { display: flex; align-items: center; gap: 6px; --w-fill: #fff; }
 .nw-weather svg { color: var(--muted); }
 .nw-weather[hidden] { display: none; }
 .has-weather .nw-time { padding-left: 12px; border-left: 1px solid rgba(0,0,0,.1); }
-.nw-card {
-  position: absolute; top: calc(100% + 12px); right: 0; width: calc(8 * var(--u));
-  padding: 16px 20px; border-radius: 20px; text-align: left;
-  background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.6));
-  border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
-  -webkit-backdrop-filter: blur(18px) saturate(180%); backdrop-filter: blur(18px) saturate(180%);
-  opacity: 0; visibility: hidden; transform: translateY(-6px) scale(.97); transform-origin: top right;
-  transition: opacity .2s ease, transform .25s cubic-bezier(.2,.8,.2,1), visibility 0s .25s;
-  --w-fill: #fff;
-}
-.nw-card[hidden] { display: none; }
-.nw-card::before { content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 14px; } /* hover bridge */
-.nav-widget:hover .nw-card, .nav-widget:focus-visible .nw-card { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
-.nw-city { font-size: 13px; color: var(--muted); }
-.nw-big { display: flex; align-items: center; gap: 8px; margin-top: 8px; font-size: 32px; font-weight: 400; letter-spacing: -.5px; }
-.nw-big svg { color: var(--fg); }
-.nw-cond { margin-top: 8px; font-size: 14px; }
-.nw-range { display: flex; gap: 12px; margin-top: 4px; font-size: 13px; color: var(--muted); }
-@media (prefers-reduced-motion: reduce) { .nw-card { transition: none; } }
 @media (max-width: 640px) {
   .site-header { grid-template-columns: auto 1fr; }
   .clock, .nav-widget { display: none; }
