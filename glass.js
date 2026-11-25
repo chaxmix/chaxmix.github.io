@@ -77,6 +77,7 @@
         links.forEach(function (a) { glass.element.appendChild(a); });
         pill.appendChild(glass.element);
         glass.updateSizeFromDOM();
+        if (window.placeNavBubble) requestAnimationFrame(window.placeNavBubble);
         // Swap off the CSS glass once the page snapshot is ready. If the snapshot
         // fails (html2canvas can't read some modern CSS), put the links back and
         // keep the CSS glass so nothing looks broken.
@@ -85,6 +86,7 @@
           if (Container.pageSnapshot && glass.webglInitialized === true) { pill.classList.add('is-liquid'); watchLayout(glass); return; }
           if (++tries < 80) { setTimeout(wait, 100); return; }
           links.forEach(function (a) { pill.appendChild(a); });
+          if (window.placeNavBubble) window.placeNavBubble();
           if (glass.element.parentNode) glass.element.parentNode.removeChild(glass.element);
           pill.classList.remove('is-liquid');
         })();

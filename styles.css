@@ -121,23 +121,32 @@ html.hide-ph .ph-banner { display: none; }
   display: flex; align-items: center; gap: 4px; height: calc(2 * var(--u)); padding: 3px; border-radius: 999px;
   background: var(--glass-bg); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
   -webkit-backdrop-filter: blur(18px) saturate(180%); backdrop-filter: blur(18px) saturate(180%);
-  isolation: isolate;
+  isolation: isolate; position: relative;
+  transition: background-color .45s ease, border-color .45s ease, box-shadow .45s ease;
 }
 .nav-pill a {
   display: grid; place-items: center; height: 40px; padding: 0 18px; border-radius: 999px; font-size: 14px; font-weight: 500;
   text-decoration: none; color: var(--muted); transition: color .2s, background .2s;
 }
 .nav-pill a:hover { color: var(--fg); }
-.nav-pill a[aria-current="page"] { color: var(--fg); background: rgba(255,255,255,.92); box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+.nav-pill a[aria-current="page"] { color: var(--fg); }
+/* Fallback when the bubble script didn't run */
+.nav-pill:not(.has-bubble) a[aria-current="page"] { background: rgba(255,255,255,.92); box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+.nav-pill a { position: relative; z-index: 1; }
+.nav-bubble { position: absolute; z-index: 0; border-radius: 999px; background: rgba(255,255,255,.92); box-shadow: 0 1px 2px rgba(0,0,0,.06); pointer-events: none; view-transition-name: nav-bubble; }
+.nav-pill a[href$="index.html"] { view-transition-name: nav-work; }
+.nav-pill a[href$="about.html"] { view-transition-name: nav-about; }
+.nav-pill a[href$="play.html"] { view-transition-name: nav-play; }
 .clock { justify-self: end; font: 500 13px/1 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
 /* When liquid glass is running, the WebGL layer replaces the CSS glass. */
 .nav-pill.is-liquid { background: transparent; border: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 0; }
 .nav-pill .glass-container { position: relative; display: flex; align-items: center; gap: 4px; padding: 4px; isolation: isolate; border-radius: 999px; }
-.nav-pill .glass-container canvas { pointer-events: none; }
+/* The library draws its own dark shadow on the canvas; hide the canvas until it is ready, then crossfade from the CSS glass */
+.nav-pill .glass-container canvas { pointer-events: none; box-shadow: none !important; opacity: 0; transition: opacity .45s ease; }
 /* Page snapshot for the glass: show everything, and leave the nav out of it */
 .glass-snapshot .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
 .glass-snapshot .nav-pill { visibility: hidden !important; }
-.nav-pill.is-liquid canvas { box-shadow: 0 10px 30px rgba(20,24,40,.14) !important; }
+.nav-pill.is-liquid canvas { opacity: 1; box-shadow: 0 10px 30px rgba(20,24,40,.10) !important; }
 @media (max-width: 640px) {
   .site-header { grid-template-columns: auto 1fr; }
   .clock { display: none; }
@@ -316,4 +325,26 @@ blockquote { margin: 0; padding-left: 20px; border-left: 2px solid var(--accent)
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .js .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- Page transitions ---------- */
+/* Cross-document view transitions (Chrome, Edge, Safari 18.2+): the header stays
+   put, the nav bubble slides to the new tab, and the page crossfades. */
+@view-transition { navigation: auto; }
+.site-header { view-transition-name: site-header; }
+::view-transition-group(nav-bubble) { animation-duration: .5s; animation-timing-function: cubic-bezier(.3,.8,.25,1); }
+::view-transition-group(site-header), ::view-transition-old(site-header), ::view-transition-new(site-header) { animation: none; }
+::view-transition-old(root) { animation: vt-out .2s ease both; }
+::view-transition-new(root) { animation: vt-in .3s ease both; }
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; } }
+/* Page content floats up from the bottom on load. Sections with their own
+   scroll-reveal cards are left to those. */
+@keyframes float-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+main > *:not(:has(.reveal)) { animation: float-in .7s cubic-bezier(.2,.8,.2,1) both; }
+main > *:nth-child(2) { animation-delay: .08s; }
+main > *:nth-child(3) { animation-delay: .16s; }
+main > *:nth-child(n+4) { animation-delay: .24s; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
 }

@@ -1,5 +1,33 @@
 // Small helpers for the portfolio. No libraries needed.
 
+// 0. Nav bubble: one white pill behind the current tab. It is its own element
+//    (view-transition-name: nav-bubble), so when you move between pages,
+//    browsers with cross-document view transitions slide it from the old tab
+//    to the new one. Without that support the page just switches as normal.
+(function () {
+  var pill = document.querySelector('.nav-pill');
+  if (!pill) return;
+  var bubble = document.createElement('span');
+  bubble.className = 'nav-bubble';
+  bubble.setAttribute('aria-hidden', 'true');
+  function place() {
+    var cur = pill.querySelector('a[aria-current="page"]');
+    if (!cur) { bubble.style.display = 'none'; return; }
+    var host = cur.parentNode;
+    if (bubble.parentNode !== host) host.insertBefore(bubble, host.firstChild);
+    bubble.style.display = '';
+    bubble.style.left = cur.offsetLeft + 'px';
+    bubble.style.top = cur.offsetTop + 'px';
+    bubble.style.width = cur.offsetWidth + 'px';
+    bubble.style.height = cur.offsetHeight + 'px';
+  }
+  place();
+  pill.classList.add('has-bubble');
+  window.placeNavBubble = place;
+  window.addEventListener('resize', place);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+})();
+
 // 1. Placeholder highlight toggle. Placeholder copy is wrapped in
 //    <span class="ph">…</span>. Delete the banner when you're done.
 (function () {
