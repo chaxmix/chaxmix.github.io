@@ -108,10 +108,10 @@ html.hide-ph .ph-banner { display: none; }
 main { padding-block: 32px 96px; }
 
 /* ---------- Home hero ---------- */
-.hero { display: flex; justify-content: space-between; align-items: center; gap: 40px; flex-wrap: wrap; padding-block: 40px 40px; }
+.hero { display: flex; justify-content: space-between; align-items: center; gap: 40px; flex-wrap: wrap; padding-block: 72px 56px; }
 .hero-text { display: grid; gap: 10px; flex: 1 1 360px; min-width: 0; }
-.hero-text h1 { font-size: 40px; letter-spacing: -0.03em; line-height: 1.1; }
-.hero-text p { font-size: 17px; line-height: 1.5; color: var(--muted); }
+.hero-text h1 { font-size: 40px; letter-spacing: -1px; line-height: 1.1; font-weight: 400; }
+.hero-text p { font-size: 17px; line-height: 1.5; color: #9aa3b8; }
 .hero-text strong { color: var(--fg); font-weight: 500; }
 .hero-object { position: relative; width: 300px; height: 280px; flex: none; }
 .hero-object .glow { position: absolute; border-radius: 50%; filter: blur(50px); opacity: .7; }

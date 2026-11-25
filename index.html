@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap">
-  <link rel="stylesheet" href="styles.css?v=202611250225">
+  <link rel="stylesheet" href="styles.css?v=202611251828">
 </head>
 <body>
 
@@ -31,12 +31,7 @@
     <div class="hero-text">
       <h1 id="intro">tiffany chang</h1>
       <p><span class="ph">Designing products and systems that feel considered.</span></p>
-      <p><span class="ph">Currently at <strong>Company</strong>. Previously Company &amp; Company.</span></p>
-    </div>
-    <!-- HERO OBJECT: swap this sketchbook for your own 3D or drawn piece. Keep it uncontained. -->
-    <div class="hero-object" aria-hidden="true">
-      <span class="glow a"></span><span class="glow b"></span>
-      <div class="sketchbook"><div class="page">[your 3D or drawn object]</div></div>
+      <p>Currently: product design @RealInsight</p>
     </div>
   </section>
 
@@ -44,8 +39,7 @@
        Each cover is a placeholder made in CSS. Replace the inner markup with a looping
        <video autoplay muted loop playsinline> (e.g. a ShaderGradient export) or an image.
        data-case/data-locked are managed by tools/lock.mjs for password-protected work. -->
-  <section id="work" aria-labelledby="work-title">
-    <div class="section-head"><h2 id="work-title">Selected work</h2><span class="mono" style="font-size:12px; color:var(--muted)">2021 – 2025</span></div>
+  <section id="work" aria-label="Selected work">
     <div class="work-grid">
       <a class="card reveal" href="work/case-study.html">
         <div class="cover" style="--c-bg:#e3e8ff; --c-1:#9aa8ff; --c-2:#c6f0ff">
@@ -57,7 +51,15 @@
         </div>
         <div class="card-meta">
           <div><h3><span class="ph">Redesigning onboarding for a payments dashboard</span></h3><p><span class="ph">Cut time to first payment from 3 days to 40 minutes.</span></p></div>
-          <span class="num">01</span>
+        </div>
+      </a>
+      <a class="card reveal" href="work/case-study.html">
+        <div class="cover" style="--c-bg:#ffe9de; --c-1:#ffc2a6; --c-2:#ffe7a3">
+          <span class="blob one"></span><span class="blob two"></span>
+          <div class="phone" aria-hidden="true"><div class="screen"><span class="bar dark" style="width:40%"></span><div class="row"><span></span><span></span></div><span class="bar" style="width:80%; height:6px; background:#f0f0f3"></span><span class="bar" style="width:60%; height:6px; background:#f0f0f3"></span></div></div>
+        </div>
+        <div class="card-meta">
+          <div><h3><span class="ph">A medication tracker people keep using</span></h3><p><span class="ph">Raised 30-day retention from 18% to 41%.</span></p></div>
         </div>
       </a>
       <a class="card reveal" href="work/nda-case-study.html" data-case="nda-case-study" data-locked="true">
@@ -68,17 +70,6 @@
         </div>
         <div class="card-meta">
           <div><h3><span class="ph">Confidential: internal tools for a large retailer</span></h3><p><span class="ph">Details behind the password.</span></p></div>
-          <span class="num">02</span>
-        </div>
-      </a>
-      <a class="card reveal" href="work/case-study.html">
-        <div class="cover" style="--c-bg:#ffe9de; --c-1:#ffc2a6; --c-2:#ffe7a3">
-          <span class="blob one"></span><span class="blob two"></span>
-          <div class="phone" aria-hidden="true"><div class="screen"><span class="bar dark" style="width:40%"></span><div class="row"><span></span><span></span></div><span class="bar" style="width:80%; height:6px; background:#f0f0f3"></span><span class="bar" style="width:60%; height:6px; background:#f0f0f3"></span></div></div>
-        </div>
-        <div class="card-meta">
-          <div><h3><span class="ph">A medication tracker people keep using</span></h3><p><span class="ph">Raised 30-day retention from 18% to 41%.</span></p></div>
-          <span class="num">03</span>
         </div>
       </a>
       <a class="card reveal" href="work/case-study.html">
@@ -88,7 +79,6 @@
         </div>
         <div class="card-meta">
           <div><h3><span class="ph">Analytics that answer the next question</span></h3><p><span class="ph">Made weekly reporting self-serve for 300 teams.</span></p></div>
-          <span class="num">04</span>
         </div>
       </a>
     </div>
