@@ -1,7 +1,7 @@
 // Design system cover, camera version, built from RealInsight's real components (fake data).
 // A tiny timeline engine with spring easing drives a camera through a CSS 3D
-// scene: tokens up close -> they snap into a button -> components assemble into
-// a form card -> the full page builds around it -> it all funnels into the logo.
+// scene: tokens up close -> they snap into a button -> redlines measure it ->
+// components drop into the Invoicing page around it -> it all funnels into the logo.
 // Pauses off screen; shows a still frame for people who prefer reduced motion.
 (function () {
   var hosts = document.querySelectorAll('[data-ds-motion]');
@@ -54,7 +54,7 @@
 
   var S = [
     // tokens
-    ['tkc', 'dm-tk dm-tk-c dm-btn', '', { x: 338, y: 180, w: 56, h: 56, r: 14, s: 0 }, [[0.25, .9, { o: 1, s: 1 }, 'sp'], [2.1, 1, { w: 150, h: 40, r: 10 }, 'sp'], [3.0, .16, { s: .92 }, 'io'], [3.16, .7, { s: 1 }, 'sp'], [5.85, 1.1, { x: 391, y: 268, w: 130, h: 36 }, 'sp']]],
+    ['tkc', 'dm-tk dm-tk-c dm-btn', '', { x: 338, y: 180, w: 56, h: 56, r: 14, s: 0 }, [[0.25, .9, { o: 1, s: 1 }, 'sp'], [2.1, 1, { w: 120, h: 40, r: 10 }, 'sp'], [4.55, .16, { s: .92 }, 'io'], [4.71, .6, { s: 1 }, 'sp'], [5.0, 1.2, { x: 391, y: 268, w: 130, h: 36 }, 'sp']]],
     ['lc', 'dm-lbl', '<b>Brand Blue/500</b>#1F8ACA', { x: 338, y: 236, w: 150, h: 26 }, [[0.6, .6, { o: 1, y: 228 }, 'sf'], [1.25, .3, { o: 0, y: 220 }, 'io']]],
     ['lc2', 'dm-lbl', '<b>background/brand/bold</b>semantic token', { x: 338, y: 238, w: 170, h: 26 }, [[1.35, .6, { o: 1, y: 228 }, 'sf'], [1.9, .25, { o: 0 }, 'io']]],
     ['tka', 'dm-tk dm-tk-a', 'Aa', { x: 232, y: 150, w: 56, h: 56, s: 0 }, [[0.85, .9, { o: 1, s: 1 }, 'sp'], [2.0, .55, { x: 338, y: 180, s: .3, o: 0 }, 'io']]],
@@ -63,28 +63,43 @@
     ['lr', 'dm-lbl', '<b>radius/lg</b>10px', { x: 444, y: 200, w: 100, h: 26 }, [[1.3, .6, { o: 1, y: 194 }, 'sf'], [1.9, .25, { o: 0 }, 'io']]],
     ['tks', 'dm-tk dm-tk-s', '<i style="height:6px"></i><i style="height:12px"></i><i style="height:18px"></i><i style="height:26px"></i>', { x: 338, y: 96, w: 56, h: 50, s: 0 }, [[1.4, .9, { o: 1, s: 1 }, 'sp'], [2.05, .55, { y: 170, s: .3, o: 0 }, 'io']]],
     ['ls', 'dm-lbl', '<b>space/lg</b>16px', { x: 338, y: 58, w: 100, h: 26 }, [[1.55, .6, { o: 1, y: 54 }, 'sf'], [1.9, .25, { o: 0 }, 'io']]],
-    ['btl', 'dm-btl', 'Post invoices', { x: 338, y: 180, z: 1, w: 130, h: 40, s: .6 }, [[2.45, .6, { o: 1, s: 1 }, 'sp'], [3.0, .16, { s: .92 }, 'io'], [3.16, .7, { s: 1 }, 'sp'], [5.85, 1.1, { x: 391, y: 268, h: 36 }, 'sp']]],
-    // component sheet: it becomes the table card on the page
-    ['fc', 'dm-card', '', { x: 338, y: 60, z: -1, w: 280, h: 300, s: .8 }, [[3.4, 1, { o: 1, s: 1 }, 'sp'], [5.3, 1.2, { x: 95, y: 61, z: -2, w: 722, h: 338 }, 'sp']]],
-    ['tbl', 'dm-tbl', table, { x: 95, y: 61, z: -1, w: 722, h: 338 }, [[5.95, .5, { o: 1 }, 'out']]],
-    ['ft', 'dm-ttl', 'Components', { x: 280, y: -60, z: 1, w: 140, h: 24 }, [[3.6, .8, { o: 1, y: -66 }, 'sp'], [5.25, .35, { o: 0, y: -80 }, 'io']]],
-    ['pt', 'dm-ttl dm-big', 'Invoicing', { x: -206, y: -214, z: 1, w: 120, h: 28 }, [[5.5, .8, { o: 1, y: -222 }, 'sp']]],
-    ['fi', 'dm-inp', 'Search invoices', { x: 338, y: -20, z: 1, w: 232, h: 34, s: .85 }, [[3.7, .9, { o: 1, s: 1 }, 'sp'], [5.45, 1.1, { x: -116, y: -134, w: 300 }, 'sp']]],
-    ['fcp', 'dm-chip', 'Due this month <i>×</i>', { x: 286, y: 24, z: 1, w: 124, h: 26, s: .5 }, [[3.8, .9, { o: 1, s: 1 }, 'sp'], [5.55, 1.1, { x: 104, y: -134 }, 'sp']]],
-    ['fg', 'dm-tgl', '', { x: 424, y: 24, z: 1, w: 36, h: 20, s: .5 }, [[3.9, .9, { o: 1, s: 1 }, 'sp'], [5.65, 1.1, { x: 236, y: -134 }, 'sp']]],
-    ['fgl', 'dm-tlbl', 'Auto-post', { x: 300, y: -134, z: 1, w: 64, h: 20 }, [[6.0, .6, { o: 1 }, 'out']]],
-    ['ff', 'dm-ghost', 'Filter', { x: 420, y: -134, z: 1, w: 72, h: 32, s: .5 }, [[5.9, .8, { o: 1, s: 1 }, 'sp']]],
-    ['tab', 'dm-tabs', '<b class="dm-on">All <i>24</i></b><b>For review <i>6</i></b><b>Outstanding <i>5</i></b><b>Late <i>3</i></b>', { x: -76, y: -178, z: 1, w: 380, h: 30, s: .6 }, [[5.6, .9, { o: 1, s: 1 }, 'sp']]],
-    ['b1', 'dm-bdg dm-rev', 'For review', { x: 261, y: 62, z: 1, w: 78, h: 22, s: .4 }, [[4.0, .9, { o: 1, s: 1 }, 'sp'], [5.7, 1.1, { x: 151, y: -52 }, 'sp']]],
-    ['b2', 'dm-bdg dm-out', 'Outstanding', { x: 351, y: 62, z: 1, w: 90, h: 22, s: .4 }, [[4.05, .9, { o: 1, s: 1 }, 'sp'], [5.78, 1.1, { x: 157, y: -12 }, 'sp']]],
-    ['b3', 'dm-bdg dm-late', 'Late', { x: 246, y: 94, z: 1, w: 48, h: 22, s: .4 }, [[4.1, .9, { o: 1, s: 1 }, 'sp'], [5.86, 1.1, { x: 136, y: 28 }, 'sp']]],
-    ['b4', 'dm-bdg dm-pd', 'Paid', { x: 300, y: 94, z: 1, w: 48, h: 22, s: .4 }, [[4.15, .9, { o: 1, s: 1 }, 'sp'], [5.94, 1.1, { x: 136, y: 68 }, 'sp']]],
-    ['fk', 'dm-chk', CHECK, { x: 346, y: 94, z: 1, w: 18, h: 18, s: .4 }, [[4.2, .9, { o: 1, s: 1 }, 'sp'], [6.0, 1.1, { x: -241, y: -52 }, 'sp']]],
+    ['btl', 'dm-btl', 'Post invoices', { x: 338, y: 180, z: 1, w: 120, h: 40, s: .6 }, [[2.45, .6, { o: 1, s: 1 }, 'sp'], [4.55, .16, { s: .92 }, 'io'], [4.71, .6, { s: 1 }, 'sp'], [5.0, 1.2, { x: 391, y: 268, w: 130, h: 36 }, 'sp']]],
+    // redlines: guides draw over the button to measure alignment and spacing (button 278..398 x 160..200)
+    ['g1', 'dm-g', '', { x: 338, y: 160, z: 2, w: 0, h: 1 }, [[3.05, .5, { o: 1, w: 300 }, 'out'], [4.35, .3, { o: 0 }, 'io']]],
+    ['g2', 'dm-g', '', { x: 338, y: 200, z: 2, w: 0, h: 1 }, [[3.12, .5, { o: 1, w: 300 }, 'out'], [4.35, .3, { o: 0 }, 'io']]],
+    ['g3', 'dm-g dm-v', '', { x: 278, y: 180, z: 2, w: 1, h: 0 }, [[3.2, .5, { o: 1, h: 150 }, 'out'], [4.35, .3, { o: 0 }, 'io']]],
+    ['g4', 'dm-g dm-v', '', { x: 398, y: 180, z: 2, w: 1, h: 0 }, [[3.27, .5, { o: 1, h: 150 }, 'out'], [4.35, .3, { o: 0 }, 'io']]],
+    ['g5', 'dm-g dm-v dm-soft', '', { x: 294, y: 180, z: 2, w: 1, h: 0 }, [[3.4, .4, { o: 1, h: 40 }, 'out'], [4.35, .3, { o: 0 }, 'io']]],
+    ['g6', 'dm-g dm-v dm-soft', '', { x: 382, y: 180, z: 2, w: 1, h: 0 }, [[3.45, .4, { o: 1, h: 40 }, 'out'], [4.35, .3, { o: 0 }, 'io']]],
+    ['g7', 'dm-g dm-soft', '', { x: 338, y: 180, z: 2, w: 0, h: 1 }, [[3.5, .4, { o: 1, w: 120 }, 'out'], [4.35, .3, { o: 0 }, 'io']]],
+    ['d1', 'dm-d', '', { x: 286, y: 214, z: 2, w: 0, h: 7 }, [[3.55, .35, { o: 1, w: 16 }, 'out'], [4.35, .3, { o: 0 }, 'io']]],
+    ['d2', 'dm-d', '', { x: 390, y: 214, z: 2, w: 0, h: 7 }, [[3.6, .35, { o: 1, w: 16 }, 'out'], [4.35, .3, { o: 0 }, 'io']]],
+    ['d3', 'dm-d dm-v', '', { x: 416, y: 180, z: 2, w: 7, h: 0 }, [[3.65, .35, { o: 1, h: 40 }, 'out'], [4.35, .3, { o: 0 }, 'io']]],
+    ['m1', 'dm-m', '16', { x: 286, y: 230, z: 3, w: 22, h: 14, s: 0 }, [[3.75, .6, { o: 1, s: 1 }, 'sp'], [4.35, .3, { o: 0 }, 'io']]],
+    ['m2', 'dm-m', '16', { x: 390, y: 230, z: 3, w: 22, h: 14, s: 0 }, [[3.8, .6, { o: 1, s: 1 }, 'sp'], [4.35, .3, { o: 0 }, 'io']]],
+    ['m3', 'dm-m', '40', { x: 434, y: 180, z: 3, w: 22, h: 14, s: 0 }, [[3.85, .6, { o: 1, s: 1 }, 'sp'], [4.35, .3, { o: 0 }, 'io']]],
+    ['m4', 'dm-m', 'r 10', { x: 270, y: 146, z: 3, w: 30, h: 14, s: 0 }, [[3.9, .6, { o: 1, s: 1 }, 'sp'], [4.35, .3, { o: 0 }, 'io']]],
+    ['m5', 'dm-m', '120', { x: 338, y: 146, z: 3, w: 28, h: 14, s: 0 }, [[3.95, .6, { o: 1, s: 1 }, 'sp'], [4.35, .3, { o: 0 }, 'io']]],
+    // the Invoicing page: components drop straight into place
+    ['fc', 'dm-card', '', { x: 95, y: 61, z: -2, w: 722, h: 338, s: .85 }, [[5.2, 1, { o: 1, s: 1 }, 'sp']]],
+    ['tbl', 'dm-tbl', table, { x: 95, y: 61, z: -1, w: 722, h: 338 }, [[5.55, .5, { o: 1 }, 'out']]],
+    ['pt', 'dm-ttl dm-big', 'Invoicing', { x: -206, y: -214, z: 1, w: 120, h: 28 }, [[5.3, .8, { o: 1, y: -222 }, 'sp']]],
+    ['tab', 'dm-tabs', '<b class="dm-on">All <i>24</i></b><b>For review <i>6</i></b><b>Outstanding <i>5</i></b><b>Late <i>3</i></b>', { x: -76, y: -178, z: 90, w: 380, h: 30, s: .6 }, [[5.4, .9, { o: 1, s: 1, z: 1 }, 'sp']]],
+    ['fi', 'dm-inp', 'Search invoices', { x: -116, y: -134, z: 90, w: 300, h: 34, s: .6 }, [[5.45, .9, { o: 1, s: 1, z: 1 }, 'sp']]],
+    ['fcp', 'dm-chip', 'Due this month <i>×</i>', { x: 104, y: -134, z: 90, w: 124, h: 26, s: .5 }, [[5.52, .9, { o: 1, s: 1, z: 1 }, 'sp']]],
+    ['fg', 'dm-tgl', '', { x: 236, y: -134, z: 90, w: 36, h: 20, s: .5 }, [[5.58, .9, { o: 1, s: 1, z: 1 }, 'sp']]],
+    ['fgl', 'dm-tlbl', 'Auto-post', { x: 300, y: -134, z: 1, w: 64, h: 20 }, [[5.8, .6, { o: 1 }, 'out']]],
+    ['ff', 'dm-ghost', 'Filter', { x: 420, y: -134, z: 90, w: 72, h: 32, s: .5 }, [[5.64, .9, { o: 1, s: 1, z: 1 }, 'sp']]],
+    ['b1', 'dm-bdg dm-rev', 'For review', { x: 151, y: -52, z: 120, w: 78, h: 22, s: .4 }, [[5.7, .9, { o: 1, s: 1, z: 1 }, 'sp']]],
+    ['b2', 'dm-bdg dm-out', 'Outstanding', { x: 157, y: -12, z: 120, w: 90, h: 22, s: .4 }, [[5.77, .9, { o: 1, s: 1, z: 1 }, 'sp']]],
+    ['b3', 'dm-bdg dm-late', 'Late', { x: 136, y: 28, z: 120, w: 48, h: 22, s: .4 }, [[5.84, .9, { o: 1, s: 1, z: 1 }, 'sp']]],
+    ['b4', 'dm-bdg dm-pd', 'Paid', { x: 136, y: 68, z: 120, w: 48, h: 22, s: .4 }, [[5.91, .9, { o: 1, s: 1, z: 1 }, 'sp']]],
+    ['fk', 'dm-chk', CHECK, { x: -241, y: -52, z: 120, w: 18, h: 18, s: .4 }, [[5.98, .9, { o: 1, s: 1, z: 1 }, 'sp']]],
     // the rest of the page
-    ['fr', 'dm-frame', '', { x: 0, y: 0, z: -3, w: 960, h: 600, s: .9 }, [[5.0, 1, { o: 1, s: 1 }, 'sf']]],
-    ['sd', 'dm-side', side, { x: -560, y: 24, z: -2, w: 190, h: 552 }, [[5.15, 1.1, { o: 1, x: -385 }, 'sp']]],
-    ['tp', 'dm-top', top, { x: 0, y: -340, z: -2, w: 960, h: 48 }, [[5.25, 1.1, { o: 1, y: -276 }, 'sp']]],
-    ['fx', 'dm-txt', 'Clear', { x: 296, y: 268, z: 1, w: 48, h: 36 }, [[6.2, .6, { o: 1 }, 'out']]],
+    ['fr', 'dm-frame', '', { x: 0, y: 0, z: -3, w: 960, h: 600, s: .9 }, [[4.75, 1, { o: 1, s: 1 }, 'sf']]],
+    ['sd', 'dm-side', side, { x: -560, y: 24, z: -2, w: 190, h: 552 }, [[4.9, 1.1, { o: 1, x: -385 }, 'sp']]],
+    ['tp', 'dm-top', top, { x: 0, y: -340, z: -2, w: 960, h: 48 }, [[5.0, 1.1, { o: 1, y: -276 }, 'sp']]],
+    ['fx', 'dm-txt', 'Clear', { x: 296, y: 268, z: 1, w: 48, h: 36 }, [[6.0, .6, { o: 1 }, 'out']]],
     // logo
     ['mk', 'dm-mark', R_GLYPH, { x: -110, y: 0, w: 88, h: 88, s: 0, rz: -40 }, [[8.6, 1, { o: 1, s: 1, rz: 0 }, 'sp'], [10.5, .45, { o: 0, s: .9 }, 'io']]],
     ['wd', 'dm-word', 'RealInsight', { x: 90, y: 0, w: 236, h: 44 }, [[8.85, .9, { o: 1, x: 62 }, 'sf'], [10.5, .45, { o: 0 }, 'io']]]
@@ -100,8 +115,8 @@
   var CAM = [
     [0.7, 1.5, { z: 1.5, cy: 142, rx: 16, ry: -18 }, 'sf'],
     [2.0, 1.1, { z: 2.4, cy: 178, rx: 6, ry: 14 }, 'sf'],
-    [3.3, 1.4, { z: .95, cx: 338, cy: 60, rx: 28, ry: 0, rz: -10 }, 'sf'],
-    [5.0, 1.7, { z: .5, cx: 40, cy: 0, rx: 48, rz: -28 }, 'sf'],
+    [2.95, 1.0, { z: 1.85, cx: 345, cy: 186, rx: 0, ry: 0, rz: 0 }, 'sf'],   // flat, head-on for the redlines
+    [4.6, 1.8, { z: .5, cx: 40, cy: 0, rx: 48, rz: -28 }, 'sf'],
     [6.75, 1.3, { z: .5, cx: 30, cy: 10, rx: 18, rz: -7 }, 'sf'],
     [8.0, 1, { z: 1, cx: 0, cy: 0, rx: 0, ry: 0, rz: 0 }, 'io']
   ];
