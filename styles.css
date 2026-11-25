@@ -149,19 +149,17 @@ html.hide-ph .ph-banner { display: none; }
 .live-glass { background: linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,.22)); }
 .nw-card.live-glass { background: linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.42)); }
 
-/* Time and weather widget: same glass capsule as the nav pill. Weather is the
+/* Time and weather widget: plain text on the grid (no capsule). Weather is the
    visitor's, from their time zone's city (weather.js). Hover or focus opens a
    small glass card with the details. */
 .nav-widget {
   justify-self: end; position: relative;
   display: flex; align-items: center; gap: 12px;
-  height: calc(2 * var(--u)); padding: 0 20px; border-radius: 999px;
-  background: var(--glass-bg); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
-  -webkit-backdrop-filter: blur(18px) saturate(180%); backdrop-filter: blur(18px) saturate(180%);
+  height: calc(2 * var(--u)); border-radius: 999px;   /* no capsule: just text, so the nav stays balanced */
   font-size: 14px; font-weight: 500; line-height: 1; color: var(--fg); font-variant-numeric: tabular-nums;
   cursor: default; outline: none;
 }
-.nav-widget:focus-visible { box-shadow: var(--glass-shadow), 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
+.nav-widget:focus-visible { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
 .nw-weather { display: flex; align-items: center; gap: 6px; --w-fill: #fff; }
 .nw-weather svg { color: var(--muted); }
 .nw-weather[hidden] { display: none; }

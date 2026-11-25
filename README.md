@@ -17,7 +17,7 @@ Personal product design portfolio. Plain HTML and CSS, no build step, hosted on 
 - Case study covers are CSS placeholders with moving color blobs. Replace a cover's inner markup with a looping `<video autoplay muted loop playsinline>` (for example a gradient exported from ShaderGradient's Figma plugin) or an image.
 - The hero object (`.hero-object`) is a placeholder sketchbook. Swap in your own 3D or drawn piece and keep it uncontained.
 - The time and weather widget (top right) shows the visitor's local time and weather for their time zone's city, from Open-Meteo (no key, no location prompt). See `weather.js`.
-- The nav pill and widget get live liquid-glass refraction in Chromium browsers (Chrome, Edge, Arc) via `glass.js`, an SVG displacement filter used as a `backdrop-filter`. It refracts whatever scrolls under it with no snapshot, so nothing swaps in after page load. Safari and Firefox get CSS frosted glass.
+- The nav pill and the weather hover card get live liquid-glass refraction in Chromium browsers (Chrome, Edge, Arc) via `glass.js`, an SVG displacement filter used as a `backdrop-filter`. It refracts whatever scrolls under it with no snapshot, so nothing swaps in after page load. Safari and Firefox get CSS frosted glass.
 
 ## Previewing locally
 
