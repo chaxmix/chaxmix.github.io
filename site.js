@@ -19,9 +19,9 @@
   var pill = document.querySelector('.nav-pill');
   if (!pill) return;
   var ICONS = {
-    'index.html': '<rect x="4" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.8"/>',
-    'about.html': '<circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c1.2-3.7 3.9-5.6 7-5.6s5.8 1.9 7 5.6"/>',
-    'play.html': '<path d="M11 3.5c.6 4.4 2.2 6 6.5 6.6-4.3.6-5.9 2.2-6.5 6.6-.6-4.4-2.2-6-6.5-6.6 4.3-.6 5.9-2.2 6.5-6.6z"/><path d="M18 15.5c.25 1.7.9 2.35 2.5 2.6-1.6.25-2.25.9-2.5 2.6-.25-1.7-.9-2.35-2.5-2.6 1.6-.25 2.25-.9 2.5-2.6z"/>'
+    'index.html': '<rect x="4" y="4.5" width="16" height="11.5" rx="2"/><path d="M2 19.5h20"/>',
+    'about.html': '<circle cx="12" cy="12" r="8.5"/><path d="M8.8 14.2c.8 1.1 1.9 1.7 3.2 1.7s2.4-.6 3.2-1.7"/><path d="M9.3 9.8h.01M14.7 9.8h.01" stroke-width="2.4"/>',
+    'play.html': '<path d="M19.5 4.5c-3.5 1.2-7.4 4.6-9.6 7.6l2 2c3-2.2 6.4-6.1 7.6-9.6z"/><path d="M9.9 12.1c-2.2-.1-3.7 1.3-3.9 3.4-.1 1.4-.8 2.4-2 3 2.7 1.3 6.4.7 7.8-1.4.8-1.2.5-2.6-.6-3.6"/>'
   };
   pill.querySelectorAll('a').forEach(function (a) {
     var key = (a.getAttribute('href') || '').split('/').pop();
