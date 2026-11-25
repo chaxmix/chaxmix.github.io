@@ -152,30 +152,24 @@ html.hide-ph .ph-banner { display: none; }
    from the old WebGL version so a stale cached stylesheet cannot hide the pill.) */
 .live-glass { background: linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,.22)); }
 
-/* Nav background on scroll (two candidates, chosen with data-navbg on <html>).
-   A full-bleed fixed layer under the header (site.js adds .nav-fill), hidden at
-   the top of the page. It lives outside the header because the header's
-   view-transition-name stops backdrop blur from seeing the page behind it. */
-.nav-fill { position: fixed; top: 0; left: 0; right: 0; z-index: 9; pointer-events: none; opacity: 0; transition: opacity .3s ease; height: calc(5 * var(--u)); }
-.nav-fill::before { content: ""; position: absolute; inset: 0; }
-html.is-scrolled[data-navbg] .nav-fill { opacity: 1; }
-/* 1 · Progressive blur: strong blur at the top that melts away, no edge. */
-html[data-navbg="1"] .nav-fill {
+/* Nav background on scroll: a progressive blur. Strong blur at the very top
+   that melts away below the nav, with no edge, so the nav stays readable over
+   covers. Hidden at the top of the page. It is a fixed layer outside the header
+   (site.js adds .nav-fill) because the header's view-transition-name stops
+   backdrop blur from seeing the page behind it. */
+.nav-fill {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9; height: calc(5 * var(--u));
+  pointer-events: none; opacity: 0; transition: opacity .3s ease;
   background: linear-gradient(color-mix(in srgb, var(--bg) 70%, transparent), color-mix(in srgb, var(--bg) 35%, transparent) 55%, transparent);
   -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
   -webkit-mask-image: linear-gradient(#000 45%, transparent); mask-image: linear-gradient(#000 45%, transparent);
 }
-html[data-navbg="1"] .nav-fill::before {
+.nav-fill::before {
+  content: ""; position: absolute; inset: 0;
   -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
   -webkit-mask-image: linear-gradient(#000 30%, transparent 75%); mask-image: linear-gradient(#000 30%, transparent 75%);
 }
-/* 2 · Frosted bar with a soft fade: tinted blur, bottom edge feathered. */
-html[data-navbg="2"] .nav-fill {
-  height: calc(4 * var(--u) + 12px);
-  background: color-mix(in srgb, var(--bg) 72%, transparent);
-  -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%);
-  -webkit-mask-image: linear-gradient(#000 calc(100% - 24px), transparent); mask-image: linear-gradient(#000 calc(100% - 24px), transparent);
-}
+html.is-scrolled .nav-fill { opacity: 1; }
 
 /* Time and weather widget: plain text on the grid (no capsule). Weather is the
    visitor's, from their time zone's city (weather.js). */

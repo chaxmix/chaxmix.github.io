@@ -1,11 +1,9 @@
 // Small helpers for the portfolio. No libraries needed.
 
-// Nav background: fades in once the page scrolls, so the nav stays readable
-// over covers. ?navbg=1 or ?navbg=2 previews a style (temporary, for choosing).
+// Nav background: a progressive blur that fades in once the page scrolls, so
+// the nav stays readable over covers.
 (function () {
   var root = document.documentElement;
-  var m = /[?&]navbg=(\w+)/.exec(location.search);
-  if (m) root.setAttribute('data-navbg', m[1]);
   var fill = document.createElement('div');
   fill.className = 'nav-fill'; fill.setAttribute('aria-hidden', 'true');
   document.body.insertBefore(fill, document.body.firstChild);
