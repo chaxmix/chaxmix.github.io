@@ -97,6 +97,13 @@
 .dsm .dm-num16 { display: grid; place-items: center; color: var(--rt-redline); font: 700 12px/1 "DM Sans", sans-serif; white-space: nowrap; }
 
 /* Generic card bits */
+.dsm .dm-theme { border-radius: 99px; background: var(--rt-neutral-subtle); box-shadow: 0 0 0 1px var(--rt-border) inset; display: flex; align-items: center; justify-content: space-around; color: var(--rt-text-muted); }
+.dsm .dm-theme svg { position: relative; z-index: 1; width: 16px; height: 16px; }
+.dsm .dm-knob { position: absolute; left: 3px; top: 3px; width: 36px; height: 26px; border-radius: 99px; background: var(--rt-raised); box-shadow: 0 0 0 1px var(--rt-border), 0 2px 6px rgba(0,0,0,.2); transition: transform .5s cubic-bezier(.3,1.6,.45,1), background-color .5s ease; }
+.dsm.is-dark .dm-knob { transform: translateX(38px); }
+.dsm .dm-sun { color: var(--rt-text); }
+.dsm.is-dark .dm-sun { color: var(--rt-text-mutest); }
+.dsm.is-dark .dm-moon { color: var(--rt-text); }
 .dsm .dm-tgl { border-radius: 99px; background: var(--rt-brand); }
 .dsm .dm-tgl::after { content: ""; position: absolute; right: 2px; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); }
 .dsm .dm-tlbl { display: flex; align-items: center; font-size: 14px; color: var(--rt-text); white-space: nowrap; }

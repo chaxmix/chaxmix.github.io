@@ -7,7 +7,7 @@
   var hosts = document.querySelectorAll('[data-ds-motion]');
   if (!hosts.length) return;
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var LOOP = 11.2;
+  var LOOP = 10.75;
 
   // ---- easing ----
   function spring(z) {
@@ -35,11 +35,14 @@
   var cx = CARD.l + CARD.w / 2, cy = CARD.t + CARD.h / 2, L = CARD.l + 24;
   function row(w, y) { return { x: L + w / 2, y: y, w: w }; }
   var DOWN = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
-  var DROP = function (t) { return [t, .9, { o: 1, s: 1, z: 1 }, 'sp']; };
+  // content rows: start 12px high and invisible, settle into place
+  var IN = function (t) { return [[t, .55, { o: 1, dy: 0 }, 'sf']]; };
+  var SUN = '<svg class="dm-sun" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+  var MOON = '<svg class="dm-moon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>';
   var FADE = function (t) { return [t, .3, { o: 0 }, 'io']; };
   var S = [
     // 1. tokens, gathered around the spot where the button will live
-    ['tkc', 'dm-tk dm-tk-c dm-btn', '', { x: BX, y: BY, z: 1, w: 56, h: 56, r: 14, s: 0 }, [[0.25, .9, { o: 1, s: 1 }, 'sp'], [2.1, 1, { w: 128, h: 32, r: 10 }, 'sp'], [6.2, .16, { s: .93 }, 'io'], [6.36, .6, { s: 1 }, 'sp']]],
+    ['tkc', 'dm-tk dm-tk-c dm-btn', '', { x: BX, y: BY, z: 1, w: 56, h: 56, r: 14, s: 0 }, [[0.25, .9, { o: 1, s: 1 }, 'sp'], [2.1, 1, { w: 128, h: 32, r: 10 }, 'sp']]],
     ['lc', 'dm-lbl', '<b>Brand Blue/500</b>#1F8ACA', { x: BX, y: BY + 56, w: 150, h: 26 }, [[0.6, .6, { o: 1, y: BY + 48 }, 'sf'], [1.25, .3, { o: 0, y: BY + 40 }, 'io']]],
     ['lc2', 'dm-lbl', '<b>background/brand/bold</b>semantic token', { x: BX, y: BY + 58, w: 170, h: 26 }, [[1.35, .6, { o: 1, y: BY + 48 }, 'sf'], [1.9, .25, { o: 0 }, 'io']]],
     ['tka', 'dm-tk dm-tk-a', 'Aa', { x: BX - 106, y: BY - 30, w: 56, h: 56, s: 0 }, [[0.85, .9, { o: 1, s: 1 }, 'sp'], [2.0, .55, { x: BX, y: BY, s: .3, o: 0 }, 'io']]],
@@ -49,53 +52,58 @@
     ['tks', 'dm-tk dm-tk-s', '<i style="height:6px"></i><i style="height:12px"></i><i style="height:18px"></i><i style="height:26px"></i>', { x: BX, y: BY - 84, w: 56, h: 50, s: 0 }, [[1.4, .9, { o: 1, s: 1 }, 'sp'], [2.05, .55, { y: BY - 10, s: .3, o: 0 }, 'io']]],
     ['ls', 'dm-lbl', '<b>space/lg</b>16px', { x: BX, y: BY - 122, w: 100, h: 26 }, [[1.55, .6, { o: 1, y: BY - 126 }, 'sf'], [1.9, .25, { o: 0 }, 'io']]],
     // 2. button label
-    ['btl', 'dm-btl', 'Create invoice', { x: BX, y: BY, z: 2, w: 96, h: 16, s: .6 }, [[2.45, .6, { o: 1, s: 1 }, 'sp'], [6.2, .16, { s: .93 }, 'io'], [6.36, .6, { s: 1 }, 'sp']]],
-    // 3. redlines: just the padding, like a spec sheet. Solid vermilion lines on the button's
-    // edges and padding edges, running a little past it, labelled 16 (sides) and 8 (top, bottom).
-    ['h1', 'dm-gl', '', { x: BX - 4, y: BY - 16, z: 3, w: 0, h: 1 }, [[3.05, .45, { o: 1, w: 184 }, 'out'], FADE(4.3)]],
-    ['h2', 'dm-gl', '', { x: BX - 4, y: BY - 8, z: 3, w: 0, h: 1 }, [[3.1, .45, { o: 1, w: 184 }, 'out'], FADE(4.3)]],
-    ['h3', 'dm-gl', '', { x: BX - 4, y: BY + 8, z: 3, w: 0, h: 1 }, [[3.15, .45, { o: 1, w: 184 }, 'out'], FADE(4.3)]],
-    ['h4', 'dm-gl', '', { x: BX - 4, y: BY + 16, z: 3, w: 0, h: 1 }, [[3.2, .45, { o: 1, w: 184 }, 'out'], FADE(4.3)]],
-    ['v1', 'dm-gl', '', { x: BX - 64, y: BY - 4, z: 3, w: 1, h: 0 }, [[3.25, .45, { o: 1, h: 72 }, 'out'], FADE(4.3)]],
-    ['v2', 'dm-gl', '', { x: BX - 48, y: BY - 4, z: 3, w: 1, h: 0 }, [[3.3, .45, { o: 1, h: 72 }, 'out'], FADE(4.3)]],
-    ['v3', 'dm-gl', '', { x: BX + 48, y: BY - 4, z: 3, w: 1, h: 0 }, [[3.35, .45, { o: 1, h: 72 }, 'out'], FADE(4.3)]],
-    ['v4', 'dm-gl', '', { x: BX + 64, y: BY - 4, z: 3, w: 1, h: 0 }, [[3.4, .45, { o: 1, h: 72 }, 'out'], FADE(4.3)]],
-    ['m1', 'dm-num16', '16', { x: BX - 56, y: BY - 50, z: 4, w: 24, h: 14 }, [[3.55, .4, { o: 1, y: BY - 52 }, 'out'], FADE(4.3)]],
-    ['m2', 'dm-num16', '16', { x: BX + 56, y: BY - 50, z: 4, w: 24, h: 14 }, [[3.6, .4, { o: 1, y: BY - 52 }, 'out'], FADE(4.3)]],
-    ['m3', 'dm-num16', '8', { x: BX - 108, y: BY - 12, z: 4, w: 14, h: 14 }, [[3.65, .4, { o: 1, x: BX - 110 }, 'out'], FADE(4.3)]],
-    ['m4', 'dm-num16', '8', { x: BX - 108, y: BY + 12, z: 4, w: 14, h: 14 }, [[3.7, .4, { o: 1, x: BX - 110 }, 'out'], FADE(4.3)]],
-    // 4. a generic card assembles around the button
-    ['card', 'dm-card', '', { x: cx, y: cy, z: -2, w: CARD.w, h: CARD.h, s: .85 }, [[4.6, 1, { o: 1, s: 1 }, 'sp']]],
-    ['ttl', 'dm-h3', 'New invoice', at(row(200, -262), { z: 90, h: 28, s: .6 }), [DROP(4.8)]],
-    ['sub', 'dm-row', sk(180), at(row(180, -240), { z: 90, h: 8, s: .6 }), [DROP(4.86)]],
-    ['l1', 'dm-row', sk(56, 'dm-sk-strong'), at(row(56, -216), { z: 90, h: 8, s: .6 }), [DROP(4.92)]],
-    ['in1', 'dm-inp', '<span class="dm-pre">$</span>12,400.00', at(row(312, -186), { z: 90, h: 36, s: .6 }), [DROP(4.98)]],
-    ['l2', 'dm-row', sk(64, 'dm-sk-strong'), at(row(64, -152), { z: 90, h: 8, s: .6 }), [DROP(5.04)]],
-    ['in2', 'dm-inp dm-dd', 'Net 30' + DOWN, at(row(312, -122), { z: 90, h: 36, s: .6 }), [DROP(5.1)]],
-    ['tg', 'dm-tgl', '', at(row(36, -76), { z: 90, h: 20, s: .5 }), [DROP(5.16)]],
-    ['tgl', 'dm-tlbl', 'Send to borrower', at({ x: L + 48 + 60, y: -76, w: 120 }, { z: 90, h: 20, s: .6 }), [DROP(5.22)]],
-    ['div', 'dm-div', '', { x: cx, y: -40, z: 1, w: 0, h: 1 }, [[5.3, .5, { o: 1, w: CARD.w }, 'out']]],
-    ['cn', 'dm-ghost', 'Cancel', { x: BX - 112, y: BY, z: 90, w: 80, h: 32, s: .6 }, [DROP(5.36)]],
+    ['btl', 'dm-btl', 'Create invoice', { x: BX, y: BY, z: 2, w: 96, h: 16, s: .6 }, [[2.45, .6, { o: 1, s: 1 }, 'sp']]],
+    // 3. redlines: just the padding, like a spec sheet. Short solid vermilion lines on the button's
+    // edges and padding edges (12px past it), 16 above each side, 8 on both sides so it stays balanced.
+    ['h1', 'dm-gl', '', { x: BX, y: BY + -16, z: 3, w: 0, h: 1 }, [[3.05, .45, { o: 1, w: 152 }, 'out'], FADE(4.3)]],
+    ['h2', 'dm-gl', '', { x: BX, y: BY + -8, z: 3, w: 0, h: 1 }, [[3.10, .45, { o: 1, w: 152 }, 'out'], FADE(4.3)]],
+    ['h3', 'dm-gl', '', { x: BX, y: BY + 8, z: 3, w: 0, h: 1 }, [[3.15, .45, { o: 1, w: 152 }, 'out'], FADE(4.3)]],
+    ['h4', 'dm-gl', '', { x: BX, y: BY + 16, z: 3, w: 0, h: 1 }, [[3.20, .45, { o: 1, w: 152 }, 'out'], FADE(4.3)]],
+    ['v1', 'dm-gl', '', { x: BX + -64, y: BY, z: 3, w: 1, h: 0 }, [[3.25, .45, { o: 1, h: 56 }, 'out'], FADE(4.3)]],
+    ['v2', 'dm-gl', '', { x: BX + -48, y: BY, z: 3, w: 1, h: 0 }, [[3.30, .45, { o: 1, h: 56 }, 'out'], FADE(4.3)]],
+    ['v3', 'dm-gl', '', { x: BX + 48, y: BY, z: 3, w: 1, h: 0 }, [[3.35, .45, { o: 1, h: 56 }, 'out'], FADE(4.3)]],
+    ['v4', 'dm-gl', '', { x: BX + 64, y: BY, z: 3, w: 1, h: 0 }, [[3.40, .45, { o: 1, h: 56 }, 'out'], FADE(4.3)]],
+    ['m1', 'dm-num16', '16', { x: BX + -56, y: BY + -40, z: 4, w: 24, h: 14 }, [[3.55, .4, { o: 1 }, 'out'], FADE(4.3)]],
+    ['m2', 'dm-num16', '16', { x: BX + 56, y: BY + -40, z: 4, w: 24, h: 14 }, [[3.59, .4, { o: 1 }, 'out'], FADE(4.3)]],
+    ['m3', 'dm-num16', '8', { x: BX + -90, y: BY + -12, z: 4, w: 14, h: 14 }, [[3.63, .4, { o: 1 }, 'out'], FADE(4.3)]],
+    ['m4', 'dm-num16', '8', { x: BX + -90, y: BY + 12, z: 4, w: 14, h: 14 }, [[3.67, .4, { o: 1 }, 'out'], FADE(4.3)]],
+    ['m5', 'dm-num16', '8', { x: BX + 90, y: BY + -12, z: 4, w: 14, h: 14 }, [[3.71, .4, { o: 1 }, 'out'], FADE(4.3)]],
+    ['m6', 'dm-num16', '8', { x: BX + 90, y: BY + 12, z: 4, w: 14, h: 14 }, [[3.75, .4, { o: 1 }, 'out'], FADE(4.3)]],
+    // 4. a generic card grows behind the button, then its content fills in top to bottom
+    // (a light fade and 12px settle per row, 0.1s apart).
+    ['card', 'dm-card', '', { x: cx, y: cy, z: -2, w: CARD.w, h: CARD.h, s: .85 }, [[4.55, 1, { o: 1, s: 1 }, 'sf']]],
+    ['ttl', 'dm-h3', 'New invoice', at(row(200, -262), { h: 28 }), IN(4.9)],
+    ['thm', 'dm-theme', '<i class="dm-knob"></i>' + SUN + MOON, { x: 24, y: -262, w: 80, h: 32 }, IN(4.95).concat([[5.8, .3, { s: 1.22 }, 'out'], [6.35, .7, { s: 1 }, 'sp']])],
+    ['sub', 'dm-row', sk(180), at(row(180, -240), { h: 8 }), IN(5.0)],
+    ['l1', 'dm-row', sk(56, 'dm-sk-strong'), at(row(56, -216), { h: 8 }), IN(5.1)],
+    ['in1', 'dm-inp', '<span class="dm-pre">$</span>12,400.00', at(row(312, -186), { h: 36 }), IN(5.15)],
+    ['l2', 'dm-row', sk(64, 'dm-sk-strong'), at(row(64, -152), { h: 8 }), IN(5.25)],
+    ['in2', 'dm-inp dm-dd', 'Net 30' + DOWN, at(row(312, -122), { h: 36 }), IN(5.3)],
+    ['tg', 'dm-tgl', '', at(row(36, -76), { h: 20 }), IN(5.4)],
+    ['tgl', 'dm-tlbl', 'Send to borrower', { x: L + 48 + 60, y: -76, w: 120, h: 20 }, IN(5.42)],
+    ['div', 'dm-div', '', { x: cx, y: -40, z: 1, w: 0, h: 1 }, [[5.5, .5, { o: 1, w: CARD.w }, 'out']]],
+    ['cn', 'dm-ghost', 'Cancel', { x: BX - 112, y: BY, w: 80, h: 32 }, IN(5.6)],
     // 8. logo: RealInsight's R mark (from the Figma Logos page)
-    ['mk', 'dm-mark', R_GLYPH, { x: -110, y: 0, w: 88, h: 88, s: 0, rz: -40 }, [[8.6, 1, { o: 1, s: 1, rz: 0 }, 'sp'], [10.5, .45, { o: 0, s: .9 }, 'io']]],
-    ['wd', 'dm-word', 'RealInsight', { x: 90, y: 0, w: 236, h: 44 }, [[8.85, .9, { o: 1, x: 62 }, 'sf'], [10.5, .45, { o: 0 }, 'io']]]
+    ['mk', 'dm-mark', R_GLYPH, { x: -110, y: 0, w: 88, h: 88, s: 0, rz: -40 }, [[8.15, 1, { o: 1, s: 1, rz: 0 }, 'sp'], [10.05, .45, { o: 0, s: .9 }, 'io']]],
+    ['wd', 'dm-word', 'RealInsight', { x: 90, y: 0, w: 236, h: 44 }, [[8.4, .9, { o: 1, x: 62 }, 'sf'], [10.05, .45, { o: 0 }, 'io']]]
   ];
   function at(r, extra) { var o = {}, k; for (k in r) o[k] = r[k]; for (k in extra) o[k] = extra[k]; return o; }
   // 7. everything funnels into the centre before the logo appears
-  var funnel = ['cn', 'btl', 'tkc', 'div', 'tgl', 'tg', 'in2', 'l2', 'in1', 'l1', 'sub', 'ttl', 'card'];
+  var funnel = ['cn', 'btl', 'tkc', 'div', 'tgl', 'tg', 'in2', 'l2', 'in1', 'l1', 'sub', 'thm', 'ttl', 'card'];
   funnel.forEach(function (id, i) {
     var o = S.filter(function (x) { return x[0] === id; })[0];
-    o[4].push([8.05 + i * .03, .55, { x: 0, y: 0, s: 0, o: 0 }, 'in']);
+    o[4].push([7.6 + i * .03, .55, { x: 0, y: 0, s: 0, o: 0 }, 'in']);
   });
   // Camera keys
   var CAM0 = { cx: BX, cy: BY, z: 3.1, rx: 0, ry: 0, rz: 0 };
   var CAM = [
     [0.7, 1.5, { z: 1.5, cy: BY - 38, rx: 16, ry: -18 }, 'sf'],
     [2.0, 1.1, { z: 2.4, cy: BY - 2, rx: 6, ry: 14 }, 'sf'],
-    [2.95, 1.0, { z: 2.4, cx: BX - 12, cy: BY - 12, rx: 0, ry: 0, rz: 0 }, 'sf'],   // flat, head-on for the redlines
+    [2.95, 1.0, { z: 2.4, cx: BX, cy: BY, rx: 0, ry: 0, rz: 0 }, 'sf'],   // flat, head-on for the redlines
     [4.45, 1.7, { z: .92, cx: cx, cy: cy, rx: 26, ry: -18, rz: -6 }, 'sf'],
-    [6.5, 1.4, { z: .98, rx: 10, ry: 10, rz: 2 }, 'sf'],
-    [8.0, 1, { z: 1, cx: 0, cy: 0, rx: 0, ry: 0, rz: 0 }, 'io']
+    [5.9, 1.4, { z: .98, rx: 10, ry: 10, rz: 2 }, 'sf'],
+    [7.45, .6, { z: .9, rx: 0, ry: 0, rz: 0 }, 'io'],          // face the card straight on, still dark
+    [7.95, .6, { z: 1, cx: 0, cy: 0 }, 'io']                    // follow the pieces into the button, where the logo appears
   ];
 
   function sample(init, keys, T) {
@@ -116,10 +124,11 @@
       el.setAttribute('aria-hidden', 'true'); cam.appendChild(el);
       var init = {}; for (var k in d[3]) init[k] = d[3][k];
       if (init.o === undefined) init.o = 0;
+      if (init.dy === undefined && d[4].some(function (k) { return 'dy' in k[2]; })) init.dy = -12;
       return { el: el, init: init, keys: d[4].slice().sort(function (a, b) { return a[0] - b[0]; }), path: el.querySelector('path[pathLength]'), lw: 0, lh: 0, lr: -1 };
     });
     function render(T) {
-      var dark = T > 6.8 && T < 8.05;               // light -> dark mode flip on the finished page
+      var dark = T > 6.0;                            // toggle pops at 5.8 and slides at 6.0; the card goes dark with it and stays dark
       if (host.classList.contains('is-dark') !== dark) host.classList.toggle('is-dark', dark);
       var c = sample(CAM0, CAM, T);
       cam.style.transform = 'scale(' + c.z + ') rotateX(' + c.rx + 'deg) rotateY(' + c.ry + 'deg) rotateZ(' + c.rz + 'deg) translate3d(' + (-c.cx) + 'px,' + (-c.cy) + 'px,0)';
@@ -131,7 +140,7 @@
         if (Math.abs(v.h - o.lh) > .05) { st.height = v.h + 'px'; o.lh = v.h; }
         if (v.r !== undefined && Math.abs(v.r - o.lr) > .05) { st.borderRadius = v.r + 'px'; o.lr = v.r; }
         st.opacity = Math.min(1, v.o);
-        st.transform = 'translate3d(' + (v.x - v.w / 2) + 'px,' + (v.y - v.h / 2) + 'px,' + (v.z || 0) + 'px) rotateZ(' + (v.rz || 0) + 'deg) scale(' + Math.max(0, v.s === undefined ? 1 : v.s) + ')';
+        st.transform = 'translate3d(' + (v.x - v.w / 2) + 'px,' + (v.y + (v.dy || 0) - v.h / 2) + 'px,' + (v.z || 0) + 'px) rotateZ(' + (v.rz || 0) + 'deg) scale(' + Math.max(0, v.s === undefined ? 1 : v.s) + ')';
         if (o.path && v.p !== undefined) o.path.style.strokeDashoffset = 1 - v.p;
       }
     }
