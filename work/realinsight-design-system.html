@@ -11,10 +11,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap">
   <link rel="stylesheet" href="../styles.css?v=202611252315">
   <link rel="stylesheet" href="../covers/ds-motion.css?v=202611260100">
-  <link rel="stylesheet" href="../covers/realinsight-cs.css?v=202611260430">
+  <link rel="stylesheet" href="../covers/realinsight-cs.css?v=202611260450">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
-<body>
+<body class="ri-page">
 
 <!-- PLACEHOLDER BANNER: delete this block once your content is in. -->
 <div class="ph-banner"><div class="wrap"><span>Draft. Highlighted text and dashed frames are placeholders.</span><button type="button" data-toggle-ph>Hide highlights</button></div></div>
@@ -34,11 +34,11 @@
   <span class="label">Contents</span>
   <ol>
     <li><a href="#overview" data-toc="overview"><span>01</span>Overview</a></li>
-    <li><a href="#approach" data-toc="approach"><span>02</span>Approach</a></li>
-    <li><a href="#system" data-toc="system"><span>03</span>The system</a>
+    <li><a href="#system" data-toc="system"><span>02</span>The system</a>
       <div class="ri-toc-sub"><span class="label">Foundations</span><a href="#color" data-toc-sub="color">Color</a><a href="#type" data-toc-sub="type">Typography</a><a href="#space" data-toc-sub="space">Spacing</a><a href="#radius" data-toc-sub="radius">Radius</a><a href="#shadow" data-toc-sub="shadow">Shadows</a><span class="label">Components</span><a href="#buttons" data-toc-sub="buttons">Buttons</a><a href="#inputs" data-toc-sub="inputs">Inputs</a><a href="#controls" data-toc-sub="controls">Switch &amp; checkbox</a><a href="#badges" data-toc-sub="badges">Badges</a><a href="#tabs" data-toc-sub="tabs">Tabs</a><a href="#alerts" data-toc-sub="alerts">Alerts</a></div></li>
-    <li><a href="#product" data-toc="product"><span>04</span>In the product</a></li>
-    <li><a href="#adoption" data-toc="adoption"><span>05</span>Adoption</a></li>
+    <li><a href="#product" data-toc="product"><span>03</span>In the product</a></li>
+    <li><a href="#challenges" data-toc="challenges"><span>04</span>Challenges</a></li>
+    <li><a href="#result" data-toc="result"><span>05</span>Result</a></li>
     <li><a href="#reflection" data-toc="reflection"><span>06</span>What I learned</a></li>
   </ol>
   <a class="label ri-toc-back" href="../index.html">← All work</a>
@@ -55,34 +55,12 @@
       <div><span class="label">Team</span><span>Tiffany Chang, Product Designer<br>JP Eiler, Frontend Developer</span></div>
       <div><span class="label">Tools</span><span>Figma<br>Claude</span></div>
     </div>
-    <h2 class="ri-h2" style="margin-top:24px">At a glance</h2>
-    <div class="ri-stats">
-      <div><strong>3 → 1</strong><span>component libraries merged into one system</span></div>
-      <div><strong data-count="258">258</strong><span>design tokens, from 12 colour ramps to spacing and radius</span></div>
-      <div><strong data-count="970">970</strong><span>component variants across 30 components</span></div>
-      <div><strong><span data-count="25">25</span>%</strong><span>of the platform already moved to the new components</span></div>
-    </div>
-  </section>
-
-  <section id="approach" class="stack-lg" aria-labelledby="ri-hard">
-    <div class="ri-ask">
-      <div class="ri-ask-a"><span class="label">The ask</span><p>"Make it prettier."</p></div>
-      <div class="ri-ask-arrow" aria-hidden="true">→</div>
-      <div class="ri-ask-b"><span class="label">The real need</span><p>A system that enforces consistency and scales to every corner of the platform, built before any new screen.</p></div>
-    </div>
-    <div>
-      <h2 id="ri-hard" style="margin-bottom:24px">Three hard problems</h2>
-      <ol class="ri-hard">
-        <li><b>Selling a foundation</b><span>Leaders had shipped for a decade without a system. I made the case that it had to come before the redesign, because everything after would be built from it.</span></li>
-        <li><b>Merging without breaking</b><span>Three libraries had to become one that still works with today's code. I worked directly with our frontend engineer so each swap was seamless.</span></li>
-        <li><b>Covering a huge platform</b><span>I started with a simpler part of the product, built a foundation set there, and grew the system one use case at a time.</span></li>
-      </ol>
-    </div>
   </section>
 
   <section id="system" aria-labelledby="ri-sys">
     <h2 id="ri-sys" style="margin-bottom:32px">The system itself</h2>
     <div class="ri-sys">
+<p class="label ri-sys-group">Foundations</p>
 <section id="color" style="display: flex; flex-direction: column; gap: 16px">
 <div style="display: flex; flex-direction: column; gap: 4px"><h3 style="margin: 0; font: 600 20px/1.3 Geist, sans-serif; color: #1d1d1f">Color</h3><p style="margin: 0; color: #5e6170; font: 400 14px/1.5 Geist, sans-serif">12 ramps of 11 to 19 steps. Neutral and Brand Blue carry the UI; the rest are for status and accents.</p></div>
 <div style="display: flex; flex-direction: column; gap: 6px">
@@ -254,6 +232,7 @@
 </div>
 </section>
 
+<p class="label ri-sys-group">Components</p>
 <section id="buttons" style="display: flex; flex-direction: column; gap: 16px">
 <div style="display: flex; flex-direction: column; gap: 4px"><h3 style="margin: 0; font: 600 20px/1.3 Geist, sans-serif; color: #1d1d1f">Buttons</h3><p style="margin: 0; color: #5e6170; font: 400 14px/1.5 Geist, sans-serif">280 variants: 4 sizes, 7 styles, 5 states, with or without icons. Shown at sm (32px, 16/8 padding, radius 10).</p></div>
 <div style="display: grid; grid-template-columns: 76px repeat(5, minmax(0, 1fr)); gap: 10px; align-items: center">
@@ -335,14 +314,23 @@
     </div>
   </section>
 
-  <section id="adoption" class="split" aria-labelledby="ri-adopt">
-    <div class="stack"><h2 id="ri-adopt">Adopted one component at a time</h2>
-      <p class="ri-side">We rebuilt the components in code, then swap old for new one by one. About a quarter of the platform has moved so far.</p>
-      <p class="ri-side">The tradeoff was deliberate: a staggered rollout means two systems live side by side for a while, but power users never wake up to a different product.</p></div>
-    <figure class="figure">
-      <div class="ri-adopt" data-adopt aria-label="About 25 percent of the platform uses the new components"></div>
-      <div class="ri-legend"><span><i class="new"></i>New system</span><span><i></i>Legacy, waiting to swap</span></div>
-    </figure>
+  <section id="challenges" aria-labelledby="ri-chal">
+    <h2 id="ri-chal" style="margin-bottom:24px">Challenges</h2>
+    <ol class="ri-hard">
+        <li><b>Selling a foundation</b><span>Leaders had shipped for a decade without a system. I made the case that it had to come before the redesign, because everything after would be built from it.</span></li>
+        <li><b>Merging without breaking</b><span>Three libraries had to become one that still works with today's code. I worked directly with our frontend engineer so each swap was seamless.</span></li>
+        <li><b>Covering a huge platform</b><span>I started with a simpler part of the product, built a foundation set there, and grew the system one use case at a time.</span></li>
+      </ol>
+  </section>
+
+  <section id="result" aria-labelledby="ri-res">
+    <h2 id="ri-res" style="margin-bottom:24px">Result</h2>
+    <div class="ri-stats">
+      <div><strong>3 → 1</strong><span>component libraries merged into one system</span></div>
+      <div><strong data-count="258">258</strong><span>design tokens, from 12 colour ramps to spacing and radius</span></div>
+      <div><strong data-count="970">970</strong><span>component variants across 30 components</span></div>
+      <div><strong><span data-count="25">25</span>%</strong><span>of the platform already moved to the new components</span></div>
+    </div>
   </section>
 
   <section id="reflection" class="split" aria-labelledby="ri-learn">
@@ -367,7 +355,7 @@
 
 <script src="../covers/shader-bg.js?v=202611260100"></script>
 <script src="../covers/ds-motion.js?v=202611260100"></script>
-<script src="../covers/realinsight-cs.js?v=202611260430"></script>
+<script src="../covers/realinsight-cs.js?v=202611260450"></script>
 <script src="../site.js?v=202611252315"></script>
 <script src="../weather.js?v=202611252315"></script>
 <script src="../glass.js?v=202611252315"></script>
