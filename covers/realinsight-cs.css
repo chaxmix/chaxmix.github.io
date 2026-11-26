@@ -319,6 +319,6 @@ body.ri-page { background-image: none; }
 
 /* Round 6: side nav on the header's left edge, content centered on the page */
 .ri-layout { width: calc(100% - 2 * var(--u)); width: round(down, 100% - 2 * var(--u), calc(2 * var(--u))); grid-template-columns: 168px minmax(0, 1fr) 168px; gap: 48px; }
-.ri-layout > .ri { grid-column: 2; width: 100%; max-width: 936px; justify-self: center; }
+.ri-layout > .ri { grid-column: 2; width: 100%; max-width: 768px; justify-self: center; }
 @media (max-width: 1100px) { .ri-layout > .ri { max-width: none; } }
 .ri-toc { margin-left: 4px; }
