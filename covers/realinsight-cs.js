@@ -121,7 +121,8 @@
     const atEnd = innerHeight + scrollY >= document.documentElement.scrollHeight - 4;
     const cur = atEnd ? secs[secs.length - 1] : pick(secs);
     links.forEach(a => { const on = a.dataset.toc === cur.id; a.classList.toggle('is-on', on); a.parentElement.classList.toggle('is-open', on && !!a.parentElement.querySelector('.ri-toc-sub')); on ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current'); });
-    const sc = cur.id === 'system' ? pick(subSecs) : null;
+    const inCur = subSecs.filter(el => cur.contains(el));
+    const sc = inCur.length ? pick(inCur) : null;
     subs.forEach(a => a.classList.toggle('is-on', !!sc && a.dataset.tocSub === sc.id));
   };
   addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });

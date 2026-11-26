@@ -306,3 +306,6 @@ body.ri-page { background-image: none; }
   .ri-sys > section > :first-child { grid-row: auto; position: static; }
   .ri-sys > section > :not(:first-child) { grid-column: 1; }
 }
+
+#foundations, #components { scroll-margin-top: 96px; }
+.ri-toc-sub { padding-top: 2px; }
