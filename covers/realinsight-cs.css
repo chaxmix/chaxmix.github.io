@@ -364,3 +364,17 @@ body.ri-page { background-image: none; }
 .ri-sys > section + section { margin-top: 80px; }
 @media (max-width: 640px) { .ri-sys > section + section { margin-top: 56px; } }
 .ri-ctabs-list { margin-left: -14px; }
+.ri-sys { container-type: inline-size; }
+/* Round 9: Typography and Spacing share the color list's column grid */
+.ri-tl-wide > :last-child { grid-column: 2 / -1; min-width: 0; }
+.ri-tl-head span:nth-child(2):last-child { grid-column: 2 / -1; }
+.ri-tl-key { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.ri-tl-key code { font: 500 13px/1.35 'Geist Mono', monospace; color: #1d1d1f; }
+.ri-tl-key small { font: 500 11px/1.35 'Geist Mono', monospace; color: #8a8e9c; }
+.ri-tl-sample { color: #2D3134; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ri-tl-tight { padding: 8px 0; }
+.ri-tl-bar { display: block; height: 12px; max-width: 100%; border-radius: 2px; background: #f2542d; }
+@container (max-width: 599px) {
+  .ri-tl-wide { grid-template-columns: 112px minmax(0, 1fr); }
+  .ri-tl-wide > :last-child { grid-column: 2; }
+}
