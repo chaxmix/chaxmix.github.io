@@ -129,3 +129,23 @@
   addEventListener('resize', update);
   update();
 })();
+
+// Semantic color tabs
+document.querySelectorAll('[data-ctabs]').forEach(box => {
+  const tabs = [...box.querySelectorAll('[role="tab"]')];
+  const show = t => tabs.forEach(x => {
+    const on = x === t;
+    x.setAttribute('aria-selected', on);
+    x.tabIndex = on ? 0 : -1;
+    document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+  });
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => show(t));
+    t.addEventListener('keydown', e => {
+      const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      const n = tabs[(i + d + tabs.length) % tabs.length];
+      show(n); n.focus(); e.preventDefault();
+    });
+  });
+});
