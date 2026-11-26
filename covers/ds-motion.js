@@ -7,7 +7,7 @@
   var hosts = document.querySelectorAll('[data-ds-motion]');
   if (!hosts.length) return;
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var LOOP = 12.15;           // 11.05 of motion + two holds (see retime)
+  var LOOP = 11.05;
 
   // ---- easing ----
   function spring(z) {
@@ -54,7 +54,7 @@
     // 2. button label
     ['btl', 'dm-btl', 'Create invoice', { x: BX, y: BY, z: 2, w: 96, h: 16, s: .6 }, [[2.45, .6, { o: 1, s: 1 }, 'sp']]],
     // 3. redlines: just the padding, like a spec sheet. Short solid vermilion lines on the button's
-    // edges and padding edges (12px past it), 16 above each side, 8 on both sides so it stays balanced.
+    // edges and padding edges (12px past it), 16 above each side, 8 on the left.
     ['h1', 'dm-gl', '', { x: BX, y: BY + -16, z: 3, w: 0, h: 1 }, [[3.05, .45, { o: 1, w: 152 }, 'out'], FADE(4.3)]],
     ['h2', 'dm-gl', '', { x: BX, y: BY + -8, z: 3, w: 0, h: 1 }, [[3.10, .45, { o: 1, w: 152 }, 'out'], FADE(4.3)]],
     ['h3', 'dm-gl', '', { x: BX, y: BY + 8, z: 3, w: 0, h: 1 }, [[3.15, .45, { o: 1, w: 152 }, 'out'], FADE(4.3)]],
@@ -67,8 +67,6 @@
     ['m2', 'dm-num16', '16', { x: BX + 56, y: BY + -40, z: 4, w: 24, h: 14 }, [[3.59, .4, { o: 1 }, 'out'], FADE(4.3)]],
     ['m3', 'dm-num16', '8', { x: BX + -90, y: BY + -12, z: 4, w: 14, h: 14 }, [[3.63, .4, { o: 1 }, 'out'], FADE(4.3)]],
     ['m4', 'dm-num16', '8', { x: BX + -90, y: BY + 12, z: 4, w: 14, h: 14 }, [[3.67, .4, { o: 1 }, 'out'], FADE(4.3)]],
-    ['m5', 'dm-num16', '8', { x: BX + 90, y: BY + -12, z: 4, w: 14, h: 14 }, [[3.71, .4, { o: 1 }, 'out'], FADE(4.3)]],
-    ['m6', 'dm-num16', '8', { x: BX + 90, y: BY + 12, z: 4, w: 14, h: 14 }, [[3.75, .4, { o: 1 }, 'out'], FADE(4.3)]],
     // 4. a generic card grows behind the button, then its content fills in top to bottom
     // (a light fade and 12px settle per row, 0.1s apart).
     ['card', 'dm-card', '', { x: cx, y: cy, z: -2, w: CARD.w, h: CARD.h, s: .85 }, [[4.55, 1, { o: 1, s: 1 }, 'sf']]],
@@ -98,16 +96,16 @@
   var CAM0 = { cx: BX, cy: BY, z: 3.1, rx: 0, ry: 0, rz: 0 };
   var CAM = [
     [0.7, 1.5, { z: 1.5, cy: BY - 38, rx: 16, ry: -18 }, 'sf'],
-    [2.0, 1.1, { z: 2.4, cy: BY - 2, rx: 6, ry: 14 }, 'sf'],
+    [1.9, .5, { z: 2.0, cx: BX, cy: BY, rx: 0, ry: 0, rz: 0 }, 'io'],   // square up before the button forms
+    [2.3, 1.0, { z: 2.4 }, 'sf'],
     [2.95, 1.0, { z: 2.4, cx: BX, cy: BY, rx: 0, ry: 0, rz: 0 }, 'sf'],   // flat, head-on for the redlines
     [4.45, 1.7, { z: .92, cx: cx, cy: cy, rx: 26, ry: -18, rz: -6 }, 'sf'],
     [5.9, 1.4, { z: .98, rx: 10, ry: 10, rz: 2 }, 'sf'],
     [8.3, .7, { z: 1, cx: 0, cy: 0, rx: 0, ry: 0, rz: 0 }, 'io']   // collapse keeps frame 6's angle, then the camera flattens for the logo
   ];
 
-  // Holds: everything after 1.85s waits 0.5s (tokens gathered, frame 2) and everything after
-  // 7.0s waits another 0.6s (card in dark mode, frame 6). Times above are written without the holds.
-  function retime(t) { return t + (t >= 1.85 ? .5 : 0) + (t >= 7.0 ? .6 : 0); }
+  // Holds: retime() can push every key after a given time back to add a pause.
+  function retime(t) { return t; }   // holds removed at Tiffany's request; kept as a hook for future holds
   S.forEach(function (d) { d[4].forEach(function (k) { k[0] = retime(k[0]); }); });
   CAM.forEach(function (k) { k[0] = retime(k[0]); });
 
