@@ -363,3 +363,4 @@ body.ri-page { background-image: none; }
 .ri-sys > section { border-top: 0; padding-block: 0; }
 .ri-sys > section + section { margin-top: 80px; }
 @media (max-width: 640px) { .ri-sys > section + section { margin-top: 56px; } }
+.ri-ctabs-list { margin-left: -14px; }
