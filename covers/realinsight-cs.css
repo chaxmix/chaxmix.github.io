@@ -309,3 +309,10 @@ body.ri-page { background-image: none; }
 
 #foundations, #components { scroll-margin-top: 96px; }
 .ri-toc-sub { padding-top: 2px; }
+
+/* Round 5: titles above their content; page shares the main pages' 1152px frame */
+.ri-sys > section { display: flex !important; flex-direction: column; gap: 16px !important; }
+.ri-sys > section > :first-child { position: static; grid-row: auto; }
+.ri-layout { width: min(var(--max), calc(100% - 2 * var(--u))); width: min(var(--max), round(down, 100% - 2 * var(--u), calc(2 * var(--u)))); gap: 48px; grid-template-columns: 168px minmax(0, 1fr); }
+.ri-sys > section > * { min-width: 0; max-width: 100%; }
+.ri-sys > section { align-items: stretch; }
