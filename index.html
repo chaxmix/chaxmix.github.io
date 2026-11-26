@@ -8,8 +8,9 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap">
   <link rel="stylesheet" href="styles.css?v=202611252315">
+  <link rel="stylesheet" href="covers/ds-motion.css?v=202611260100">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -43,15 +44,9 @@
   <section id="work" aria-label="Selected work">
     <div class="work-grid">
       <a class="card reveal" href="work/case-study.html">
-        <div class="cover" style="--c-bg:#e3e8ff; --c-1:#9aa8ff; --c-2:#c6f0ff">
-          <span class="blob one"></span><span class="blob two"></span>
-          <div class="ui-window" aria-hidden="true">
-            <div class="side"><span class="bar"></span><span class="bar accent"></span><span class="bar"></span></div>
-            <div class="main"><span class="bar dark"></span><div class="tiles"><span></span><span></span><span></span></div><div class="progress"><span></span></div></div>
-          </div>
-        </div>
+        <div class="cover dsm dark" data-ds-motion><canvas class="shader-bg" data-colors="#070b10,#0f2c3d,#1f8aca,#77bbe4" aria-hidden="true"></canvas></div>
         <div class="card-meta">
-          <div><h3><span class="ph">Redesigning onboarding for a payments dashboard</span></h3><p><span class="ph">Cut time to first payment from 3 days to 40 minutes.</span></p></div>
+          <div><h3>Building RealInsight's design system</h3><p><span class="ph">Tokens, components and docs for a loan servicing platform.</span></p></div>
         </div>
       </a>
       <a class="card reveal" href="work/case-study.html">
@@ -93,6 +88,8 @@
   </div>
 </footer>
 
+<script src="covers/shader-bg.js?v=202611260100"></script>
+<script src="covers/ds-motion.js?v=202611260100"></script>
 <script src="site.js?v=202611252315"></script>
 <script src="weather.js?v=202611252315"></script>
 <script src="glass.js?v=202611252315"></script>
