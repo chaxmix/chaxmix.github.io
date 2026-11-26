@@ -33,7 +33,7 @@
       h += `<span class="h">${v}</span>`;
       STATES.forEach(s => {
         const cls = `ri-b ${size} ${v.toLowerCase()} ${s.toLowerCase()}`;
-        const inner = s === 'Loading' ? '<span class="spin"></span>Saving' : 'Create invoice';
+        const inner = s === 'Loading' ? '<span class="spin"></span>Saving' : 'Create';
         h += `<span class="${cls}">${inner}</span>`;
       });
     });
@@ -61,5 +61,48 @@
       requestAnimationFrame(step);
     }), { threshold: .6 });
     nums.forEach(n => io.observe(n));
+  }
+})();
+
+/* Round 2: live component playground and adoption grid */
+(() => {
+  const card = document.querySelector('.ri-card');
+  if (card) {
+    card.querySelectorAll('[data-ptheme]').forEach(b => b.addEventListener('click', () => {
+      card.classList.toggle('is-dark', b.dataset.ptheme === 'dark');
+      card.querySelectorAll('[data-ptheme]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    }));
+    const btn = card.querySelector('[data-create]'), alert = card.querySelector('.ri-alert');
+    let busy = false;
+    card.addEventListener('submit', e => {
+      e.preventDefault();
+      if (busy) return;
+      busy = true;
+      btn.innerHTML = '<span class="spin"></span>Creating';
+      alert.hidden = true;
+      setTimeout(() => {
+        const amt = card.querySelector('#ri-amt').value || '0.00';
+        const terms = card.querySelector('#ri-terms').value;
+        const send = card.querySelector('#ri-send').checked;
+        alert.textContent = `Invoice for $${amt} created, ${terms}.` + (send ? ' Sent to borrower.' : ' Saved as draft.');
+        alert.hidden = false;
+        btn.textContent = 'Create invoice';
+        busy = false;
+      }, 1100);
+    });
+    card.addEventListener('reset', () => { alert.hidden = true; });
+  }
+  const ad = document.querySelector('[data-adopt]');
+  if (ad) {
+    const N = 100, NEW = 25;
+    // seeded order so new cells cluster like real areas of the product moving over
+    let s = 7; const r = () => (s = s * 16807 % 2147483647) / 2147483647;
+    const key = [...Array(N).keys()].map(a => Math.floor(a / 20) * .15 + (a % 20) / 20 + r() * .6);
+    const order = [...Array(N).keys()].sort((a, b) => key[a] - key[b]);
+    ad.innerHTML = '<i></i>'.repeat(N);
+    const cells = ad.children;
+    const fill = () => order.slice(0, NEW).forEach((k, i) => setTimeout(() => cells[k].classList.add('new'), i * 40));
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) order.slice(0, NEW).forEach(k => cells[k].classList.add('new'));
+    else { const io2 = new IntersectionObserver(es => { if (es[0].isIntersecting) { io2.disconnect(); fill(); } }, { threshold: .5 }); io2.observe(ad); }
   }
 })();
