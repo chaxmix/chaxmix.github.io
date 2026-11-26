@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>RealInsight design system · Tiffany Chang</title>
+  <meta name="description" content="Portfolio of Tiffany Chang, product designer.">
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap">
+  <link rel="stylesheet" href="../styles.css?v=202611252315">
+  <link rel="stylesheet" href="../covers/ds-motion.css?v=202611260100">
+  <link rel="stylesheet" href="../covers/realinsight-cs.css?v=202611260430">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<!-- PLACEHOLDER BANNER: delete this block once your content is in. -->
+<div class="ph-banner"><div class="wrap"><span>Draft. Highlighted text and dashed frames are placeholders.</span><button type="button" data-toggle-ph>Hide highlights</button></div></div>
+
+<header class="site-header">
+  <a class="logo" href="../index.html" aria-label="Tiffany Chang, home"><svg class="seal" viewBox="0 0 100 100" aria-hidden="true"><defs><filter id="seal-worn" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="2" seed="4" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="2.6" xChannelSelector="R" yChannelSelector="G" result="w"/><feTurbulence type="fractalNoise" baseFrequency="0.22" numOctaves="3" seed="21" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -30 23.2" result="holes"/><feComposite in="w" in2="holes" operator="in"/></filter></defs><g class="seal-print" filter="url(#seal-worn)"><path class="seal-stone" d="M5 6 Q4 4 7 4 L93 5 Q96 5 96 8 L95 93 Q95 96 92 96 L8 95 Q5 95 5 92 Z"/><g class="seal-glyph"><path d="M18 18 H34 Q40 18 40 24 V33 Q40 39 34 39 H24 Q18 39 18 45 V55 Q18 61 24 61 H34 Q40 61 40 67 V76 Q40 82 34 82 H24 Q18 82 18 76"/><path d="M55 18 V82"/><path d="M55 39 Q72 35 80 18"/><path d="M48 50 H82"/><path d="M66 50 Q71 74 82 82"/></g></g><g class="seal-build"><line class="seal-edge" x1="4" y1="4" x2="96" y2="4"/><line class="seal-edge" x1="4" y1="96" x2="96" y2="96"/><line class="seal-edge" x1="4" y1="4" x2="4" y2="96"/><line class="seal-edge" x1="96" y1="4" x2="96" y2="96"/><line class="seal-guide" x1="47" y1="4" x2="47" y2="96"/><line class="seal-guide" x1="4" y1="50" x2="96" y2="50"/><g class="seal-ghost"><path pathLength="1" d="M18 18 H34 Q40 18 40 24 V33 Q40 39 34 39 H24 Q18 39 18 45 V55 Q18 61 24 61 H34 Q40 61 40 67 V76 Q40 82 34 82 H24 Q18 82 18 76"/><path pathLength="1" d="M55 18 V82"/><path pathLength="1" d="M55 39 Q72 35 80 18"/><path pathLength="1" d="M48 50 H82"/><path pathLength="1" d="M66 50 Q71 74 82 82"/></g></g></svg></a>
+  <nav class="nav-pill" aria-label="Main" data-liquid-nav="../">
+    <a href="../index.html" aria-current="page">Work</a>
+    <a href="../about.html">About</a>
+    <a href="../play.html">Play</a>
+  </nav>
+  <div class="nav-widget" data-weather role="group" aria-label="Your local time"><span class="nw-weather" data-w-now hidden></span><time class="nw-time" data-clock></time></div>
+</header>
+
+<div class="ri-layout">
+<aside class="ri-toc" aria-label="On this page">
+  <span class="label">Contents</span>
+  <ol>
+    <li><a href="#overview" data-toc="overview"><span>01</span>Overview</a></li>
+    <li><a href="#approach" data-toc="approach"><span>02</span>Approach</a></li>
+    <li><a href="#system" data-toc="system"><span>03</span>The system</a>
+      <div class="ri-toc-sub"><span class="label">Foundations</span><a href="#color" data-toc-sub="color">Color</a><a href="#type" data-toc-sub="type">Typography</a><a href="#space" data-toc-sub="space">Spacing</a><a href="#radius" data-toc-sub="radius">Radius</a><a href="#shadow" data-toc-sub="shadow">Shadows</a><span class="label">Components</span><a href="#buttons" data-toc-sub="buttons">Buttons</a><a href="#inputs" data-toc-sub="inputs">Inputs</a><a href="#controls" data-toc-sub="controls">Switch &amp; checkbox</a><a href="#badges" data-toc-sub="badges">Badges</a><a href="#tabs" data-toc-sub="tabs">Tabs</a><a href="#alerts" data-toc-sub="alerts">Alerts</a></div></li>
+    <li><a href="#product" data-toc="product"><span>04</span>In the product</a></li>
+    <li><a href="#adoption" data-toc="adoption"><span>05</span>Adoption</a></li>
+    <li><a href="#reflection" data-toc="reflection"><span>06</span>What I learned</a></li>
+  </ol>
+  <a class="label ri-toc-back" href="../index.html">← All work</a>
+</aside>
+
+<main class="stack-lg ri">
+  <section id="overview" class="ri-hero" aria-labelledby="ri-title">
+    <a class="label ri-back-m" href="../index.html" style="text-decoration:none">← All work</a>
+    <h1 id="ri-title">Building RealInsight's design system</h1>
+    <p class="ri-lede">RealInsight's loan servicing platform ran for over a decade with no designer and three separate component libraries. I was asked to make it prettier. I built the system first.</p>
+    <div class="facts">
+      <div><span class="label">Role</span><span>Product Designer</span></div>
+      <div><span class="label">Timeline</span><span><span class="ph">June 2026 - Present</span></span></div>
+      <div><span class="label">Team</span><span>Tiffany Chang, Product Designer<br>JP Eiler, Frontend Developer</span></div>
+      <div><span class="label">Tools</span><span>Figma<br>Claude</span></div>
+    </div>
+    <h2 class="ri-h2" style="margin-top:24px">At a glance</h2>
+    <div class="ri-stats">
+      <div><strong>3 → 1</strong><span>component libraries merged into one system</span></div>
+      <div><strong data-count="258">258</strong><span>design tokens, from 12 colour ramps to spacing and radius</span></div>
+      <div><strong data-count="970">970</strong><span>component variants across 30 components</span></div>
+      <div><strong><span data-count="25">25</span>%</strong><span>of the platform already moved to the new components</span></div>
+    </div>
+  </section>
+
+  <section id="approach" class="stack-lg" aria-labelledby="ri-hard">
+    <div class="ri-ask">
+      <div class="ri-ask-a"><span class="label">The ask</span><p>"Make it prettier."</p></div>
+      <div class="ri-ask-arrow" aria-hidden="true">→</div>
+      <div class="ri-ask-b"><span class="label">The real need</span><p>A system that enforces consistency and scales to every corner of the platform, built before any new screen.</p></div>
+    </div>
+    <div>
+      <h2 id="ri-hard" style="margin-bottom:24px">Three hard problems</h2>
+      <ol class="ri-hard">
+        <li><b>Selling a foundation</b><span>Leaders had shipped for a decade without a system. I made the case that it had to come before the redesign, because everything after would be built from it.</span></li>
+        <li><b>Merging without breaking</b><span>Three libraries had to become one that still works with today's code. I worked directly with our frontend engineer so each swap was seamless.</span></li>
+        <li><b>Covering a huge platform</b><span>I started with a simpler part of the product, built a foundation set there, and grew the system one use case at a time.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="system" aria-labelledby="ri-sys">
+    <h2 id="ri-sys" style="margin-bottom:32px">The system itself</h2>
+    <div class="ri-sys">
+<section id="color" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px"><h3 style="margin: 0; font: 600 20px/1.3 Geist, sans-serif; color: #1d1d1f">Color</h3><p style="margin: 0; color: #5e6170; font: 400 14px/1.5 Geist, sans-serif">12 ramps of 11 to 19 steps. Neutral and Brand Blue carry the UI; the rest are for status and accents.</p></div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: center"><span style="font: 500 12px/1 Geist, sans-serif; color: #5e6170">Neutral</span><div style="display: flex; gap: 2px; height: 28px"><span style="flex:1;background:#F9F9F9;border-radius:6px 0 0 6px;box-shadow:inset 0 0 0 1px rgba(11,11,11,.06);" title="Neutral #F9F9F9"></span><span style="flex:1;background:#F6F7F8;box-shadow:inset 0 0 0 1px rgba(11,11,11,.06);" title="Neutral #F6F7F8"></span><span style="flex:1;background:#EFF1F3;box-shadow:inset 0 0 0 1px rgba(11,11,11,.06);" title="Neutral #EFF1F3"></span><span style="flex:1;background:#E4E7EA;" title="Neutral #E4E7EA"></span><span style="flex:1;background:#D6DADE;" title="Neutral #D6DADE"></span><span style="flex:1;background:#C5C9CE;" title="Neutral #C5C9CE"></span><span style="flex:1;background:#B2B7BC;" title="Neutral #B2B7BC"></span><span style="flex:1;background:#9EA3A9;" title="Neutral #9EA3A9"></span><span style="flex:1;background:#888E94;" title="Neutral #888E94"></span><span style="flex:1;background:#73797F;" title="Neutral #73797F"></span><span style="flex:1;background:#5F646A;" title="Neutral #5F646A"></span><span style="flex:1;background:#4C5156;" title="Neutral #4C5156"></span><span style="flex:1;background:#3B4044;" title="Neutral #3B4044"></span><span style="flex:1;background:#2D3134;" title="Neutral #2D3134"></span><span style="flex:1;background:#212427;" title="Neutral #212427"></span><span style="flex:1;background:#181A1D;" title="Neutral #181A1D"></span><span style="flex:1;background:#111315;" title="Neutral #111315"></span><span style="flex:1;background:#0C0D0F;" title="Neutral #0C0D0F"></span><span style="flex:1;background:#0B0B0B;border-radius:0 6px 6px 0;" title="Neutral #0B0B0B"></span></div></div>
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: center"><span style="font: 500 12px/1 Geist, sans-serif; color: #5e6170">Brand Blue</span><div style="display: flex; gap: 2px; height: 28px"><span style="flex:1;background:#EFF6FB;border-radius:6px 0 0 6px;" title="Brand Blue #EFF6FB"></span><span style="flex:1;background:#D6E9F5;" title="Brand Blue #D6E9F5"></span><span style="flex:1;background:#ACD4EC;" title="Brand Blue #ACD4EC"></span><span style="flex:1;background:#77BBE4;" title="Brand Blue #77BBE4"></span><span style="flex:1;background:#44A5DE;" title="Brand Blue #44A5DE"></span><span style="flex:1;background:#1F8ACA;" title="Brand Blue #1F8ACA"></span><span style="flex:1;background:#1D72A5;" title="Brand Blue #1D72A5"></span><span style="flex:1;background:#18567B;" title="Brand Blue #18567B"></span><span style="flex:1;background:#133E58;" title="Brand Blue #133E58"></span><span style="flex:1;background:#0F2C3D;" title="Brand Blue #0F2C3D"></span><span style="flex:1;background:#0C202C;border-radius:0 6px 6px 0;" title="Brand Blue #0C202C"></span></div></div>
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: center"><span style="font: 500 12px/1 Geist, sans-serif; color: #5e6170">Green</span><div style="display: flex; gap: 2px; height: 28px"><span style="flex:1;background:#DBF0DD;border-radius:6px 0 0 6px;" title="Green #DBF0DD"></span><span style="flex:1;background:#C4E9C7;" title="Green #C4E9C7"></span><span style="flex:1;background:#9EDCA3;" title="Green #9EDCA3"></span><span style="flex:1;background:#7AD281;" title="Green #7AD281"></span><span style="flex:1;background:#55C95F;" title="Green #55C95F"></span><span style="flex:1;background:#35B23F;" title="Green #35B23F"></span><span style="flex:1;background:#2D8D35;" title="Green #2D8D35"></span><span style="flex:1;background:#256D2B;" title="Green #256D2B"></span><span style="flex:1;background:#1C4E20;" title="Green #1C4E20"></span><span style="flex:1;background:#133216;" title="Green #133216"></span><span style="flex:1;background:#0F2411;border-radius:0 6px 6px 0;" title="Green #0F2411"></span></div></div>
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: center"><span style="font: 500 12px/1 Geist, sans-serif; color: #5e6170">Amber</span><div style="display: flex; gap: 2px; height: 28px"><span style="flex:1;background:#F5E2CC;border-radius:6px 0 0 6px;" title="Amber #F5E2CC"></span><span style="flex:1;background:#F1D6B4;" title="Amber #F1D6B4"></span><span style="flex:1;background:#EDC18C;" title="Amber #EDC18C"></span><span style="flex:1;background:#EAAD64;" title="Amber #EAAD64"></span><span style="flex:1;background:#E99B3D;" title="Amber #E99B3D"></span><span style="flex:1;background:#D67E14;" title="Amber #D67E14"></span><span style="flex:1;background:#A86413;" title="Amber #A86413"></span><span style="flex:1;background:#7E4C11;" title="Amber #7E4C11"></span><span style="flex:1;background:#57360E;" title="Amber #57360E"></span><span style="flex:1;background:#332009;" title="Amber #332009"></span><span style="flex:1;background:#221607;border-radius:0 6px 6px 0;" title="Amber #221607"></span></div></div>
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: center"><span style="font: 500 12px/1 Geist, sans-serif; color: #5e6170">Red</span><div style="display: flex; gap: 2px; height: 28px"><span style="flex:1;background:#F5D6D6;border-radius:6px 0 0 6px;" title="Red #F5D6D6"></span><span style="flex:1;background:#EFB3B3;" title="Red #EFB3B3"></span><span style="flex:1;background:#EA8F8F;" title="Red #EA8F8F"></span><span style="flex:1;background:#E76A6A;" title="Red #E76A6A"></span><span style="flex:1;background:#E44444;" title="Red #E44444"></span><span style="flex:1;background:#E41B1B;" title="Red #E41B1B"></span><span style="flex:1;background:#BC1A1A;" title="Red #BC1A1A"></span><span style="flex:1;background:#951818;" title="Red #951818"></span><span style="flex:1;background:#701515;" title="Red #701515"></span><span style="flex:1;background:#4C1010;" title="Red #4C1010"></span><span style="flex:1;background:#290A0A;border-radius:0 6px 6px 0;" title="Red #290A0A"></span></div></div>
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: center"><span style="font: 500 12px/1 Geist, sans-serif; color: #5e6170">Orange</span><div style="display: flex; gap: 2px; height: 28px"><span style="flex:1;background:#F3D8CE;border-radius:6px 0 0 6px;" title="Orange #F3D8CE"></span><span style="flex:1;background:#EFC6B7;" title="Orange #EFC6B7"></span><span style="flex:1;background:#E9A88E;" title="Orange #E9A88E"></span><span style="flex:1;background:#E48B67;" title="Orange #E48B67"></span><span style="flex:1;background:#E06231;" title="Orange #E06231"></span><span style="flex:1;background:#C74B1A;" title="Orange #C74B1A"></span><span style="flex:1;background:#9D3D18;" title="Orange #9D3D18"></span><span style="flex:1;background:#763015;" title="Orange #763015"></span><span style="flex:1;background:#532310;" title="Orange #532310"></span><span style="flex:1;background:#31160B;" title="Orange #31160B"></span><span style="flex:1;background:#210F08;border-radius:0 6px 6px 0;" title="Orange #210F08"></span></div></div>
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: center"><span style="font: 500 12px/1 Geist, sans-serif; color: #5e6170">Lime</span><div style="display: flex; gap: 2px; height: 28px"><span style="flex:1;background:#EBEED3;border-radius:6px 0 0 6px;" title="Lime #EBEED3"></span><span style="flex:1;background:#E3E8BF;" title="Lime #E3E8BF"></span><span style="flex:1;background:#DCE3AB;" title="Lime #DCE3AB"></span><span style="flex:1;background:#CED982;" title="Lime #CED982"></span><span style="flex:1;background:#C1CF59;" title="Lime #C1CF59"></span><span style="flex:1;background:#B0C133;" title="Lime #B0C133"></span><span style="flex:1;background:#89972B;" title="Lime #89972B"></span><span style="flex:1;background:#646D22;" title="Lime #646D22"></span><span style="flex:1;background:#3F4517;" title="Lime #3F4517"></span><span style="flex:1;background:#2D3111;" title="Lime #2D3111"></span><span style="flex:1;background:#1B1E0B;border-radius:0 6px 6px 0;" title="Lime #1B1E0B"></span></div></div>
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: center"><span style="font: 500 12px/1 Geist, sans-serif; color: #5e6170">Teal</span><div style="display: flex; gap: 2px; height: 28px"><span style="flex:1;background:#DCEFEC;border-radius:6px 0 0 6px;" title="Teal #DCEFEC"></span><span style="flex:1;background:#CAE8E4;" title="Teal #CAE8E4"></span><span style="flex:1;background:#B7E1DB;" title="Teal #B7E1DB"></span><span style="flex:1;background:#91D4CB;" title="Teal #91D4CB"></span><span style="flex:1;background:#6AC8BB;" title="Teal #6AC8BB"></span><span style="flex:1;background:#42BDAC;" title="Teal #42BDAC"></span><span style="flex:1;background:#379588;" title="Teal #379588"></span><span style="flex:1;background:#2B6E65;" title="Teal #2B6E65"></span><span style="flex:1;background:#1E4842;" title="Teal #1E4842"></span><span style="flex:1;background:#173531;" title="Teal #173531"></span><span style="flex:1;background:#102320;border-radius:0 6px 6px 0;" title="Teal #102320"></span></div></div>
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: center"><span style="font: 500 12px/1 Geist, sans-serif; color: #5e6170">Cyan</span><div style="display: flex; gap: 2px; height: 28px"><span style="flex:1;background:#D2E9EF;border-radius:6px 0 0 6px;" title="Cyan #D2E9EF"></span><span style="flex:1;background:#BADFE9;" title="Cyan #BADFE9"></span><span style="flex:1;background:#91CEDE;" title="Cyan #91CEDE"></span><span style="flex:1;background:#6ABFD6;" title="Cyan #6ABFD6"></span><span style="flex:1;background:#43B2CF;" title="Cyan #43B2CF"></span><span style="flex:1;background:#2A95B1;" title="Cyan #2A95B1"></span><span style="flex:1;background:#24768C;" title="Cyan #24768C"></span><span style="flex:1;background:#1D5A69;" title="Cyan #1D5A69"></span><span style="flex:1;background:#163F4A;" title="Cyan #163F4A"></span><span style="flex:1;background:#0E262D;" title="Cyan #0E262D"></span><span style="flex:1;background:#0B1A1E;border-radius:0 6px 6px 0;" title="Cyan #0B1A1E"></span></div></div>
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: center"><span style="font: 500 12px/1 Geist, sans-serif; color: #5e6170">Indigo</span><div style="display: flex; gap: 2px; height: 28px"><span style="flex:1;background:#DADEF1;border-radius:6px 0 0 6px;" title="Indigo #DADEF1"></span><span style="flex:1;background:#BBC3E7;" title="Indigo #BBC3E7"></span><span style="flex:1;background:#9BA7DF;" title="Indigo #9BA7DF"></span><span style="flex:1;background:#7A8BD7;" title="Indigo #7A8BD7"></span><span style="flex:1;background:#576DD0;" title="Indigo #576DD0"></span><span style="flex:1;background:#3450CB;" title="Indigo #3450CB"></span><span style="flex:1;background:#2F45A8;" title="Indigo #2F45A8"></span><span style="flex:1;background:#283985;" title="Indigo #283985"></span><span style="flex:1;background:#202D64;" title="Indigo #202D64"></span><span style="flex:1;background:#182044;" title="Indigo #182044"></span><span style="flex:1;background:#0E1225;border-radius:0 6px 6px 0;" title="Indigo #0E1225"></span></div></div>
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: center"><span style="font: 500 12px/1 Geist, sans-serif; color: #5e6170">Purple</span><div style="display: flex; gap: 2px; height: 28px"><span style="flex:1;background:#E5DAF1;border-radius:6px 0 0 6px;" title="Purple #E5DAF1"></span><span style="flex:1;background:#D1BBE7;" title="Purple #D1BBE7"></span><span style="flex:1;background:#BD9BDE;" title="Purple #BD9BDE"></span><span style="flex:1;background:#A87AD6;" title="Purple #A87AD6"></span><span style="flex:1;background:#9458D0;" title="Purple #9458D0"></span><span style="flex:1;background:#8035CA;" title="Purple #8035CA"></span><span style="flex:1;background:#6B2FA7;" title="Purple #6B2FA7"></span><span style="flex:1;background:#572985;" title="Purple #572985"></span><span style="flex:1;background:#422164;" title="Purple #422164"></span><span style="flex:1;background:#2E1844;" title="Purple #2E1844"></span><span style="flex:1;background:#190E25;border-radius:0 6px 6px 0;" title="Purple #190E25"></span></div></div>
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: center"><span style="font: 500 12px/1 Geist, sans-serif; color: #5e6170">Pink</span><div style="display: flex; gap: 2px; height: 28px"><span style="flex:1;background:#F5E0EA;border-radius:6px 0 0 6px;" title="Pink #F5E0EA"></span><span style="flex:1;background:#ECC0D5;" title="Pink #ECC0D5"></span><span style="flex:1;background:#E49FC0;" title="Pink #E49FC0"></span><span style="flex:1;background:#DE7DAB;" title="Pink #DE7DAB"></span><span style="flex:1;background:#D85A96;" title="Pink #D85A96"></span><span style="flex:1;background:#D43581;" title="Pink #D43581"></span><span style="flex:1;background:#B62B6D;" title="Pink #B62B6D"></span><span style="flex:1;background:#922659;" title="Pink #922659"></span><span style="flex:1;background:#6F1F45;" title="Pink #6F1F45"></span><span style="flex:1;background:#4E1832;" title="Pink #4E1832"></span><span style="flex:1;background:#2E0F1E;border-radius:0 6px 6px 0;" title="Pink #2E0F1E"></span></div></div>
+
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); border: 1px solid #ececf1; border-radius: 14px; overflow: hidden; font: 400 13px/1.3 Geist, sans-serif">
+<span style="padding: 10px 14px; background: #f7f8fa; font: 500 11px/1.4 'Geist Mono', monospace; text-transform: uppercase; letter-spacing: .05em; color: #5e6170">Semantic token</span><span style="padding: 10px 14px; background: #f7f8fa; font: 500 11px/1.4 'Geist Mono', monospace; text-transform: uppercase; letter-spacing: .05em; color: #5e6170">Light</span><span style="padding: 10px 14px; background: #f7f8fa; font: 500 11px/1.4 'Geist Mono', monospace; text-transform: uppercase; letter-spacing: .05em; color: #5e6170">Dark</span>
+
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; font-family: 'Geist Mono', monospace; font-size: 12px">background/brand/bold/default</span>
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; display: flex; align-items: center; gap: 8px"><i style="display:inline-block;width:14px;height:14px;border-radius:4px;background:#1F8ACA;box-shadow:inset 0 0 0 1px rgba(11,11,11,.1)"></i>Brand Blue/500</span>
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; display: flex; align-items: center; gap: 8px"><i style="display:inline-block;width:14px;height:14px;border-radius:4px;background:#44A5DE;box-shadow:inset 0 0 0 1px rgba(11,11,11,.1)"></i>Brand Blue/400</span>
+
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; font-family: 'Geist Mono', monospace; font-size: 12px">background/neutral/bold/default</span>
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; display: flex; align-items: center; gap: 8px"><i style="display:inline-block;width:14px;height:14px;border-radius:4px;background:#2D3134;box-shadow:inset 0 0 0 1px rgba(11,11,11,.1)"></i>Neutral/700</span>
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; display: flex; align-items: center; gap: 8px"><i style="display:inline-block;width:14px;height:14px;border-radius:4px;background:#F6F7F8;box-shadow:inset 0 0 0 1px rgba(11,11,11,.1)"></i>Neutral/100</span>
+
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; font-family: 'Geist Mono', monospace; font-size: 12px">elevation/default</span>
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; display: flex; align-items: center; gap: 8px"><i style="display:inline-block;width:14px;height:14px;border-radius:4px;background:#F9F9F9;box-shadow:inset 0 0 0 1px rgba(11,11,11,.1)"></i>Neutral/50</span>
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; display: flex; align-items: center; gap: 8px"><i style="display:inline-block;width:14px;height:14px;border-radius:4px;background:#181A1D;box-shadow:inset 0 0 0 1px rgba(11,11,11,.1)"></i>Neutral/800</span>
+
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; font-family: 'Geist Mono', monospace; font-size: 12px">elevation/raised</span>
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; display: flex; align-items: center; gap: 8px"><i style="display:inline-block;width:14px;height:14px;border-radius:4px;background:#F9F9F9;box-shadow:inset 0 0 0 1px rgba(11,11,11,.1)"></i>Neutral/50</span>
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; display: flex; align-items: center; gap: 8px"><i style="display:inline-block;width:14px;height:14px;border-radius:4px;background:#212427;box-shadow:inset 0 0 0 1px rgba(11,11,11,.1)"></i>Neutral/750</span>
+
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; font-family: 'Geist Mono', monospace; font-size: 12px">text/neutral/default</span>
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; display: flex; align-items: center; gap: 8px"><i style="display:inline-block;width:14px;height:14px;border-radius:4px;background:#2D3134;box-shadow:inset 0 0 0 1px rgba(11,11,11,.1)"></i>Neutral/700</span>
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; display: flex; align-items: center; gap: 8px"><i style="display:inline-block;width:14px;height:14px;border-radius:4px;background:#F6F7F8;box-shadow:inset 0 0 0 1px rgba(11,11,11,.1)"></i>Neutral/100</span>
+
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; font-family: 'Geist Mono', monospace; font-size: 12px">text/neutral/muted</span>
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; display: flex; align-items: center; gap: 8px"><i style="display:inline-block;width:14px;height:14px;border-radius:4px;background:#5F646A;box-shadow:inset 0 0 0 1px rgba(11,11,11,.1)"></i>Neutral/550</span>
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; display: flex; align-items: center; gap: 8px"><i style="display:inline-block;width:14px;height:14px;border-radius:4px;background:#888E94;box-shadow:inset 0 0 0 1px rgba(11,11,11,.1)"></i>Neutral/450</span>
+
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; font-family: 'Geist Mono', monospace; font-size: 12px">text/semantic/success/default</span>
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; display: flex; align-items: center; gap: 8px"><i style="display:inline-block;width:14px;height:14px;border-radius:4px;background:#256D2B;box-shadow:inset 0 0 0 1px rgba(11,11,11,.1)"></i>Green/700</span>
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; display: flex; align-items: center; gap: 8px"><i style="display:inline-block;width:14px;height:14px;border-radius:4px;background:#55C95F;box-shadow:inset 0 0 0 1px rgba(11,11,11,.1)"></i>Green/400</span>
+
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; font-family: 'Geist Mono', monospace; font-size: 12px">background/semantic/danger/bold/default</span>
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; display: flex; align-items: center; gap: 8px"><i style="display:inline-block;width:14px;height:14px;border-radius:4px;background:#BC1A1A;box-shadow:inset 0 0 0 1px rgba(11,11,11,.1)"></i>Red/600</span>
+<span style="padding: 10px 14px; border-top: 1px solid #ececf1; display: flex; align-items: center; gap: 8px"><i style="display:inline-block;width:14px;height:14px;border-radius:4px;background:#E44444;box-shadow:inset 0 0 0 1px rgba(11,11,11,.1)"></i>Red/400</span>
+
+</div>
+</section>
+
+<section id="type" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px"><h3 style="margin: 0; font: 600 20px/1.3 Geist, sans-serif; color: #1d1d1f">Typography</h3><p style="margin: 0; color: #5e6170; font: 400 14px/1.5 Geist, sans-serif">DM Sans for the product, Fields for display moments. Every style sits on a 150% line height.</p></div>
+<div style="display: flex; flex-direction: column">
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr) 140px; gap: 16px; align-items: baseline; padding: 10px 0; border-top: 1px solid #ececf1"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">FH1</span><span style="font:600 32px/1.5 Georgia, serif;color:#2D3134;white-space:nowrap;overflow:hidden">Create invoice</span><span style="font: 400 12px/1.3 Geist, sans-serif; color: #8a8e9c">Fields Semibold 32/150%</span></div>
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr) 140px; gap: 16px; align-items: baseline; padding: 10px 0; border-top: 1px solid #ececf1"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">H1</span><span style="font:600 32px/1.5 'DM Sans';color:#2D3134;white-space:nowrap;overflow:hidden">Create invoice</span><span style="font: 400 12px/1.3 Geist, sans-serif; color: #8a8e9c">DM Sans Semibold 32</span></div>
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr) 140px; gap: 16px; align-items: baseline; padding: 10px 0; border-top: 1px solid #ececf1"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">H2</span><span style="font:600 24px/1.5 'DM Sans';color:#2D3134;white-space:nowrap;overflow:hidden">Create invoice</span><span style="font: 400 12px/1.3 Geist, sans-serif; color: #8a8e9c">DM Sans Semibold 24</span></div>
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr) 140px; gap: 16px; align-items: baseline; padding: 10px 0; border-top: 1px solid #ececf1"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">H3</span><span style="font:600 20px/1.5 'DM Sans';color:#2D3134;white-space:nowrap;overflow:hidden">Create invoice</span><span style="font: 400 12px/1.3 Geist, sans-serif; color: #8a8e9c">DM Sans Semibold 20</span></div>
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr) 140px; gap: 16px; align-items: baseline; padding: 10px 0; border-top: 1px solid #ececf1"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">Text1</span><span style="font:400 18px/1.5 'DM Sans';color:#2D3134;white-space:nowrap;overflow:hidden">Create invoice</span><span style="font: 400 12px/1.3 Geist, sans-serif; color: #8a8e9c">DM Sans 18</span></div>
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr) 140px; gap: 16px; align-items: baseline; padding: 10px 0; border-top: 1px solid #ececf1"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">Text2</span><span style="font:400 16px/1.5 'DM Sans';color:#2D3134;white-space:nowrap;overflow:hidden">Create invoice</span><span style="font: 400 12px/1.3 Geist, sans-serif; color: #8a8e9c">DM Sans 16</span></div>
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr) 140px; gap: 16px; align-items: baseline; padding: 10px 0; border-top: 1px solid #ececf1"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">Text3</span><span style="font:400 14px/1.5 'DM Sans';color:#2D3134;white-space:nowrap;overflow:hidden">Create invoice</span><span style="font: 400 12px/1.3 Geist, sans-serif; color: #8a8e9c">DM Sans 14</span></div>
+
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr) 140px; gap: 16px; align-items: baseline; padding: 10px 0; border-top: 1px solid #ececf1"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">Text4</span><span style="font:400 12px/1.5 'DM Sans';color:#2D3134;white-space:nowrap;overflow:hidden">Create invoice</span><span style="font: 400 12px/1.3 Geist, sans-serif; color: #8a8e9c">DM Sans 12</span></div>
+
+</div>
+</section>
+
+<section id="space" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px"><h3 style="margin: 0; font: 600 20px/1.3 Geist, sans-serif; color: #1d1d1f">Spacing</h3><p style="margin: 0; color: #5e6170; font: 400 14px/1.5 Geist, sans-serif">15 steps from 2 to 64px. Padding and gaps only ever use these.</p></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; row-gap: 8px">
+
+<div style="display: grid; grid-template-columns: 96px 40px minmax(0, 1fr); gap: 10px; align-items: center"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">space/none</span><span style="font: 400 12px/1 Geist, sans-serif; color: #8a8e9c">0px</span><i style="display:block;height:12px;width:1px;border-radius:2px;background:#C5C9CE"></i></div>
+
+<div style="display: grid; grid-template-columns: 96px 40px minmax(0, 1fr); gap: 10px; align-items: center"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">space/4xs</span><span style="font: 400 12px/1 Geist, sans-serif; color: #8a8e9c">2px</span><i style="display:block;height:12px;width:6px;border-radius:2px;background:#f2542d"></i></div>
+
+<div style="display: grid; grid-template-columns: 96px 40px minmax(0, 1fr); gap: 10px; align-items: center"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">space/3xs</span><span style="font: 400 12px/1 Geist, sans-serif; color: #8a8e9c">4px</span><i style="display:block;height:12px;width:12px;border-radius:2px;background:#f2542d"></i></div>
+
+<div style="display: grid; grid-template-columns: 96px 40px minmax(0, 1fr); gap: 10px; align-items: center"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">space/2xs</span><span style="font: 400 12px/1 Geist, sans-serif; color: #8a8e9c">6px</span><i style="display:block;height:12px;width:18px;border-radius:2px;background:#f2542d"></i></div>
+
+<div style="display: grid; grid-template-columns: 96px 40px minmax(0, 1fr); gap: 10px; align-items: center"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">space/xs</span><span style="font: 400 12px/1 Geist, sans-serif; color: #8a8e9c">8px</span><i style="display:block;height:12px;width:24px;border-radius:2px;background:#f2542d"></i></div>
+
+<div style="display: grid; grid-template-columns: 96px 40px minmax(0, 1fr); gap: 10px; align-items: center"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">space/sm</span><span style="font: 400 12px/1 Geist, sans-serif; color: #8a8e9c">10px</span><i style="display:block;height:12px;width:30px;border-radius:2px;background:#f2542d"></i></div>
+
+<div style="display: grid; grid-template-columns: 96px 40px minmax(0, 1fr); gap: 10px; align-items: center"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">space/md</span><span style="font: 400 12px/1 Geist, sans-serif; color: #8a8e9c">12px</span><i style="display:block;height:12px;width:36px;border-radius:2px;background:#f2542d"></i></div>
+
+<div style="display: grid; grid-template-columns: 96px 40px minmax(0, 1fr); gap: 10px; align-items: center"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">space/lg</span><span style="font: 400 12px/1 Geist, sans-serif; color: #8a8e9c">16px</span><i style="display:block;height:12px;width:48px;border-radius:2px;background:#f2542d"></i></div>
+
+<div style="display: grid; grid-template-columns: 96px 40px minmax(0, 1fr); gap: 10px; align-items: center"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">space/xl</span><span style="font: 400 12px/1 Geist, sans-serif; color: #8a8e9c">20px</span><i style="display:block;height:12px;width:60px;border-radius:2px;background:#f2542d"></i></div>
+
+<div style="display: grid; grid-template-columns: 96px 40px minmax(0, 1fr); gap: 10px; align-items: center"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">space/2xl</span><span style="font: 400 12px/1 Geist, sans-serif; color: #8a8e9c">24px</span><i style="display:block;height:12px;width:72px;border-radius:2px;background:#f2542d"></i></div>
+
+<div style="display: grid; grid-template-columns: 96px 40px minmax(0, 1fr); gap: 10px; align-items: center"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">space/3xl</span><span style="font: 400 12px/1 Geist, sans-serif; color: #8a8e9c">32px</span><i style="display:block;height:12px;width:96px;border-radius:2px;background:#f2542d"></i></div>
+
+<div style="display: grid; grid-template-columns: 96px 40px minmax(0, 1fr); gap: 10px; align-items: center"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">space/4xl</span><span style="font: 400 12px/1 Geist, sans-serif; color: #8a8e9c">36px</span><i style="display:block;height:12px;width:108px;border-radius:2px;background:#f2542d"></i></div>
+
+<div style="display: grid; grid-template-columns: 96px 40px minmax(0, 1fr); gap: 10px; align-items: center"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">space/5xl</span><span style="font: 400 12px/1 Geist, sans-serif; color: #8a8e9c">40px</span><i style="display:block;height:12px;width:120px;border-radius:2px;background:#f2542d"></i></div>
+
+<div style="display: grid; grid-template-columns: 96px 40px minmax(0, 1fr); gap: 10px; align-items: center"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">space/6xl</span><span style="font: 400 12px/1 Geist, sans-serif; color: #8a8e9c">48px</span><i style="display:block;height:12px;width:144px;border-radius:2px;background:#f2542d"></i></div>
+
+<div style="display: grid; grid-template-columns: 96px 40px minmax(0, 1fr); gap: 10px; align-items: center"><span style="font: 500 12px/1 'Geist Mono', monospace; color: #5e6170">space/7xl</span><span style="font: 400 12px/1 Geist, sans-serif; color: #8a8e9c">64px</span><i style="display:block;height:12px;width:192px;border-radius:2px;background:#f2542d"></i></div>
+
+</div>
+</section>
+
+<section id="radius" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px"><h3 style="margin: 0; font: 600 20px/1.3 Geist, sans-serif; color: #1d1d1f">Radius</h3><p style="margin: 0; color: #5e6170; font: 400 14px/1.5 Geist, sans-serif">Buttons use lg (10), inputs md (8), cards xl (12).</p></div>
+<div style="display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 12px">
+
+<div style="display: flex; flex-direction: column; gap: 8px; align-items: center"><i style="display:block;width:56px;height:56px;background:#EFF6FB;border:1.5px solid #1F8ACA;box-sizing:border-box;border-radius:0px 0px 0px 0px"></i><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5e6170; text-align: center">none<br>0px</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px; align-items: center"><i style="display:block;width:56px;height:56px;background:#EFF6FB;border:1.5px solid #1F8ACA;box-sizing:border-box;border-radius:4px 4px 4px 4px"></i><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5e6170; text-align: center">xs<br>4px</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px; align-items: center"><i style="display:block;width:56px;height:56px;background:#EFF6FB;border:1.5px solid #1F8ACA;box-sizing:border-box;border-radius:6px 6px 6px 6px"></i><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5e6170; text-align: center">sm<br>6px</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px; align-items: center"><i style="display:block;width:56px;height:56px;background:#EFF6FB;border:1.5px solid #1F8ACA;box-sizing:border-box;border-radius:8px 8px 8px 8px"></i><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5e6170; text-align: center">md<br>8px</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px; align-items: center"><i style="display:block;width:56px;height:56px;background:#EFF6FB;border:1.5px solid #1F8ACA;box-sizing:border-box;border-radius:10px 10px 10px 10px"></i><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5e6170; text-align: center">lg<br>10px</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px; align-items: center"><i style="display:block;width:56px;height:56px;background:#EFF6FB;border:1.5px solid #1F8ACA;box-sizing:border-box;border-radius:12px 12px 12px 12px"></i><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5e6170; text-align: center">xl<br>12px</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px; align-items: center"><i style="display:block;width:56px;height:56px;background:#EFF6FB;border:1.5px solid #1F8ACA;box-sizing:border-box;border-radius:16px 16px 16px 16px"></i><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5e6170; text-align: center">2xl<br>16px</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px; align-items: center"><i style="display:block;width:56px;height:56px;background:#EFF6FB;border:1.5px solid #1F8ACA;box-sizing:border-box;border-radius:24px 24px 24px 24px"></i><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5e6170; text-align: center">3xl<br>24px</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px; align-items: center"><i style="display:block;width:56px;height:56px;background:#EFF6FB;border:1.5px solid #1F8ACA;box-sizing:border-box;border-radius:28px 28px 28px 28px"></i><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5e6170; text-align: center">full<br>9999</span></div>
+
+</div>
+</section>
+
+<section id="shadow" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px"><h3 style="margin: 0; font: 600 20px/1.3 Geist, sans-serif; color: #1d1d1f">Shadows</h3><p style="margin: 0; color: #5e6170; font: 400 14px/1.5 Geist, sans-serif">Six elevations, each a soft key light plus a tight contact shadow.</p></div>
+<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; padding: 24px; border-radius: 16px; background: #F6F7F8">
+
+<div style="display: flex; flex-direction: column; gap: 10px; align-items: center"><i style="display:block;width:72px;height:72px;border-radius:12px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.05)"></i><span style="font: 500 11px/1 'Geist Mono', monospace; color: #5e6170">shadow/xs</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 10px; align-items: center"><i style="display:block;width:72px;height:72px;border-radius:12px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px -1px rgba(0,0,0,.08)"></i><span style="font: 500 11px/1 'Geist Mono', monospace; color: #5e6170">shadow/sm</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 10px; align-items: center"><i style="display:block;width:72px;height:72px;border-radius:12px;background:#fff;box-shadow:0 4px 6px -1px rgba(0,0,0,.08),0 2px 4px -2px rgba(0,0,0,.08)"></i><span style="font: 500 11px/1 'Geist Mono', monospace; color: #5e6170">shadow/md</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 10px; align-items: center"><i style="display:block;width:72px;height:72px;border-radius:12px;background:#fff;box-shadow:0 10px 15px -3px rgba(0,0,0,.08),0 4px 6px -4px rgba(0,0,0,.08)"></i><span style="font: 500 11px/1 'Geist Mono', monospace; color: #5e6170">shadow/lg</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 10px; align-items: center"><i style="display:block;width:72px;height:72px;border-radius:12px;background:#fff;box-shadow:0 20px 25px -5px rgba(0,0,0,.08),0 8px 10px -6px rgba(0,0,0,.08)"></i><span style="font: 500 11px/1 'Geist Mono', monospace; color: #5e6170">shadow/xl</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 10px; align-items: center"><i style="display:block;width:72px;height:72px;border-radius:12px;background:#fff;box-shadow:0 25px 50px -12px rgba(0,0,0,.2)"></i><span style="font: 500 11px/1 'Geist Mono', monospace; color: #5e6170">shadow/2xl</span></div>
+
+</div>
+</section>
+
+<section id="buttons" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px"><h3 style="margin: 0; font: 600 20px/1.3 Geist, sans-serif; color: #1d1d1f">Buttons</h3><p style="margin: 0; color: #5e6170; font: 400 14px/1.5 Geist, sans-serif">280 variants: 4 sizes, 7 styles, 5 states, with or without icons. Shown at sm (32px, 16/8 padding, radius 10).</p></div>
+<div style="display: grid; grid-template-columns: 76px repeat(5, minmax(0, 1fr)); gap: 10px; align-items: center">
+<span></span>
+<span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5F646A; text-transform: uppercase; letter-spacing: .05em">Default</span><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5F646A; text-transform: uppercase; letter-spacing: .05em">Hover</span><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5F646A; text-transform: uppercase; letter-spacing: .05em">Loading</span><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5F646A; text-transform: uppercase; letter-spacing: .05em">Disabled</span><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5F646A; text-transform: uppercase; letter-spacing: .05em">Selected</span>
+<span style="font:500 11px/1.2 &quot;Geist Mono&quot;,monospace;color:#5F646A;text-transform:uppercase;letter-spacing:.05em;">Brand</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#1F8ACA;color:#fff;">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#1F8ACA;color:#fff;filter:brightness(.92);">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#1F8ACA;color:#fff;">Saving…</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#1F8ACA;color:#fff;opacity:.45;">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#1F8ACA;color:#fff;box-shadow:0 0 0 2px #fff,0 0 0 4px #1F8ACA;">Create</span><span style="font:500 11px/1.2 &quot;Geist Mono&quot;,monospace;color:#5F646A;text-transform:uppercase;letter-spacing:.05em;">Neutral</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#2D3134;color:#F9F9F9;">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#2D3134;color:#F9F9F9;filter:brightness(.92);">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#2D3134;color:#F9F9F9;">Saving…</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#2D3134;color:#F9F9F9;opacity:.45;">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#2D3134;color:#F9F9F9;box-shadow:0 0 0 2px #fff,0 0 0 4px #1F8ACA;">Create</span><span style="font:500 11px/1.2 &quot;Geist Mono&quot;,monospace;color:#5F646A;text-transform:uppercase;letter-spacing:.05em;">Tonal</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:rgba(31,138,202,.15);color:#1F8ACA;">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:rgba(31,138,202,.15);color:#1F8ACA;filter:brightness(.92);">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:rgba(31,138,202,.15);color:#1F8ACA;">Saving…</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:rgba(31,138,202,.15);color:#1F8ACA;opacity:.45;">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:rgba(31,138,202,.15);color:#1F8ACA;box-shadow:0 0 0 2px #fff,0 0 0 4px #1F8ACA;">Create</span><span style="font:500 11px/1.2 &quot;Geist Mono&quot;,monospace;color:#5F646A;text-transform:uppercase;letter-spacing:.05em;">Danger</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#BC1A1A;color:#fff;">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#BC1A1A;color:#fff;filter:brightness(.92);">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#BC1A1A;color:#fff;">Saving…</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#BC1A1A;color:#fff;opacity:.45;">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#BC1A1A;color:#fff;box-shadow:0 0 0 2px #fff,0 0 0 4px #1F8ACA;">Create</span><span style="font:500 11px/1.2 &quot;Geist Mono&quot;,monospace;color:#5F646A;text-transform:uppercase;letter-spacing:.05em;">Outline</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#fff;color:#2D3134;box-shadow:inset 0 0 0 1px rgba(11,11,11,.12);">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#fff;color:#2D3134;box-shadow:inset 0 0 0 1px rgba(11,11,11,.12);filter:brightness(.92);">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#fff;color:#2D3134;box-shadow:inset 0 0 0 1px rgba(11,11,11,.12);">Saving…</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#fff;color:#2D3134;box-shadow:inset 0 0 0 1px rgba(11,11,11,.12);opacity:.45;">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:#fff;color:#2D3134;box-shadow:inset 0 0 0 1px rgba(11,11,11,.12);box-shadow:0 0 0 2px #fff,0 0 0 4px #1F8ACA;">Create</span><span style="font:500 11px/1.2 &quot;Geist Mono&quot;,monospace;color:#5F646A;text-transform:uppercase;letter-spacing:.05em;">Ghost</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:transparent;color:#2D3134;">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:transparent;color:#2D3134;filter:brightness(.92);">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:transparent;color:#2D3134;">Saving…</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:transparent;color:#2D3134;opacity:.45;">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:transparent;color:#2D3134;box-shadow:0 0 0 2px #fff,0 0 0 4px #1F8ACA;">Create</span><span style="font:500 11px/1.2 &quot;Geist Mono&quot;,monospace;color:#5F646A;text-transform:uppercase;letter-spacing:.05em;">Link</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:transparent;color:#1F8ACA;text-decoration:underline;">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:transparent;color:#1F8ACA;text-decoration:underline;filter:brightness(.92);">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:transparent;color:#1F8ACA;text-decoration:underline;">Saving…</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:transparent;color:#1F8ACA;text-decoration:underline;opacity:.45;">Create</span><span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 16px;border-radius:10px;font:500 14px/1 &quot;DM Sans&quot;,sans-serif;justify-self:start;white-space:nowrap;background:transparent;color:#1F8ACA;text-decoration:underline;box-shadow:0 0 0 2px #fff,0 0 0 4px #1F8ACA;">Create</span>
+</div>
+</section>
+
+<section id="inputs" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px"><h3 style="margin: 0; font: 600 20px/1.3 Geist, sans-serif; color: #1d1d1f">Inputs</h3><p style="margin: 0; color: #5e6170; font: 400 14px/1.5 Geist, sans-serif">One field, five states. Focus and error borders come from border/brand/bold and border/semantic/danger/bold.</p></div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px">
+
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5F646A; text-transform: uppercase; letter-spacing: .05em">Default</span><span style="font-size: 13px; font-weight: 500; color: #5F646A">Amount</span><span style="display:flex;align-items:center;height:36px;padding:0 12px;border-radius:8px;font-size:16px;box-sizing:border-box;border:1px solid rgba(11,11,11,.12);background:#F9F9F9;color:#888E94">0.00</span><span style="font-size:12px"> </span></div>
+
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5F646A; text-transform: uppercase; letter-spacing: .05em">Focus</span><span style="font-size: 13px; font-weight: 500; color: #5F646A">Amount</span><span style="display:flex;align-items:center;height:36px;padding:0 12px;border-radius:8px;font-size:16px;box-sizing:border-box;border:1px solid #1D72A5;box-shadow:0 0 0 3px rgba(31,138,202,.15);background:#fff;color:#2D3134">12,4|</span><span style="font-size:12px"> </span></div>
+
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5F646A; text-transform: uppercase; letter-spacing: .05em">Filled</span><span style="font-size: 13px; font-weight: 500; color: #5F646A">Amount</span><span style="display:flex;align-items:center;height:36px;padding:0 12px;border-radius:8px;font-size:16px;box-sizing:border-box;border:1px solid rgba(11,11,11,.12);background:#F9F9F9;color:#2D3134">12,400.00</span><span style="font-size:12px"> </span></div>
+
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5F646A; text-transform: uppercase; letter-spacing: .05em">Disabled</span><span style="font-size: 13px; font-weight: 500; color: #5F646A">Amount</span><span style="display:flex;align-items:center;height:36px;padding:0 12px;border-radius:8px;font-size:16px;box-sizing:border-box;border:1px solid #E4E7EA;background:#EFF1F3;color:#9EA3A9">12,400.00</span><span style="font-size:12px"> </span></div>
+
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5F646A; text-transform: uppercase; letter-spacing: .05em">Error</span><span style="font-size: 13px; font-weight: 500; color: #5F646A">Amount</span><span style="display:flex;align-items:center;height:36px;padding:0 12px;border-radius:8px;font-size:16px;box-sizing:border-box;border:1px solid #951818;background:#fff;color:#2D3134">12,4OO</span><span style="font-size:12px;color:#951818">Enter a number</span></div>
+
+</div>
+</section>
+
+<section id="controls" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px"><h3 style="margin: 0; font: 600 20px/1.3 Geist, sans-serif; color: #1d1d1f">Switch &amp; checkbox</h3><p style="margin: 0; color: #5e6170; font: 400 14px/1.5 Geist, sans-serif">Switch tracks are 44 wide with a 2px inset: sm 24, md 28, lg 32 tall. Labels sit 8px away.</p></div>
+<div style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap">
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5F646A">switch/sm</span><div style="display: flex; gap: 8px; align-items: center"><span style="display:flex;justify-content:flex-end;width:44px;height:24px;padding:2px;box-sizing:border-box;border-radius:999px;background:#1F8ACA"><i style="display:block;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25)"></i></span><span style="display:flex;justify-content:flex-start;width:44px;height:24px;padding:2px;box-sizing:border-box;border-radius:999px;background:#E4E7EA"><i style="display:block;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25)"></i></span><span style="font-size:14px">Label</span></div></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5F646A">switch/md</span><div style="display: flex; gap: 8px; align-items: center"><span style="display:flex;justify-content:flex-end;width:44px;height:28px;padding:2px;box-sizing:border-box;border-radius:999px;background:#1F8ACA"><i style="display:block;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25)"></i></span><span style="display:flex;justify-content:flex-start;width:44px;height:28px;padding:2px;box-sizing:border-box;border-radius:999px;background:#E4E7EA"><i style="display:block;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25)"></i></span><span style="font-size:16px">Label</span></div></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5F646A">switch/lg</span><div style="display: flex; gap: 8px; align-items: center"><span style="display:flex;justify-content:flex-end;width:44px;height:32px;padding:2px;box-sizing:border-box;border-radius:999px;background:#1F8ACA"><i style="display:block;width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25)"></i></span><span style="display:flex;justify-content:flex-start;width:44px;height:32px;padding:2px;box-sizing:border-box;border-radius:999px;background:#E4E7EA"><i style="display:block;width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25)"></i></span><span style="font-size:18px">Label</span></div></div>
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font: 500 11px/1.2 'Geist Mono', monospace; color: #5F646A">checkbox</span><div style="display: flex; gap: 12px; align-items: center; font-size: 14px"><span style="width: 18px; height: 18px; border-radius: 4px; background: #1F8ACA; display: grid; place-items: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span><span style="width: 18px; height: 18px; border-radius: 4px; background: #1F8ACA; display: grid; place-items: center"><i style="width: 8px; height: 2px; background: #fff; border-radius: 1px"></i></span><span style="width: 18px; height: 18px; border-radius: 4px; border: 1.5px solid #C5C9CE; box-sizing: border-box"></span><span style="width: 18px; height: 18px; border-radius: 4px; background: #EFF1F3; border: 1.5px solid #E4E7EA; box-sizing: border-box"></span></div></div>
+</div>
+</section>
+
+<section id="badges" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px"><h3 style="margin: 0; font: 600 20px/1.3 Geist, sans-serif; color: #1d1d1f">Badges</h3><p style="margin: 0; color: #5e6170; font: 400 14px/1.5 Geist, sans-serif">75 variants. Status reads from text colour on a subtle fill, so a table full of them stays calm.</p></div>
+<div style="display: flex; gap: 10px; flex-wrap: wrap">
+<span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:6px;font:500 12px/1 &quot;DM Sans&quot;,sans-serif;color:#1F8ACA;background:rgba(31,138,202,.12)">For review</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:6px;font:500 12px/1 &quot;DM Sans&quot;,sans-serif;color:#A86413;background:rgba(214,126,20,.12)">Outstanding</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:6px;font:500 12px/1 &quot;DM Sans&quot;,sans-serif;color:#BC1A1A;background:rgba(228,27,27,.12)">Late</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:6px;font:500 12px/1 &quot;DM Sans&quot;,sans-serif;color:#256D2B;background:rgba(53,178,63,.12)">Paid</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:6px;font:500 12px/1 &quot;DM Sans&quot;,sans-serif;color:#5F646A;background:rgba(11,11,11,.12)">Draft</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:6px;font:500 12px/1 &quot;DM Sans&quot;,sans-serif;color:#2B6E65;background:rgba(66,189,172,.12)">Teal</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:6px;font:500 12px/1 &quot;DM Sans&quot;,sans-serif;color:#283985;background:rgba(52,80,203,.12)">Indigo</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:6px;font:500 12px/1 &quot;DM Sans&quot;,sans-serif;color:#572985;background:rgba(128,53,202,.12)">Purple</span>
+</div>
+</section>
+
+<section id="tabs" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px"><h3 style="margin: 0; font: 600 20px/1.3 Geist, sans-serif; color: #1d1d1f">Tabs</h3><p style="margin: 0; color: #5e6170; font: 400 14px/1.5 Geist, sans-serif">Line tabs with counters, as used on Invoicing.</p></div>
+<div style="display: flex; gap: 24px; border-bottom: 1px solid #E4E7EA; font-size: 14px">
+<span style="padding: 0 0 10px; border-bottom: 2px solid #1F8ACA; color: #1F8ACA; font-weight: 500; display: flex; gap: 6px; align-items: center">All <i style="font-style: normal; font-size: 12px; padding: 1px 6px; border-radius: 999px; background: rgba(31,138,202,.15)">32</i></span>
+<span style="padding: 0 0 10px; color: #5F646A; display: flex; gap: 6px; align-items: center">For review <i style="font-style: normal; font-size: 12px; padding: 1px 6px; border-radius: 999px; background: #EFF1F3">25</i></span>
+<span style="padding: 0 0 10px; color: #5F646A; display: flex; gap: 6px; align-items: center">Outstanding <i style="font-style: normal; font-size: 12px; padding: 1px 6px; border-radius: 999px; background: #EFF1F3">5</i></span>
+<span style="padding: 0 0 10px; color: #5F646A; display: flex; gap: 6px; align-items: center">Late <i style="font-style: normal; font-size: 12px; padding: 1px 6px; border-radius: 999px; background: #EFF1F3">2</i></span>
+</div>
+</section>
+
+<section id="alerts" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px"><h3 style="margin: 0; font: 600 20px/1.3 Geist, sans-serif; color: #1d1d1f">Alerts</h3><p style="margin: 0; color: #5e6170; font: 400 14px/1.5 Geist, sans-serif">Four tones, one shape.</p></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div style="display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:12px;font-size:14px;color:#256D2B;background:rgba(53,178,63,.1);box-shadow:inset 0 0 0 1px rgba(53,178,63,.25)"><b style="font-weight: 600">Invoice sent</b><span style="color: #5F646A">The borrower will get it by email.</span></div><div style="display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:12px;font-size:14px;color:#A86413;background:rgba(214,126,20,.1);box-shadow:inset 0 0 0 1px rgba(214,126,20,.25)"><b style="font-weight: 600">Due in 3 days</b><span style="color: #5F646A">Payment has not been received yet.</span></div><div style="display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:12px;font-size:14px;color:#BC1A1A;background:rgba(228,27,27,.1);box-shadow:inset 0 0 0 1px rgba(228,27,27,.25)"><b style="font-weight: 600">Payment failed</b><span style="color: #5F646A">The card on file was declined.</span></div><div style="display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:12px;font-size:14px;color:#1D72A5;background:rgba(31,138,202,.1);box-shadow:inset 0 0 0 1px rgba(31,138,202,.25)"><b style="font-weight: 600">Heads up</b><span style="color: #5F646A">Rates update on the 1st of each month.</span></div>
+</div>
+<p style="margin: 0; font: 400 13px/1.5 Geist, sans-serif; color: #5e6170"><span class="ph">Alert, badge and input fills are approximated from the semantic tokens; swap in exact values if they differ.</span></p>
+</section>
+    </div>
+  </section>
+
+  <section id="product" aria-labelledby="ri-prod">
+    <div class="split" style="margin-bottom:24px">
+      <div class="stack"><h2 id="ri-prod">One system, every surface</h2></div>
+      <p class="ri-side">The same invoicing table, before and after the system. Status reads at a glance, actions sit where they belong, and the page has one clear primary action. Drag to compare.</p>
+    </div>
+    <div class="ri-slider ri-ba" data-slider style="--p:50%">
+      <img src="realinsight/invoicing-before.webp" alt="Before: legacy invoicing table with link and camera icons, plain text rows and uppercase bulk buttons" width="1784" height="742" loading="lazy">
+      <img class="ri-sl-b" src="realinsight/invoicing-after.webp" alt="After: the rebuilt invoicing table with checkboxes, status badges, row menus and a single Post action" width="1784" height="742" loading="lazy">
+      <span class="ri-tag">Before</span><span class="ri-tag after">After</span>
+      <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+      <span class="ri-handle" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <section id="adoption" class="split" aria-labelledby="ri-adopt">
+    <div class="stack"><h2 id="ri-adopt">Adopted one component at a time</h2>
+      <p class="ri-side">We rebuilt the components in code, then swap old for new one by one. About a quarter of the platform has moved so far.</p>
+      <p class="ri-side">The tradeoff was deliberate: a staggered rollout means two systems live side by side for a while, but power users never wake up to a different product.</p></div>
+    <figure class="figure">
+      <div class="ri-adopt" data-adopt aria-label="About 25 percent of the platform uses the new components"></div>
+      <div class="ri-legend"><span><i class="new"></i>New system</span><span><i></i>Legacy, waiting to swap</span></div>
+    </figure>
+  </section>
+
+  <section id="reflection" class="split" aria-labelledby="ri-learn">
+    <div class="stack"><h2 id="ri-learn">What I learned</h2></div>
+    <div class="stack"><p><span class="ph">The ask is rarely the need. "Make it prettier" would have produced nicer screens on the same tangled base. Building the system first was slower to show, but every screen since has been faster and more consistent.</span></p>
+    <p><span class="ph">Next time I'd bring engineering leads in even earlier, so adoption starts with the first component instead of after the foundation.</span></p></div>
+  </section>
+
+  <nav class="next-cs" aria-label="More projects">
+    <a class="btn" href="../index.html">← All work</a>
+    <a class="btn primary" href="case-study.html">Next project →</a>
+  </nav>
+</main>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span data-year>2026</span> Tiffany Chang</span>
+    <span><a href="../contact.html">Contact</a> · <a href="https://www.linkedin.com/">LinkedIn</a> · <a href="#"><span class="ph">Résumé</span></a></span>
+  </div>
+</footer>
+
+<script src="../covers/shader-bg.js?v=202611260100"></script>
+<script src="../covers/ds-motion.js?v=202611260100"></script>
+<script src="../covers/realinsight-cs.js?v=202611260430"></script>
+<script src="../site.js?v=202611252315"></script>
+<script src="../weather.js?v=202611252315"></script>
+<script src="../glass.js?v=202611252315"></script>
+</body>
+</html>

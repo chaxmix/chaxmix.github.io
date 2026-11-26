@@ -106,3 +106,25 @@
     else { const io2 = new IntersectionObserver(es => { if (es[0].isIntersecting) { io2.disconnect(); fill(); } }, { threshold: .5 }); io2.observe(ad); }
   }
 })();
+
+/* Round 3: side nav follows the section you're reading */
+(() => {
+  const toc = document.querySelector('.ri-toc');
+  if (!toc || !('IntersectionObserver' in window)) return;
+  const links = [...toc.querySelectorAll('[data-toc]')], subs = [...toc.querySelectorAll('[data-toc-sub]')];
+  const secs = links.map(a => document.getElementById(a.dataset.toc)).filter(Boolean);
+  const subSecs = subs.map(a => document.getElementById(a.dataset.tocSub)).filter(Boolean);
+  const pick = (els) => { let cur = els[0]; for (const el of els) if (el.getBoundingClientRect().top < innerHeight * .35) cur = el; return cur; };
+  let raf = 0;
+  const update = () => {
+    raf = 0;
+    const atEnd = innerHeight + scrollY >= document.documentElement.scrollHeight - 4;
+    const cur = atEnd ? secs[secs.length - 1] : pick(secs);
+    links.forEach(a => { const on = a.dataset.toc === cur.id; a.classList.toggle('is-on', on); a.parentElement.classList.toggle('is-open', on && !!a.parentElement.querySelector('.ri-toc-sub')); on ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current'); });
+    const sc = cur.id === 'system' ? pick(subSecs) : null;
+    subs.forEach(a => a.classList.toggle('is-on', !!sc && a.dataset.tocSub === sc.id));
+  };
+  addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+  addEventListener('resize', update);
+  update();
+})();
