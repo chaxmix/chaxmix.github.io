@@ -7,7 +7,7 @@
   var hosts = document.querySelectorAll('[data-ds-motion]');
   if (!hosts.length) return;
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var LOOP = 10.75;
+  var LOOP = 12.15;           // 11.05 of motion + two holds (see retime)
 
   // ---- easing ----
   function spring(z) {
@@ -84,8 +84,8 @@
     ['div', 'dm-div', '', { x: cx, y: -40, z: 1, w: 0, h: 1 }, [[5.5, .5, { o: 1, w: CARD.w }, 'out']]],
     ['cn', 'dm-ghost', 'Cancel', { x: BX - 112, y: BY, w: 80, h: 32 }, IN(5.6)],
     // 8. logo: RealInsight's R mark (from the Figma Logos page)
-    ['mk', 'dm-mark', R_GLYPH, { x: -110, y: 0, w: 88, h: 88, s: 0, rz: -40 }, [[8.15, 1, { o: 1, s: 1, rz: 0 }, 'sp'], [10.05, .45, { o: 0, s: .9 }, 'io']]],
-    ['wd', 'dm-word', 'RealInsight', { x: 90, y: 0, w: 236, h: 44 }, [[8.4, .9, { o: 1, x: 62 }, 'sf'], [10.05, .45, { o: 0 }, 'io']]]
+    ['mk', 'dm-mark', R_GLYPH, { x: -110, y: 0, w: 88, h: 88, s: 0, rz: -40 }, [[8.45, 1, { o: 1, s: 1, rz: 0 }, 'sp'], [10.3, .45, { o: 0, s: .9 }, 'io']]],
+    ['wd', 'dm-word', 'RealInsight', { x: 90, y: 0, w: 236, h: 44 }, [[8.7, .9, { o: 1, x: 62 }, 'sf'], [10.3, .45, { o: 0 }, 'io']]]
   ];
   function at(r, extra) { var o = {}, k; for (k in r) o[k] = r[k]; for (k in extra) o[k] = extra[k]; return o; }
   // 7. everything funnels into the centre before the logo appears
@@ -102,9 +102,14 @@
     [2.95, 1.0, { z: 2.4, cx: BX, cy: BY, rx: 0, ry: 0, rz: 0 }, 'sf'],   // flat, head-on for the redlines
     [4.45, 1.7, { z: .92, cx: cx, cy: cy, rx: 26, ry: -18, rz: -6 }, 'sf'],
     [5.9, 1.4, { z: .98, rx: 10, ry: 10, rz: 2 }, 'sf'],
-    [7.45, .6, { z: .9, rx: 0, ry: 0, rz: 0 }, 'io'],          // face the card straight on, still dark
-    [7.95, .6, { z: 1, cx: 0, cy: 0 }, 'io']                    // follow the pieces into the button, where the logo appears
+    [8.3, .7, { z: 1, cx: 0, cy: 0, rx: 0, ry: 0, rz: 0 }, 'io']   // collapse keeps frame 6's angle, then the camera flattens for the logo
   ];
+
+  // Holds: everything after 1.85s waits 0.5s (tokens gathered, frame 2) and everything after
+  // 7.0s waits another 0.6s (card in dark mode, frame 6). Times above are written without the holds.
+  function retime(t) { return t + (t >= 1.85 ? .5 : 0) + (t >= 7.0 ? .6 : 0); }
+  S.forEach(function (d) { d[4].forEach(function (k) { k[0] = retime(k[0]); }); });
+  CAM.forEach(function (k) { k[0] = retime(k[0]); });
 
   function sample(init, keys, T) {
     var v = {}, k; for (k in init) v[k] = init[k];
@@ -128,7 +133,7 @@
       return { el: el, init: init, keys: d[4].slice().sort(function (a, b) { return a[0] - b[0]; }), path: el.querySelector('path[pathLength]'), lw: 0, lh: 0, lr: -1 };
     });
     function render(T) {
-      var dark = T > 6.0;                            // toggle pops at 5.8 and slides at 6.0; the card goes dark with it and stays dark
+      var dark = T > retime(6.0);                            // toggle pops at 5.8 and slides at 6.0; the card goes dark with it and stays dark
       if (host.classList.contains('is-dark') !== dark) host.classList.toggle('is-dark', dark);
       var c = sample(CAM0, CAM, T);
       cam.style.transform = 'scale(' + c.z + ') rotateX(' + c.rx + 'deg) rotateY(' + c.ry + 'deg) rotateZ(' + c.rz + 'deg) translate3d(' + (-c.cx) + 'px,' + (-c.cy) + 'px,0)';
