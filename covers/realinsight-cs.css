@@ -245,7 +245,6 @@
 .ri-toc-sub .label { font-size: 10px; margin-top: 6px; }
 .ri-toc-sub a { font-size: 13px; padding: 1px 0; }
 .ri-toc-sub a:hover, .ri-toc-sub a.is-on { color: var(--fg); }
-.ri-toc-back { margin-top: 8px; }
 .ri-back-m { display: none; }
 #overview, #approach, #system, #product, #adoption, #reflection, .ri-sys section { scroll-margin-top: 96px; }
 @media (max-width: 1100px) {
