@@ -78,8 +78,6 @@ main.ri.v2 > section > div { min-width: 0; }
 #started figure[style*="grid-area: req"], #started figure[style*="grid-area: plan"] { aspect-ratio: 378 / 320; }
 #started figure[style*="grid-area: req"] img { width: 159% !important; left: 10.6% !important; top: 12.5% !important; }
 #started figure[style*="grid-area: plan"] img { width: 201% !important; left: 10.6% !important; top: 12.5% !important; }
-#started figure[style*="grid-area: rates"] { aspect-ratio: 768 / 360; }
-#started figure[style*="grid-area: rates"] img { width: 130% !important; left: 6.25% !important; top: 13.3% !important; }
 
 /* Phones */
 @media (max-width: 640px) {
@@ -90,12 +88,10 @@ main.ri.v2 > section > div { min-width: 0; }
   .v2 .panel { padding: 20px; }
   .v2-found .panel > div[style*="display: flex; gap: 16px"] { flex-direction: column; }
   .v2-found .panel > div[style*="64px 1fr"] { grid-template-columns: 48px 1fr !important; }
-  #started [style*="grid-template-areas"] { grid-template-columns: minmax(0, 1fr) !important; grid-template-areas: 'schema' 'req' 'plan' 'rates' !important; }
+  #started [style*="grid-template-areas"] { grid-template-columns: minmax(0, 1fr) !important; grid-template-areas: 'schema' 'req' 'plan' !important; }
   #started figure[style*="grid-area: req"], #started figure[style*="grid-area: plan"] { aspect-ratio: 768 / 560; }
   #started figure[style*="grid-area: req"] img { width: 80% !important; left: 8% !important; top: 10% !important; }
   #started figure[style*="grid-area: plan"] img { width: 100% !important; left: 8% !important; top: 10% !important; }
-  #started figure[style*="grid-area: rates"] { aspect-ratio: 768 / 560; }
-  #started figure[style*="grid-area: rates"] img { width: 170% !important; }
   .v2 .ri-ba { border-radius: 14px; }
   .v2-found .panel [style*="width: 300px"] { width: 100% !important; max-width: 300px; }
   .v2-found .panel > div[style*="font:600 32px"] { font-size: 26px !important; }
