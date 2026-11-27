@@ -149,3 +149,12 @@ document.querySelectorAll('[data-ctabs]').forEach(box => {
     });
   });
 });
+
+// v2 hero animation: scale the fixed 768px stage to its column
+(() => {
+  const wraps = document.querySelectorAll('.hx-wrap');
+  if (!wraps.length) return;
+  const fit = () => wraps.forEach(w => w.style.setProperty('--hxs', w.clientWidth / 768));
+  fit();
+  if ('ResizeObserver' in window) new ResizeObserver(fit).observe(wraps[0]); else addEventListener('resize', fit);
+})();
