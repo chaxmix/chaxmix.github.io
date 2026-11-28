@@ -122,3 +122,15 @@ if (form) {
     form.querySelector('[data-form-status]').textContent = 'Thanks! This form isn’t connected yet, so nothing was sent.';
   });
 }
+
+// 6. Pause looping animations while they're off screen, so covers and the
+//    case study hero don't keep using CPU/GPU when nobody can see them.
+//    (The WebGL shader and the 3D cover already pause themselves.)
+(function () {
+  var loops = document.querySelectorAll('.cover, .cs-cover, .hero-object, .hx-wrap, [data-loop]');
+  if (!loops.length || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { e.target.classList.toggle('is-offscreen', !e.isIntersecting); });
+  }, { rootMargin: '100px 0px' });
+  loops.forEach(function (el) { el.classList.add('is-offscreen'); io.observe(el); });
+})();

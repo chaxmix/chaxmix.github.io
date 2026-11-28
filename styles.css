@@ -419,3 +419,6 @@ main > *:nth-child(n+4) { animation-delay: .24s; }
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
 }
+
+/* Looping animations pause while off screen (toggled by site.js) */
+.is-offscreen, .is-offscreen * { animation-play-state: paused !important; }
